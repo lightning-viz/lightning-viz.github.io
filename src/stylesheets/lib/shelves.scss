@@ -156,6 +156,8 @@ img { max-width: 100%; height: auto; }
   .column-2 .column-1 { width: 43.75%; } }
 .row .center-column { float: none; margin-left: auto !important; margin-right: auto; }
 
-@media screen and (max-width: 479px) { .hidden-mobile, .visible-tablet, .visible-desktop { display: none !important; } }
-@media screen and (min-width: 480px) and (max-width: 799px) { .visible-mobile, .hidden-tablet, .visible-desktop { display: none !important; } }
-@media screen and (min-width: 800px) { .visible-mobile, .visible-tablet, .hidden-desktop { display: none !important; } }
+.visible-mobile {
+  display: none !important;
+}
+@media screen and (max-width: 800px) { .hidden-mobile, .visible-tablet, .visible-desktop { display: none !important; } }
+

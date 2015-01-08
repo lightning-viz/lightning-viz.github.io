@@ -24,7 +24,7 @@
         height: 100%;
         // z-index: -10;
         position: fixed;
-        overflow-y: scroll;
+        overflow-y: auto;
 
         max-width: 275px;
 
@@ -70,7 +70,17 @@
                 // padding-left: 30px;
             }
         }
+
+
     }
 
 }
 
+
+
+@media screen and (max-width: 800px) { 
+    .details-container {
+        float: none; margin-left: auto !important; margin-right: auto;
+    }
+
+}

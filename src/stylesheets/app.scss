@@ -164,6 +164,16 @@ section {
     // margin-top: 30px;
 }
 
+section.tagline {
+    text-align: center;
+    color: #444;
+
+    h5 {
+        // font-family: 'AvenirNext', sans-serif;
+        color: #181818;
+    }
+}
+
 section.hero {
 
     .hero-image {
@@ -226,7 +236,7 @@ section.features {
 }
 
 section.examples {
-    padding-top: 120px;
+    padding-top: 60px;
     h1 {
         text-align: center;
         
@@ -236,6 +246,7 @@ section.examples {
         margin-bottom: 30px;
         text-align: center;
     }
+    margin-bottom: 120px;
 
 }
 
@@ -248,7 +259,8 @@ section.getting-started {
 
     text-align: center;
     .button {
-        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
         background-image: linear-gradient(-151deg, #ECEEF1 0%, #DDE3EA 100%);
         background-image: linear-gradient(-180deg, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.00) 100%);
         border: 1px solid #B8C6D3;
@@ -260,7 +272,6 @@ section.getting-started {
         line-height: 26px;
     }
 
-    margin-bottom: 120px;
     /* BG: */
 }
 

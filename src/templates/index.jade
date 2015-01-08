@@ -34,7 +34,7 @@ block content
                         
                         #slides
                             .hero-image
-                                iframe(src="http://localhost:3000/visualizations/48/iframe/")
+                                iframe(src="https://lightning-docs.herokuapp.com/visualizations/4/iframe/")
                                 .overlay
                                     .callout
                                         | An API for data visualizations
@@ -42,7 +42,7 @@ block content
                                         | Lightning provides a set of web-based visualizations that can plug into your existing workflow.
 
                             .hero-image
-                                iframe(src="http://localhost:3000/visualizations/49/iframe/")
+                                iframe(src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/")
                                 .overlay
                                     .callout
                                         | Fully interactive, easy to embed
@@ -62,21 +62,12 @@ block content
                             a.slidesjs-next.slidesjs-navigation
                                 | &rsaquo;
 
-
-        section.how-it-works
-            .row
-                .column-12
-                    h1
-                        | How it Works
+        section.tagline
 
             .row
-                .column-12
-                    img(src="/images/how-it-works.png")
-
-            .row
-                .column-12
-                    h4
-                        | Send data to a Lightning server and it creates beautiful visualiztions using modern web technologies.
+                .column-8.center-column
+                    h5
+                        | Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization. Lightning supports modern libraries like d3.js and three.js, and is designed for interactivity over large data sets and continuously updating data streams.
 
         section.features
             .row
@@ -109,6 +100,45 @@ block content
                             a(href="#")
                                 | Click here to see a demo.
 
+        section.how-it-works
+            .row
+                .column-12
+                    h1
+                        | How it Works
+
+            .row
+                .column-12
+                    img(src="/images/how-it-works.png")
+
+            .row
+                .column-12
+                    h4
+                        | Send data to a Lightning server and it creates beautiful visualiztions using modern web technologies.
+
+        section.getting-started
+
+            .row
+                .column-12
+                    h1
+                        | Getting Started
+
+            //- .row
+                .column-3.center-column
+                    a(href="http://lightning.mathisonian.com", target="_blank")
+                        .button
+                            | Demo Server
+
+            .row
+                .column-3.center-column
+                    a(href="/documentation")
+                        .button
+                            | Guide to getting started
+
+            //- .row
+                .column-3.center-column
+                    a(href="#")
+                        .button
+                            | Github
         section.examples
 
             .row
@@ -147,29 +177,5 @@ block content
                     +example('Volume', '/images/examples/volume.png')
 
 
-        section.getting-started
-
-            .row
-                .column-12
-                    h1
-                        | Getting Started
-
-            .row
-                .column-3.center-column
-                    a(href="http://lightning.mathisonian.com", target="_blank")
-                        .button
-                            | Demo Server
-
-            .row
-                .column-3.center-column
-                    a(href="/documentation")
-                        .button
-                            | Guide to getting started
-
-            //- .row
-                .column-3.center-column
-                    a(href="#")
-                        .button
-                            | Github
 
     .bottom.bar
