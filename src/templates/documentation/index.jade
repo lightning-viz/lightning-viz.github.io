@@ -1,0 +1,696 @@
+extends ../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+
+                section
+                    a(href="#introduction")
+                        | Lightning
+
+                    ul
+                        li
+                            a(href="http://github.com/lightning-viz/lightning")
+                                | Github
+                        li
+                            a(href="/")
+                                | Website
+                        li
+                            a(href="#introduction")
+                                | Introduction
+                
+
+                section
+                    a(href="#server")
+                        | Launching a server
+
+                    ul
+                        li
+                            a(href="#heroku")
+                                | Heroku
+                        li
+                            a(href="#local-server")
+                                | Local Server
+                        li
+                            a(href="#first-viz")
+                                | Creating your first Visualization
+                
+                section
+                    a(href="#python")
+                        | Python client
+
+                    ul
+                        li
+                            a(href="#install-python")
+                                | Installation
+                        li
+                            a(href="#install-python")
+                                | Initialization
+                        li
+                            a(href="#plotting-python")
+                                | Creating Plots
+                        li
+                            a(href="#ipython")
+                                | IPython
+                        li
+                            a(href="#docs-python")
+                                | Full Docs
+                
+                section
+                    a(href="#embed")
+                        | Embedding Plots
+                    ul
+                        li
+                            a(href="#embed")
+                                | iFrames
+
+                section
+                    a(href="#custom")
+                        | Developing Custom Plots
+                    
+
+                    ul
+                        li
+                            a(href="#custom-index")
+                                | index.js
+                        li
+                            a(href="#custom-data")
+                                | sample-data.json
+                        li
+                            a(href="#custom-images")
+                                | sample-images
+                        li
+                            a(href="#custom-style")
+                                | style.scss
+                        li
+                            a(href="#custom-template")
+                                | template.jade
+                        li
+                            a(href="#custom-link")
+                                | Linking Plot Types
+                        li
+                            a(href="#custom-inherit")
+                                | Inheriting from other Plot Types
+
+
+            //- .column-1
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                header            
+                    .row
+                        .column-12
+                            .row.header
+                                .column-1.mobile-column-1
+                                    img(src="/images/logo.png")
+
+                                .column-10.mobile-column-3
+                                    h1
+                                        | Lightning
+
+                                    | DATA VISUALIZATION SERVER
+
+
+                section(name="introduction")
+                    .row
+                        .column-12
+                                a(name="introduction", href="#introduction")
+                                    h2
+                                        | Introduction
+
+                                p
+                                    | Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization. Lightning supports modern libraries like d3.js and three.js, and is designed for interactivity over large data sets and continuously updating data streams.
+
+                                p 
+                                    | To see examples of the types of visualizations that lightning can produce, check out the visualizations page. To learn how to start creating your own, continue reading here.
+                                p
+                                    | In order to start creating data visualizations, you need two things: (1) a running instance of a lightning server, and (2) a way to send data to the server. These instructions show you how to get both.
+
+                
+                section(name="server")
+                    .row
+                        .column-12
+                                a(name="server", href="#server")
+                                    h2
+                                        | Launching a server
+
+
+                                a(name="heroku", href="#heroku")
+                                    h4
+                                        | Heroku
+
+                                p
+                                    | The easiest way to start a server is by hosting it on Heroku. This is completely free, but you must have a Heroku account (Sign up for one here).
+                                p
+                                    | Once you have an account, simply navigate to the github README, and click the “deploy to Heroku button”, or click the button below:
+                                
+
+                                p
+                                    <a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning&button-url=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning"><img src="https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.png" style="max-width:100%;"></a>
+
+                                p
+                                    | The default options are fine for quick testing, but others are available for more advanced usage.
+
+                                h6
+                                    | Advanced Options
+
+                                p
+                                    | There are several options provided for advanced usage:
+
+                                    ul
+                                        li
+                                            span.inline-code
+                                                    | LIGHTNING_USERNAME
+                                            | , 
+                                            span.inline-code
+                                                    | LIGHTNING_PASSWORD
+
+                                            | -  if these values are provided, lightning will run behind HTTP basic authentication with the provided username and password. Note that public links (for sessions, or individual visualizations) can be shared and are accessible without credentials.
+                                        li
+                                            br
+                                        li
+                                            span.inline-code
+                                                | S3_BUCKET
+                                            | , 
+                                            span.inline-code
+                                                | S3_KEY
+                                            | , 
+                                            span.inline-code
+                                                | S3_SECRET
+                                            | - if these values are provided lightning will use s3 to store user uploaded images. Note that because of Heroku restrictions if these are not provided, user uploading images will periodically be deleted.
+
+
+                                a(name="local-server", href="#local-server")
+                                    h4
+                                        | Local Server
+
+                                p
+                                    | In order to run a local server, the following dependencies must first be installed:
+
+                                    ul
+                                        li
+                                            | node.js - download here, or use a version manager such as nvm.
+                                        li
+                                            | gulp - once node is installed run `npm install -g gulp` to install. This command may need sudo depending on your nodejs installation. 
+                                        li
+                                            | postgres - install instructions. On osx I recommend postgres.app. Make sure to start postgres after it is installed.
+
+                                p
+                                    | Once the above dependencies are resolved, clone the lightning repository and install the server. 
+
+                                pre
+                                    code
+                                        | $ git clone git@github.com:lightning-viz/lightning.git
+                                        | $ cd lightning
+                                        | $ npm install
+
+                                p
+                                    | then to initialize the database run
+
+                                pre
+                                    code
+                                        | $ npm run createdb
+                                        | $ npm run migrate
+
+                                p
+                                    | finally compile the static assets:
+
+                                pre
+                                    code
+                                        | $ gulp build
+
+                                p
+                                    | and run the server
+                                
+                                pre
+                                    code
+                                        | $ npm start
+                                p
+
+                                    | This should start a server at 
+                                    
+                                    a(href="http://localhost:3000", target="_blank")
+                                        | http://localhost:3000
+                                    
+                                    |. 
+
+                                a(name="first-viz", href="#first-viz")
+                                    h4
+                                        | Creating Your First Visualization
+
+                                p
+                                    | Navigate to your lightning host, and create a new session.
+
+
+                                p
+                                    | Then, click “create visualization”
+
+                                p
+                                    | Select the “line” type, and enter 
+                                    span.inline-code 
+                                        | {“series”: [1, 1, 2, 3, 5, 8]}
+                                    | .
+                                    | NOTE: the data must be a properly formed JSON object.
+
+                                p
+                                    | Submit the form and you should see a line plot of that data.
+
+                                p
+                                    | To create a choropleth map, select “map” type and enter 
+                                    span.inline-code 
+                                        | {“MI”: 0.6, “NY”: 0.3, “NM”: 0.2}
+                                    | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
+
+
+
+                                p 
+                                    | This method works for all data visualization types, but generally it is preferable to interact through an API client. To learn how to use the python client, continue below.
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="python", href="#python")
+                                    h2    
+                                        | Using with Python
+
+                                p
+                                    | The Python client makes it easy to generate interactive visualizations from Python, and embed them within an iPython notebook. The client provides access to all of Lightning’s core visualizations (link to example page).
+
+
+                                a(name="install-python", href="#install-python")
+                                    h4
+                                        | Installation
+
+                                p
+                                    | The python client can be found on github here. It can be installed from pypi by running
+
+
+                                pre
+                                    code
+                                        | $ pip install lightning-python
+
+                                p
+                                    | Alternatively if you would like to install directly from the github repo, run the following commands:
+
+                                pre
+                                    code
+                                        | $ git clone git@github.com:lightning-viz/lightning-python.git
+                                        | $ cd lightning-python
+                                        | $ sudo pip install -e .
+
+
+                                a(name="initialize-python", href="#initialize-python")
+                                    h4
+                                        | Initializing the Client
+
+                                p
+                                    | To use lightning with a local server, simply import the library and instantiate a lightning object:
+
+
+                                pre
+                                    code.python
+                                        | from lighting import Lightning
+                                        | lgn = Lightning()
+                                p
+                                    | If you are using a remote server (e.g. Heroku), pass in the `host` during instantiation
+
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lighting(host=’https://<herokuappname>.herokuapp.com’)
+
+
+                                a(name="plotting-python", href="#plotting-python")
+                                    h4
+                                        | Creating Plots
+
+                                p
+                                    | The python client provides methods to plot data in the browser using all of lightning’s standard visualization types. The first thing to do is create a session (a session is simply a group or a feed of data visualizations - this is how lightning knows where to display the data).
+
+
+                                p
+                                    | Once you have instantiated the lightning object, try running:
+
+                                pre
+                                    code
+                                        | lgn.create_session(‘hello world’)
+
+                                p
+                                    | This line tells lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
+
+                                    | You should see that this session has no data yet. To create a line plot call
+
+
+                                pre
+                                    code.python
+                                        | lgn.line([1, 1, 2, 3, 5, 8])
+
+                                p
+                                    | and a line plot should be displayed in your browser. 
+
+
+                                    | To view all of the available commands see the lightning-python documentation page.
+
+
+
+
+                                a(name="ipython", href="#ipython")
+                                    h4
+                                        | IPython
+
+                                p
+                                    | Lightning aims to be fully compatible for use within the IPython notebook. To use in a notebook, simply pass in the ipython flag during instantiation:
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lightning(ipython=True)
+                                
+                                p
+                                    | and plot normally.
+
+
+                                a(name="docs-python", href="#docs-python")
+                                    h4
+                                        | Full Docs
+
+                                p
+                                    | The full documentation for the python library can be found 
+                                    a(href="#")
+                                        | here.
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="embed", href="#embed")
+                                    h2    
+                                        | Embedding Plots
+
+                                p
+                                    | Lightning provides permalinks for each visualizations that can easily be embedded on other sites (particularly these are meant to be embedded using iframes).
+
+                                p
+                                    | To embed a visualization, use the url format
+
+
+                                pre
+                                    code
+                                        | http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/iframe/
+
+
+                                p
+                                    | To determine the ID of the visualization, navigate to the visualization’s permalink and inspect the URL, or if using python
+
+                                pre
+                                    code.python
+                                        | viz = lgn.line([1,1,2,3,5,8])
+                                        | print viz.id
+
+                                p
+                                    | Then embed the visualization in your own webpage with
+
+                                pre
+                                    code.html
+                                        | &lt;iframe src=”http://host/visualizations/vid/iframe”&gt;
+
+                                p
+                                    | making sure to replace host and vid with the proper values.
+
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="custom", href="#custom")
+                                    h2    
+                                        | Developing Custom Plots
+
+                                p
+                                    | In addition to Lightning’s core visualization types, users can easily develop their own plots, either by modifying the existing ones, or designing visualizations from scratch. This section serves as a walkthrough to create a custom visualization.
+
+                                p
+                                    | A visualization consists of a folder containing several files:
+
+                                    ul.styled
+                                        li
+                                            | index.js (required) - the main javascript file, responsible for building and displaying the visualization
+                                        li
+                                            | sample-data.json / sample-images.json (required) - sample data to be used when previewing this visualization type
+
+                                        li
+                                            | style.scss (optional) - optional scss styles to be applied
+
+                                        li
+                                            | template.jade (optional) - a markup file for any html that is needed
+
+
+                                p
+                                    | each of these are discussed in detail below.
+
+
+                                a(name="custom-index", href="#custom-index")
+                                    h4
+                                        | index.js
+
+                                p
+                                    | The `index.js` file must export a javascript object that exposes a few basic functions. In general the template for the index.js file looks like this (using common.js syntax):
+
+                                pre
+                                    code.javascript.
+                                        /*
+                                         * Import any necessary libraries. All visualizations already have access to jQuery
+                                         * through $
+                                         */
+                                        var d3 = require(‘d3’);
+                                        var _ = require(‘lodash’);
+
+
+                                        /*
+                                         * Initialize a new visualization and call the internal _init function
+                                         */
+                                        var MyCustomViz = function(selector, data, images, opts) {
+                                            this.opts = opts || {};
+
+                                            this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+                                            this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+
+                                            this.data = this._formatData(data);
+                                            this.selector = selector;
+                                            this._init();
+                                        };
+
+                                        /*
+                                         * Initialize the visualization. This is kept separate by convention to make it easy
+                                         * to inherit from other visualization types.
+                                         */
+                                        MyCusomViz._init = function() {
+                                            // draw the actual visualization here
+                                            // e.g.
+                                            var svg = d3.select(this.selector)
+                                                    .append(‘svg:svg’)
+                                            
+                                            // etc.
+                                        }
+
+                                        /*
+                                         * Take the provided data and return it in whatever data format is needed
+                                         */
+                                        MyCusomViz._formatData = function(data) {
+                                           var transformedData = data;
+
+                                           // …
+                                           // transform the data into whatever form you need here
+                                           // …
+                                           
+                                            return transformedData;
+                                           
+                                        }
+
+                                        /*
+                                         * Optional function, use this if you want to users to send updated data to this plot
+                                         */
+                                        MyCusomViz.updateData = function(data) {
+                                            this.data = this._formatData(data);
+                                            // then update the visualization
+                                        }
+
+                                        /*
+                                         * Optional function, use this if you want to enable streaming updates to this plot
+                                         */
+                                        MyCusomViz.appendData = function(data) {
+                                            this.data = this.data.concat(this._formatData(data));
+                                            // then update the visualization
+                                        }
+
+
+                                        module.exports = MyCustomViz;
+
+
+                                a(name="custom-data", href="#custom-data")
+                                    h4
+                                        | sample-data.json
+
+                                p
+                                    | This is simply a json file that contains an array of example data in the required format, e.g.
+
+                                pre
+                                    code.
+                                        [{
+                                            “name”: “first example data set”,
+                                            “data”: {/* json representation of your data*/}
+                                        }, {
+                                           “name”: “second example data set”,
+                                            “data”: {/* json representation of your data*/}
+                                        }]
+
+
+                                a(name="custom-image", href="#custom-images")
+                                    h4
+                                        | sample-images.json
+
+                                p
+                                    | If your plot displays images, create this file, and fill it with an array of test image URLs, e.g.
+
+                                pre
+                                    code.
+                                        [
+                                            "http://i.gif.fm/janelia-images/stack/0000",
+                                            "http://i.gif.fm/janelia-images/stack/0001",
+                                            "http://i.gif.fm/janelia-images/stack/0002",
+                                            "http://i.gif.fm/janelia-images/stack/0003"
+                                        ]
+
+                                a(name="custom-style", href="#custom-style")
+                                    h4
+                                        | style.scss
+
+                                p
+                                    | An SCSS file for any styles that you wish to be applied to your visualization. The current version does not automatically scope this, so you should be careful to scope it to only your visualizations:
+
+                                pre
+                                    code.
+                                        .my-visualization-class {
+                                            path {
+                                                stroke: black;
+                                            }
+                                            // etc.
+                                        }
+
+                                
+                                a(name="custom-template", href="#custom-template")
+                                    h4
+                                        | template.jade
+
+                                p
+                                    | This is a jade file that can be required in index.js. For example, the gallery visualization has a markdown file that looks like
+
+                                pre
+                                    code.
+                                        .gallery-viz
+                                            .row
+                                                .gallery-container
+                                                    for image in images
+                                                        .gallery-thumbnail
+                                                            img(src="#{image}_small")
+
+                                            .row
+                                                .gallery-full
+                                                    .image-container
+
+                                p
+                                    | then in index.js 
+                                pre
+                                    code.
+                                        var markup = require(‘./template.jade’);
+                                        var templateVars = {};
+                                        var compiledHTML = markup();
+
+                                        // the compiledHTML can then be appended to the visualization
+
+                                
+                                a(name="custom-link", href="#custom-link")
+                                    h4
+                                        | Linking Plot Types
+
+                                p
+                                    | Lightning’s plots are designed so that several visualization types can be linked together relatively easily. For example, the following code shows how the relevant parts of how the “scatter-line” type to builds a visualization containing both a line plot and a scatter plot. The line plot updates with new data every time a user hovers on a point in the scatter plot.
+
+                                pre
+                                    code.
+
+                                        var ScatterLine = function(selector, data, images, options) {
+
+                                            var Scatter = require('../viz/scatter');
+                                            var scatter = new Scatter(selector + ' #scatter-plot', data, null, {width: $(selector).width(), height: Math.min(500, $(selector).width * 0.6)});
+                                            var Line = require('../viz/line');
+                                            var line = new Line(selector + ' #line-plot');
+
+                                            // ...
+
+
+                                            scatter.on('hover', function(d) {
+                                                // ...
+                                                // get newData
+                                                // ... 
+
+                                                line.updateData(newdata);   
+                                            });
+                                        };
+
+                                        module.exports = ScatterLine;
+
+                                p
+                                    | the lightning-client-utils module provides several utility functions, e.g. pulling new data down from the server. This is discussed more in a later section.
+
+
+                                a(name="custom-inherit", href="#custom-inherit")
+                                    h4
+                                        | Inheriting from other plot types
+
+                                p
+                                    | To inherit behavior from an existing plot, the following convention is used:
+
+                                pre
+                                    code.
+                                        var inherits = require('inherits');
+                                        var SomeExistingPlot = require(‘../viz/some-existing-plot’);
+
+                                        var MyInheritingPlot = funtion(selector, data, images, opts) {
+                                            this.opts = opts || {};
+
+                                            this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+                                            this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+
+                                            this.data = this._formatData(data);
+                                            this.selector = selector;
+                                            this._init();
+                                        }
+
+                                        inherits(MyInheritingPlot, SomeExistingPlot);
+
+                                        // now override any methods you wish to change
+                                        // e.g.
+
+                                        MyInheritingPlot.prototype.appendData = function(data) {
+                                            var newData = this._formatData(data);
+                                            // now do something different with the data
+                                        }
+
+
+                                
+                                a(name="custom-utils", href="#custom-utils")
+                                    h4
+                                        | lightning-client-utils
+
+                                p
+                                    | The lightning client utilities module exposes a few useful functions for interacting with the lightning server from the browser.
+
+

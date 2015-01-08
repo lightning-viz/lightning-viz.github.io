@@ -1,0 +1,76 @@
+
+
+.documentation-container {
+
+    a {
+        outline: none;
+    }
+    a:visited {
+        color: $purple;
+    }
+
+    .row {
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .empty-container {
+        z-index: -20;
+    }
+
+    .overview-container {
+        background-color: #f6f7fa;
+        height: 100%;
+        // z-index: -10;
+        position: fixed;
+        overflow-y: scroll;
+
+        max-width: 275px;
+
+        section {
+            padding: 30px 10%;
+            padding-bottom: 0;
+
+            > a {
+                font-size: 24px;
+            }
+
+            ul {
+                margin-top: 15px;
+                list-style-type: disc;
+                list-style-position: inside;
+                list-style-image: none;
+
+                li {
+                    list-style: inherit;
+                }
+                a, a:visited {
+                    color: #444;
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    .details-container {
+
+        // padding-left: 30px;
+        // padding-right: 30px;
+
+        section {
+            padding-top: 30px;
+
+            padding-left: 10px;
+
+            p {
+                // padding-left: 30px;
+            }
+        }
+    }
+
+}
+
