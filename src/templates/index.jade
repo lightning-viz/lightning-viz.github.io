@@ -2,7 +2,7 @@ extends layout
 
 
 mixin example(name, image)
-    a(href="#")
+    a(href="/visualizations##{name.toLowerCase().split(' ').join('-')}")
         .example(style="background-image: url(#{image})")
             .overlay
                 | #{name}

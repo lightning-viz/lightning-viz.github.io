@@ -34,34 +34,44 @@ block content
                         li
                             a(href="#scatter")
                                 | Scatter
+                        li
+                            a(href="#line")
+                                | Line
+                        li
+                            a(href="#line-stacked")
+                                | Line Stacked
+                        li
+                            a(href="#force")
+                                | Force
+                        li
+                            a(href="#graph")
+                                | Graph
+                        li
+                            a(href="#graph-bundled")
+                                | Graph Bundled
+                        li
+                            a(href="#matrix")
+                                | Matrix
+
+                        li
+                            a(href="#adjacency")
+                                | Adjacency
+
+                        li
+                            a(href="#map")
+                                | Map                
+
+                section
+                    a(href="#images")
+                        | Images
+
                     ul
                         li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
+                            a(href="#image")
+                                | Image
                         li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
-                        li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
-                        li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
-                        li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
-                        li
-                            a(href="#scatter")
-                                | Scatter
-                    ul
-                        li
-                            a(href="#scatter")
-                                | Scatter
+                            a(href="#gallery")
+                                | Gallery
 
 
             //- .column-1
@@ -100,41 +110,199 @@ block content
                                 a(name="scatter", href="#scatter")
                                     h4
                                         | Scatter
+
+                                p
+                                    | Scatter plots show collections of points. The primary data is an array of points, where each point is a two element-array with x and y coordinates. Optional specifications include color (or group label), alpha, and size. 
+
+                                pre
+                                    code.
+                                        data = {
+                                            "points": [[x0,y0], [x1,y1], ... ]
+                                            "alpha": [0.2, 0.9, ...]
+                                            "color": [[r0,g0,b0], [10,20,0], ...]
+                                            "group": [g0, g1, ...]
+                                            "size": [s0, s1, ...]
+                                        }
+
                                 a(name="line", href="#line")
                                     h4
                                         | Line
+
+                                p
+                                    | Line plots show one or more one-dimensional signals, and are commonly used to plot time series. The primary data is an array of series, where each series is a one-dimensional signal. Optional specifications include an axis (common to all lines), as well as line color (or group label), and size.
+
+
+                                pre
+                                    code.
+                                        data = {
+                                            "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
+                                        "axis": [0, 1, ...]
+                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                            "group": [g0, g1, ...]
+                                            "size": [s0, s1, ...]
+                                        }
+
+
                                 a(name="line-stacked", href="#line-stacked")
                                     h4
                                         | Line Stacked
-                                a(name="scatter", href="#scatter")
+
+                                p
+                                    | A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.
+
+
+                                pre
+                                    code.
+
+
+
+                                a(name="force", href="#force")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Force
+
+                                p
+                                    | A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.
+
+                                pre
+                                    code.
+                                        data = {
+                                            "nodes": [0, 1, 2, ...] 
+                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                            "group": [g0, g1, ...]
+                                            "size": [s0, s1, ...]
+                                        }
+
+
+                                a(name="graph", href="#graph")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Graph
+
+                                p
+                                    | A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.
+
+
+                                pre
+                                    code.
+                                        data = {
+                                            nodes: [[x0,y0], [x1,y1], ... ]
+                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                            "group": [g0, g1, ...]
+                                            "size": [s0, s1, ...]
+                                        }
+
+
+                                a(name="graph-bundled", href="#graph-bundled")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Graph Bundled
+
+                                p
+                                    | The bundled graph is similar to the node-link graph, but links are bundled using the algorithm from (link) to emphasize regions of the graph where there is dense connectivity. Nodes can be clicked to highlight only the links to the selected node. The input data is the same as for the normal graph. 
+
+
+                                pre
+                                    code.
+                                        data = {
+                                            "points": [[x0,y0], [x1,y1], ... ]
+                                            "alpha": [0.2, 0.9, ...]
+                                            "color": [[r0,g0,b0], [10,20,0], ...]
+                                            "group": [g0, g1, ...]
+                                            "size": [s0, s1, ...]
+                                        }
+
+                                a(name="matrix", href="#matrix")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Matrix
+
+                                p
+                                    | A matrix can be used to represent the values in any two-dimensional table of numbers. It renders the entries of the matrix as cells in a two-dimensional grid, with colors showing the relative values. The matrix can be panned and zoomed, and can be square or rectangle. The primary input data is a matrix which is a two-dimensional array containing the entries for each row and column. Optional specifications include the colormap used to display the values.
+
+
+                                pre
+                                    code.
+                                        data = {
+                                            "matrix": [[row0col0, row0col1, row0col2], [row1col0, row1col1, row1col2], ...]
+                                            "colormap": "colorbrewername"
+                                        }
+
+
+                                a(name="adjacency", href="#adjacency")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Adjacency
+
+                                p
+                                    | An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.
+
+                                pre
+                                    code.
+                                        data = {
+                                            "nodes": [0, 1, 2, ... ]
+                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                            "group": [g0, g1, ...]
+                                        }
+
+
+                                a(name="map", href="#map")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Map
+
+                                p
+                                    | A map plot shows geographic regions filled with colors that reflect numerical values. You can produce maps of either the world (by specifying countries) or the united states (by specifying states). The primary input data is a list of regions and values. Each region is a string, either two letters (for US states) or three letters (for countries), and each value is a scalar. Optional specifications include a colormap used to display the values.
+
+                                pre
+                                    code.
+                                        data = {
+                                            "regions": [“NY”, “CA”, “MA”, ... ]
+                                            "values": [v0, v1, v2, ...]
+                                            "colormap": “colorbrewername”
+                                        }
+
+
+                section(name="images")
+                    .row
+                        .column-12
+                                a(name="images", href="#images")
+                                    h2
+                                        | Images
+
+
+
+                                a(name="image", href="#image")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
+                                        | Image
+
+                                p
+                                    | An image visualization produces a zoomable, pannable representation of a two-dimensional image, either grayscale or RGB. The image will fill the available region (with interpolation if low-res). Polygonal regions can be drawn on the image, and modified. The primary data is a single image file (grayscale or RGB). The image can be posted to a visualization directly through a POST (instead of posting JSON).
+
+                                pre
+                                    code.
+                                    
+                                a(name="gallery", href="#gallery")
                                     h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
-                                    h4
-                                        | Scatter
-                                a(name="scatter", href="#scatter")
-                                    h4
-                                        | Scatter
+                                        | Gallery
+
+                                p
+                                    | A gallery is a browsable collection of images. Thumbnails show small versions of the different images in the set, and clicking on a thumbnail shows the full-resolution version. The primary data is a list of image files (grayscale or RGB). The images can be posted to a visualization directly through a POST (instead of posting JSON).
+
+                                pre
+                                    code.
+
+
+                section(name="3d")
+                    .row
+                        .column-12
+                                a(name="3d", href="#3d")
+                                    h2
+                                        | 3D
+
+                section(name="streaming")
+                    .row
+                        .column-12
+                                a(name="streaming", href="#streaming")
+                                    h2
+                                        | Streaming
+
+                                
 
     .bottom.bar.visible-mobile
