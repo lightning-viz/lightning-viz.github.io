@@ -25,3 +25,13 @@ $("#slides").slidesjs({
 
 var hljs = require('highlight.js');
 hljs.initHighlightingOnLoad();
+
+var pym = require('pym.js');
+
+$('[data-pym]').each(function() {
+    var url = $(this).data('url');
+    var id = $(this).attr('id');
+
+    console.log(url, id);
+    new pym.Parent(id, url, {});
+});

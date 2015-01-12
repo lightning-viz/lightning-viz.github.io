@@ -12,18 +12,19 @@ block content
     .top.bar
 
     .container
-        header            
-            .row
-                .column-12
-                    .row.header
-                        .column-1.mobile-column-1
-                            img(src="/images/logo.png")
+        header           
+            .row.header
+                .column-1.mobile-column-1
+                    img(src="/images/logo.png")
 
-                        .column-11.mobile-column-3
-                            h1
-                                | Lightning
+                .column-10.mobile-column-3
+                    h1
+                        | Lightning
 
-                            | DATA VISUALIZATION SERVER
+                    | DATA VISUALIZATION SERVER
+                .column-1
+                    .github-container
+                        iframe(src="http://ghbtns.com/github-btn.html?user=lightning-viz&repo=lightning&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")
 
 
         section.hero
@@ -47,7 +48,7 @@ block content
                                     .callout
                                         | Fully interactive, easy to embed
                                     .description
-                                        | Hover on points in the map to see their connections. This graph shows all the connections of U.S. airports.
+                                        | Click on points in the graph to see their connections.
 
                             .hero-image.featured-image
                                 .overlay
@@ -97,7 +98,7 @@ block content
                         img(src="/images/icons/network.png")
                         .description
                             | Experience the full power of interactive visualizations inside of the iPython notebook. 
-                            a(href="#")
+                            a(href="http://nbviewer.ipython.org/gist/mathisonian/78cf2471e83480984a95")
                                 | Click here to see a demo.
 
         section.how-it-works

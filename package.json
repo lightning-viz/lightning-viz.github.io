@@ -22,7 +22,8 @@
     "d3": "~3.4.6",
     "highlight.js": "^8.4.0",
     "inherits": "~2.0.1",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "pym.js": "^0.4.1"
   },
   "browserify": {
     "transform": [

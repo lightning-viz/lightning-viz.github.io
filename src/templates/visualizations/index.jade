@@ -114,6 +114,8 @@ block content
                                 p
                                     | Scatter plots show collections of points. The primary data is an array of points, where each point is a two element-array with x and y coordinates. Optional specifications include color (or group label), alpha, and size. 
 
+                                #scatter-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/21/pym")
+
                                 pre
                                     code.
                                         data = {
@@ -124,12 +126,17 @@ block content
                                             "size": [s0, s1, ...]
                                         }
 
+
                                 a(name="line", href="#line")
                                     h4
                                         | Line
 
                                 p
                                     | Line plots show one or more one-dimensional signals, and are commonly used to plot time series. The primary data is an array of series, where each series is a one-dimensional signal. Optional specifications include an axis (common to all lines), as well as line color (or group label), and size.
+
+
+
+                                #line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/29/pym")
 
 
                                 pre
@@ -151,6 +158,8 @@ block content
                                     | A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.
 
 
+                                #stacked-line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/25/pym")
+
                                 pre
                                     code.
 
@@ -162,6 +171,9 @@ block content
 
                                 p
                                     | A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.
+
+
+                                #force-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/40/pym")
 
                                 pre
                                     code.
@@ -219,6 +231,8 @@ block content
                                     | A matrix can be used to represent the values in any two-dimensional table of numbers. It renders the entries of the matrix as cells in a two-dimensional grid, with colors showing the relative values. The matrix can be panned and zoomed, and can be square or rectangle. The primary input data is a matrix which is a two-dimensional array containing the entries for each row and column. Optional specifications include the colormap used to display the values.
 
 
+                                #matrix-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/37/pym", data-pym)
+
                                 pre
                                     code.
                                         data = {
@@ -233,6 +247,8 @@ block content
 
                                 p
                                     | An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.
+
+                                #adjacency-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/24/pym", data-pym)
 
                                 pre
                                     code.
@@ -249,6 +265,8 @@ block content
 
                                 p
                                     | A map plot shows geographic regions filled with colors that reflect numerical values. You can produce maps of either the world (by specifying countries) or the united states (by specifying states). The primary input data is a list of regions and values. Each region is a string, either two letters (for US states) or three letters (for countries), and each value is a scalar. Optional specifications include a colormap used to display the values.
+
+                                #map-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/38/pym", data-pym)
 
                                 pre
                                     code.
@@ -275,6 +293,10 @@ block content
                                 p
                                     | An image visualization produces a zoomable, pannable representation of a two-dimensional image, either grayscale or RGB. The image will fill the available region (with interpolation if low-res). Polygonal regions can be drawn on the image, and modified. The primary data is a single image file (grayscale or RGB). The image can be posted to a visualization directly through a POST (instead of posting JSON).
 
+
+
+                                #image-iframe(data-url="https://lightning-docs.herokuapp.com/visualizations/41/pym", data-pym)
+
                                 pre
                                     code.
                                     
@@ -284,6 +306,12 @@ block content
 
                                 p
                                     | A gallery is a browsable collection of images. Thumbnails show small versions of the different images in the set, and clicking on a thumbnail shows the full-resolution version. The primary data is a list of image files (grayscale or RGB). The images can be posted to a visualization directly through a POST (instead of posting JSON).
+
+
+
+                                
+
+                                #gallery-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/39/pym", data-pym)
 
                                 pre
                                     code.
