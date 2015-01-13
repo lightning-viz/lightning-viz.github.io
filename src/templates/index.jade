@@ -1,8 +1,8 @@
 extends layout
 
 
-mixin example(name, image)
-    a(href="/visualizations##{name.toLowerCase().split(' ').join('-')}")
+mixin example(name, url, image)
+    a(href="/visualizations#{url}")
         .example(style="background-image: url(#{image})")
             .overlay
                 | #{name}
@@ -152,30 +152,30 @@ block content
 
             .row
                 .column-4
-                    +example('Line', '/images/examples/line.png')
+                    +example('Line', '#line', '/images/examples/line.png')
                 .column-4
-                    +example('Scatter', '/images/examples/scatter.png')
+                    +example('Scatter', '#scatter', '/images/examples/scatter.png')
                 .column-4
-                    +example('Graph', '/images/examples/graph.png')
+                    +example('Graph', '#graph', '/images/examples/graph.png')
 
             .row
                 .column-4
-                    +example('Matrix', '/images/examples/matrix.png')
+                    +example('Matrix', '#matrix', '/images/examples/matrix.png')
                 .column-4
-                    +example('Image', '/images/examples/image.png')
+                    +example('Image', '/images#image', '/images/examples/image.png')
                 .column-4
-                    +example('Map', '/images/examples/map.png')
+                    +example('Map', '#map', '/images/examples/map.png')
             
             .row
                 .column-4
 
-                    +example('Particles', '/images/examples/particles.png')
+                    +example('Particles', '/3d#particles', '/images/examples/particles.png')
                 .column-4
 
-                    +example('Force Graph', '/images/examples/force-graph.png')
+                    +example('Force Graph', '#force', '/images/examples/force-graph.png')
                 .column-4
                     
-                    +example('Volume', '/images/examples/volume.png')
+                    +example('Volume', '/3d#volume', '/images/examples/volume.png')
 
 
 
