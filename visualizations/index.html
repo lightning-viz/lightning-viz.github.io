@@ -34,8 +34,8 @@ lgn.line(x)
     "group": [g0, g1, ...]
     "size": [s0, s1, ...]
 }
-</code></pre></div><div id="line-stacked-python-tab"><pre><code>nueron_data = [[6.627553044841961, 17.71663042972164, ...], ...]
-lgn.linestacked(nueron_data)
+</code></pre></div><div id="line-stacked-python-tab"><pre><code>neuron_data = [[6.627553044841961, 17.71663042972164, ...], ...]
+lgn.linestacked(neuron_data)
 
 
 </code></pre></div></div></div><a name="force" href="#force"><h4>Force</h4></a><p>A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.</p><div id="force-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/40/pym"></div><div class="tab-container"><ul><li><a href="#force-data-tab">Data Structure</a></li><li><a href="#force-python-tab">Python Example</a></li></ul><div class="content-container"><div id="force-data-tab"><pre><code>data = {
