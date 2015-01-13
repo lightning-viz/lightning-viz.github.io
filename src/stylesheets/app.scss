@@ -41,6 +41,10 @@ h6 {
     font-family: 'AvenirNext-UltraLight', sans-serif;
     font-weight: bold;
     color: #545E6B;
+
+    a {
+        color: #545E6B;        
+    }
 }
 
 p {
@@ -49,7 +53,7 @@ p {
 
 a {
     text-decoration: none;
-    font-size: 14px;
+    // font-size: 14px;
     color: #8F7BD9;
     line-height: 19px;
 
