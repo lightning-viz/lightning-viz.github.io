@@ -358,5 +358,63 @@ ul.styled {
     }
 }
 
+.tab-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+    ul { 
+        margin: 0; padding: 0; 
+        li { 
+            display: inline-block; 
+            zoom:1; *display:inline;  
+            border: solid 1px #626c7c; 
+            border-bottom: none;
+
+            a { 
+                font-size: 14px; 
+                line-height: 2em; 
+                display: block; 
+                padding: 0 10px; 
+                outline: none; 
+                color: #444;
+
+                &:visited {
+                    color: #444;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                &.active {
+                    font-weight: bold;
+                }
+            }
+
+            &.active {
+                background: #fff; 
+                padding-top: 6px; 
+                position: relative; 
+                top: 1px; 
+                border-color: #626c7c;
+            }
+        }
+    }
+    
+    .content-container { 
+        background: #fff; 
+        border: solid #626c7c 1px; 
+    
+        padding: 10px;
+    }
+
+    .code, pre {
+        margin: 0;
+    }
+}
+
+    
+
+
 
 @import "views/documentation";

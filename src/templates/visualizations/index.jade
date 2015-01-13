@@ -27,50 +27,50 @@ block content
 
 
                 section
-                    a(href="#plots")
+                    a(href="/visualizations#plots")
                         | Plots
 
                     ul
                         li
-                            a(href="#scatter")
+                            a(href="/visualizations#scatter")
                                 | Scatter
                         li
-                            a(href="#line")
+                            a(href="/visualizations#line")
                                 | Line
                         li
-                            a(href="#line-stacked")
+                            a(href="/visualizations#line-stacked")
                                 | Line Stacked
                         li
-                            a(href="#force")
+                            a(href="/visualizations#force")
                                 | Force
                         li
-                            a(href="#graph")
+                            a(href="/visualizations#graph")
                                 | Graph
                         li
-                            a(href="#graph-bundled")
+                            a(href="/visualizations#graph-bundled")
                                 | Graph Bundled
                         li
-                            a(href="#matrix")
+                            a(href="/visualizations#matrix")
                                 | Matrix
 
                         li
-                            a(href="#adjacency")
+                            a(href="/visualizations#adjacency")
                                 | Adjacency
 
                         li
-                            a(href="#map")
+                            a(href="/visualizations#map")
                                 | Map                
 
                 section
-                    a(href="#images")
+                    a(href="/visualizations/images")
                         | Images
 
                     ul
                         li
-                            a(href="#image")
+                            a(href="/visualizations/images#image")
                                 | Image
                         li
-                            a(href="#gallery")
+                            a(href="/visualizations/images#gallery")
                                 | Gallery
 
 
@@ -114,18 +114,49 @@ block content
                                 p
                                     | Scatter plots show collections of points. The primary data is an array of points, where each point is a two element-array with x and y coordinates. Optional specifications include color (or group label), alpha, and size. 
 
-                                #scatter-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/21/pym")
 
-                                pre
-                                    code.
-                                        data = {
-                                            "points": [[x0,y0], [x1,y1], ... ]
-                                            "alpha": [0.2, 0.9, ...]
-                                            "color": [[r0,g0,b0], [10,20,0], ...]
-                                            "group": [g0, g1, ...]
-                                            "size": [s0, s1, ...]
-                                        }
+                                h6
+                                    | Python Example
 
+
+                                #scatter-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/45/pym")
+
+
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#scatter-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#scatter-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #scatter-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "points": [[x0,y0], [x1,y1], ... ]
+                                                        "alpha": [0.2, 0.9, ...]
+                                                        "color": [[r0,g0,b0], [10,20,0], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #scatter-python-tab
+
+                                            pre
+                                                code.
+                                                    from numpy import random, ceil, array, clip
+
+                                                    x = random.randn(100) * 15
+                                                    y = random.randn(100) * 15
+                                                    l = ceil(random.rand(100) * 5)
+                                                    s = random.rand(100) * 20 + 5
+                                                    a = clip(random.rand(100) + 0.1, 0, 1)
+
+                                                    lgn.scatter(x, y, label=l, size=s, alpha=a)
 
                                 a(name="line", href="#line")
                                     h4
@@ -139,15 +170,43 @@ block content
                                 #line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/29/pym")
 
 
-                                pre
-                                    code.
-                                        data = {
-                                            "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
-                                        "axis": [0, 1, ...]
-                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
-                                            "group": [g0, g1, ...]
-                                            "size": [s0, s1, ...]
-                                        }
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#line-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#line-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #line-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
+                                                        "axis": [0, 1, ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #line-python-tab
+
+                                            pre
+                                                code.
+                                                    from numpy import random, ceil, array, clip
+
+                                                    x = random.randn(100) * 15
+                                                    y = random.randn(100) * 15
+                                                    l = ceil(random.rand(100) * 5)
+                                                    s = random.rand(100) * 20 + 5
+                                                    a = clip(random.rand(100) + 0.1, 0, 1)
+
+                                                    lgn.scatter(x, y, label=l, size=s, alpha=a)
+
+                                
 
 
                                 a(name="line-stacked", href="#line-stacked")
@@ -280,42 +339,9 @@ block content
                 section(name="images")
                     .row
                         .column-12
-                                a(name="images", href="#images")
+                                a(name="images", href="./images")
                                     h2
                                         | Images
-
-
-
-                                a(name="image", href="#image")
-                                    h4
-                                        | Image
-
-                                p
-                                    | An image visualization produces a zoomable, pannable representation of a two-dimensional image, either grayscale or RGB. The image will fill the available region (with interpolation if low-res). Polygonal regions can be drawn on the image, and modified. The primary data is a single image file (grayscale or RGB). The image can be posted to a visualization directly through a POST (instead of posting JSON).
-
-
-
-                                #image-iframe(data-url="https://lightning-docs.herokuapp.com/visualizations/41/pym", data-pym)
-
-                                pre
-                                    code.
-                                    
-                                a(name="gallery", href="#gallery")
-                                    h4
-                                        | Gallery
-
-                                p
-                                    | A gallery is a browsable collection of images. Thumbnails show small versions of the different images in the set, and clicking on a thumbnail shows the full-resolution version. The primary data is a list of image files (grayscale or RGB). The images can be posted to a visualization directly through a POST (instead of posting JSON).
-
-
-
-                                
-
-                                #gallery-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/39/pym", data-pym)
-
-                                pre
-                                    code.
-
 
                 section(name="3d")
                     .row
@@ -323,6 +349,7 @@ block content
                                 a(name="3d", href="#3d")
                                     h2
                                         | 3D
+
 
                 section(name="streaming")
                     .row

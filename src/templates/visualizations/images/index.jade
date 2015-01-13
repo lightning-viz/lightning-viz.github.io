@@ -1,0 +1,167 @@
+extends ../../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+
+                section
+                    a(href="/")
+                        | Lightning
+
+                    ul
+                        li
+                            a(href="http://github.com/lightning-viz/lightning")
+                                | Github
+                        li
+                            a(href="/")
+                                | Website
+                        li
+                            a(href="/documentation")
+                                | Documentation
+
+                section
+                    a(href="/visualizations#plots")
+                        | Plots
+
+                    ul
+                        li
+                            a(href="/visualizations#scatter")
+                                | Scatter
+                        li
+                            a(href="/visualizations#line")
+                                | Line
+                        li
+                            a(href="/visualizations#line-stacked")
+                                | Line Stacked
+                        li
+                            a(href="/visualizations#force")
+                                | Force
+                        li
+                            a(href="/visualizations#graph")
+                                | Graph
+                        li
+                            a(href="/visualizations#graph-bundled")
+                                | Graph Bundled
+                        li
+                            a(href="/visualizations#matrix")
+                                | Matrix
+
+                        li
+                            a(href="/visualizations#adjacency")
+                                | Adjacency
+
+                        li
+                            a(href="/visualizations#map")
+                                | Map                
+
+                section
+                    a(href="/visualizations/images")
+                        | Images
+
+                    ul
+                        li
+                            a(href="/visualizations/images#image")
+                                | Image
+                        li
+                            a(href="/visualizations/images#gallery")
+                                | Gallery
+
+
+
+            //- .column-1
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                header            
+                    .row
+                        .column-12
+                            .row.header
+                                .column-1.mobile-column-1
+                                    img(src="/images/logo.png")
+
+                                .column-10.mobile-column-3
+                                    h1
+                                        | Lightning
+
+                                    | DATA VISUALIZATION SERVER
+
+
+                section(name="introduction")
+                    .row
+                        .column-12
+                                a(name="visualizations", href="#visualizations")
+                                    h2
+                                        | Visualizations
+                
+
+
+
+                section(name="images")
+                    .row
+                        .column-12
+                                a(name="images", href="#images")
+                                    h2
+                                        | Images
+
+
+
+                                a(name="image", href="#image")
+                                    h4
+                                        | Image
+
+                                p
+                                    | An image visualization produces a zoomable, pannable representation of a two-dimensional image, either grayscale or RGB. The image will fill the available region (with interpolation if low-res). Polygonal regions can be drawn on the image, and modified. The primary data is a single image file (grayscale or RGB). The image can be posted to a visualization directly through a POST (instead of posting JSON).
+
+
+
+                                #image-iframe(data-url="https://lightning-docs.herokuapp.com/visualizations/41/pym", data-pym)
+
+                                pre
+                                    code.
+                                    
+                                a(name="gallery", href="#gallery")
+                                    h4
+                                        | Gallery
+
+                                p
+                                    | A gallery is a browsable collection of images. Thumbnails show small versions of the different images in the set, and clicking on a thumbnail shows the full-resolution version. The primary data is a list of image files (grayscale or RGB). The images can be posted to a visualization directly through a POST (instead of posting JSON).
+
+
+
+                                
+
+                                #gallery-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/39/pym", data-pym)
+
+                                pre
+                                    code.
+
+                section(name="plots")
+                    .row
+                        .column-12
+                                a(name="plots", href="../")
+                                    h2
+                                        | Plots
+
+                section(name="3d")
+                    .row
+                        .column-12
+                                a(name="3d", href="../3d")
+                                    h2
+                                        | 3D
+
+
+                section(name="streaming")
+                    .row
+                        .column-12
+                                a(name="streaming", href="../streaming")
+                                    h2
+                                        | Streaming
+
+                                
+
+    .bottom.bar.visible-mobile

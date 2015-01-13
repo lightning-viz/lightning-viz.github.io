@@ -23,15 +23,25 @@ $("#slides").slidesjs({
 });
 
 
+require('EasyTabs');
+
+$('.tab-container').easytabs({
+    updateHash: false
+});
+
+
 var hljs = require('highlight.js');
 hljs.initHighlightingOnLoad();
 
 var pym = require('pym.js');
 
-$('[data-pym]').each(function() {
-    var url = $(this).data('url');
-    var id = $(this).attr('id');
 
-    console.log(url, id);
-    new pym.Parent(id, url, {});
+setTimeout(function() {
+    $('[data-pym]').each(function() {
+        var url = $(this).data('url');
+        var id = $(this).attr('id');
+
+        console.log(url, id);
+        new pym.Parent(id, url, {});
+    });
 });
