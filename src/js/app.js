@@ -35,13 +35,14 @@ hljs.initHighlightingOnLoad();
 
 var pym = require('pym.js');
 
+$('[data-pym]').each(function(i) {
+    console.log(i);
+    var url = $(this).data('url');
+    var id = $(this).attr('id');
 
-setTimeout(function() {
-    $('[data-pym]').each(function() {
-        var url = $(this).data('url');
-        var id = $(this).attr('id');
-
-        console.log(url, id);
-        new pym.Parent(id, url, {});
+    console.log(url, id);
+    setTimeout(function() {
+        new pym.Parent(id, url, {});    
     });
+    
 });

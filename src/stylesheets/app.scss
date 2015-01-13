@@ -162,6 +162,10 @@ section.how-it-works {
 
 section {
     // margin-top: 30px;
+
+    &:last-of-type {
+        margin-bottom: 60px;
+    }
 }
 
 section.tagline {
@@ -369,6 +373,7 @@ ul.styled {
             zoom:1; *display:inline;  
             border: solid 1px #626c7c; 
             border-bottom: none;
+            cursor: pointer;
 
             a { 
                 font-size: 14px; 
@@ -380,10 +385,6 @@ ul.styled {
 
                 &:visited {
                     color: #444;
-                }
-
-                &:hover {
-                    text-decoration: underline;
                 }
 
                 &.active {

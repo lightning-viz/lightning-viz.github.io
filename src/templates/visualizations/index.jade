@@ -72,6 +72,28 @@ block content
                         li
                             a(href="/visualizations/images#gallery")
                                 | Gallery
+                
+
+                section
+                    a(href="/visualizations/3d")
+                        | 3D
+
+                    ul
+                        li
+                            a(href="/visualizations/3d#particles")
+                                | Particles
+                        li
+                            a(href="/visualizations/3d#volume")
+                                | Volume
+                
+                section
+                    a(href="/visualizations/streaming")
+                        | Streaming
+
+                    ul
+                        li
+                            a(href="/visualizations/streaming#line")
+                                | Line
 
 
             //- .column-1
@@ -167,7 +189,7 @@ block content
 
 
 
-                                #line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/29/pym")
+                                #line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/46/pym")
 
 
                                 .tab-container
@@ -196,18 +218,12 @@ block content
 
                                             pre
                                                 code.
-                                                    from numpy import random, ceil, array, clip
+                                                    from numpy import random
+                                                    from scipy.ndimage.filters import gaussian_filter
 
-                                                    x = random.randn(100) * 15
-                                                    y = random.randn(100) * 15
-                                                    l = ceil(random.rand(100) * 5)
-                                                    s = random.rand(100) * 20 + 5
-                                                    a = clip(random.rand(100) + 0.1, 0, 1)
-
-                                                    lgn.scatter(x, y, label=l, size=s, alpha=a)
-
-                                
-
+                                                    x = random.randn(500)
+                                                    x = gaussian_filter(x, 10)
+                                                    lgn.line(x)
 
                                 a(name="line-stacked", href="#line-stacked")
                                     h4
@@ -219,8 +235,34 @@ block content
 
                                 #stacked-line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/25/pym")
 
-                                pre
-                                    code.
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#line-stacked-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#line-stacked-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #line-stacked-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
+                                                        "axis": [0, 1, ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #line-stacked-python-tab
+
+                                            pre
+                                                code.
+                                                    nueron_data = [[6.627553044841961, 17.71663042972164, ...], ...]
+                                                    lgn.linestacked(nueron_data)
 
 
 
@@ -233,16 +275,36 @@ block content
 
 
                                 #force-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/40/pym")
+                                
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#force-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#force-python-tab")
+                                                | Python Example
 
-                                pre
-                                    code.
-                                        data = {
-                                            "nodes": [0, 1, 2, ...] 
-                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
-                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
-                                            "group": [g0, g1, ...]
-                                            "size": [s0, s1, ...]
-                                        }
+                                    .content-container
+
+                                        #force-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "nodes": [0, 1, 2, ...] 
+                                                        "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #force-python-tab
+
+                                            pre
+                                                code.
+                                                    
+
+                                
 
 
                                 a(name="graph", href="#graph")
@@ -252,16 +314,45 @@ block content
                                 p
                                     | A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.
 
+                                #graph-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/53/pym")
 
-                                pre
-                                    code.
-                                        data = {
-                                            nodes: [[x0,y0], [x1,y1], ... ]
-                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
-                                            "color": [[r0,g0,b0], [r1,g1,b1], ...]
-                                            "group": [g0, g1, ...]
-                                            "size": [s0, s1, ...]
-                                        }
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#graph-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#graph-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #graph-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        nodes: [[x0,y0], [x1,y1], ... ]
+                                                        "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #graph-python-tab
+
+                                            pre
+                                                code.
+                                                    # load airline data
+                                                    # from https://github.com/upphiminn/d3.ForceBundle/blob/master/example/bundling_data/airlines.xml
+                                                    #
+                                                    # x = [array of x positions]
+                                                    # y = [array of y positions]
+                                                    #
+                                                    # mat = matrix mapping x,y pairs
+                                                    #
+
+                                                    lgn.graph(x, y, mat)
+                                        
 
 
                                 a(name="graph-bundled", href="#graph-bundled")
@@ -271,16 +362,41 @@ block content
                                 p
                                     | The bundled graph is similar to the node-link graph, but links are bundled using the algorithm from (link) to emphasize regions of the graph where there is dense connectivity. Nodes can be clicked to highlight only the links to the selected node. The input data is the same as for the normal graph. 
 
+                                #graph-bundled-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/49/pym")
 
-                                pre
-                                    code.
-                                        data = {
-                                            "points": [[x0,y0], [x1,y1], ... ]
-                                            "alpha": [0.2, 0.9, ...]
-                                            "color": [[r0,g0,b0], [10,20,0], ...]
-                                            "group": [g0, g1, ...]
-                                            "size": [s0, s1, ...]
-                                        }
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#graph-bundled-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#graph-bundled-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #graph-bundled-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        nodes: [[x0,y0], [x1,y1], ... ]
+                                                        "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #graph-bundled-python-tab
+
+                                            pre
+                                                code.
+                                                    from numpy import random, array
+                                                    
+                                                    mat = array([[random.uniform(0, 25) if random.random() > 0.6 else 0 for _ in xrange(25)] for _ in xrange(25)])
+                                                    x = random.randn(25)
+                                                    y = random.randn(25)
+
+                                                    lgn.graphbundled(x, y, mat)
 
                                 a(name="matrix", href="#matrix")
                                     h4
@@ -291,13 +407,35 @@ block content
 
 
                                 #matrix-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/37/pym", data-pym)
+                                
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#matrix-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#matrix-python-tab")
+                                                | Python Example
 
-                                pre
-                                    code.
-                                        data = {
-                                            "matrix": [[row0col0, row0col1, row0col2], [row1col0, row1col1, row1col2], ...]
-                                            "colormap": "colorbrewername"
-                                        }
+                                    .content-container
+
+                                        #matrix-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "matrix": [[row0col0, row0col1, row0col2], [row1col0, row1col1, row1col2], ...]
+                                                        "colormap": "colorbrewername"
+                                                    }
+
+                                        #matrix-python-tab
+
+                                            pre
+                                                code.
+                                                    from numpy import random, array
+                                                    
+                                                    mat = random.random((50, 50))
+                                                    lgn.matrix(mat)
+
 
 
                                 a(name="adjacency", href="#adjacency")
@@ -308,15 +446,36 @@ block content
                                     | An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.
 
                                 #adjacency-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/24/pym", data-pym)
+                                
 
-                                pre
-                                    code.
-                                        data = {
-                                            "nodes": [0, 1, 2, ... ]
-                                            "links": [[source0, target0, value0], [source1, target1, value1], ...]
-                                            "group": [g0, g1, ...]
-                                        }
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#adjacency-data-tab")
+                                                | Data Structure
+                                        //- li
+                                            a(href="#adjacency-python-tab")
+                                                | Python Example
 
+                                    .content-container
+
+                                        #adjacency-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "nodes": [0, 1, 2, ... ]
+                                                        "links": [[source0, target0, value0], [source1, target1, value1], ...]
+                                                        "group": [g0, g1, ...]
+                                                    }
+
+                                        //- #adjacency-python-tab
+
+                                            pre
+                                                code.
+                                                    from numpy import random, array
+                                                    
+                                                    mat = random.random((50, 50))
+                                                    lgn.matrix(mat)
 
                                 a(name="map", href="#map")
                                     h4
@@ -327,36 +486,70 @@ block content
 
                                 #map-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/38/pym", data-pym)
 
-                                pre
-                                    code.
-                                        data = {
-                                            "regions": [“NY”, “CA”, “MA”, ... ]
-                                            "values": [v0, v1, v2, ...]
-                                            "colormap": “colorbrewername”
-                                        }
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#map-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#map-python-tab")
+                                                | Python Example
 
+                                    .content-container
+
+                                        #map-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "regions": [“NY”, “CA”, “MA”, ... ]
+                                                        "values": [v0, v1, v2, ...]
+                                                        "colormap": “colorbrewername”
+                                                    }
+
+                                        #map-python-tab
+
+                                            pre
+                                                code.
+                                                    states = ["NA", "AK", "AL", "AR", "AZ", "CA", "CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
+                                                    values = random.randn(len(states))
+
+                                                    lgn.map(states,values, colormap="Blues")
 
                 section(name="images")
                     .row
                         .column-12
-                                a(name="images", href="./images")
+                                a(name="images", href="/visualizations/images")
                                     h2
                                         | Images
+
+                                a(href="/visualizations/images")
+                                    h4
+                                        | Click to view image-based visualizations
+
+                                
 
                 section(name="3d")
                     .row
                         .column-12
-                                a(name="3d", href="#3d")
+                                a(name="3d", href="/visualizations/3d")
                                     h2
                                         | 3D
+
+                                a(href="/visualizations/3d")
+                                    h4
+                                        | Click to view 3d visualizations
 
 
                 section(name="streaming")
                     .row
                         .column-12
-                                a(name="streaming", href="#streaming")
+                                a(name="streaming", href="/visualizations/streaming")
                                     h2
                                         | Streaming
+
+                                a(href="/visualizations/streaming")
+                                    h4
+                                        | Click to view streaming visualizations
 
                                 
 

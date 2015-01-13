@@ -1,0 +1,179 @@
+extends ../../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+
+                section
+                    a(href="/")
+                        | Lightning
+
+                    ul
+                        li
+                            a(href="http://github.com/lightning-viz/lightning")
+                                | Github
+                        li
+                            a(href="/")
+                                | Website
+                        li
+                            a(href="/documentation")
+                                | Documentation
+
+                section
+                    a(href="/visualizations#plots")
+                        | Plots
+
+                    ul
+                        li
+                            a(href="/visualizations#scatter")
+                                | Scatter
+                        li
+                            a(href="/visualizations#line")
+                                | Line
+                        li
+                            a(href="/visualizations#line-stacked")
+                                | Line Stacked
+                        li
+                            a(href="/visualizations#force")
+                                | Force
+                        li
+                            a(href="/visualizations#graph")
+                                | Graph
+                        li
+                            a(href="/visualizations#graph-bundled")
+                                | Graph Bundled
+                        li
+                            a(href="/visualizations#matrix")
+                                | Matrix
+
+                        li
+                            a(href="/visualizations#adjacency")
+                                | Adjacency
+
+                        li
+                            a(href="/visualizations#map")
+                                | Map                
+
+                section
+                    a(href="/visualizations/images")
+                        | Images
+
+                    ul
+                        li
+                            a(href="/visualizations/images#image")
+                                | Image
+                        li
+                            a(href="/visualizations/images#gallery")
+                                | Gallery
+                
+
+                section
+                    a(href="/visualizations/3d")
+                        | 3D
+
+                    ul
+                        li
+                            a(href="/visualizations/3d#particles")
+                                | Particles
+                        li
+                            a(href="/visualizations/3d#volume")
+                                | Volume
+                
+                section
+                    a(href="/visualizations/streaming")
+                        | Streaming
+
+                    ul
+                        li
+                            a(href="/visualizations/streaming#line")
+                                | Line
+
+
+            //- .column-1
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                header            
+                    .row
+                        .column-12
+                            .row.header
+                                .column-1.mobile-column-1
+                                    img(src="/images/logo.png")
+
+                                .column-10.mobile-column-3
+                                    h1
+                                        | Lightning
+
+                                    | DATA VISUALIZATION SERVER
+
+
+                section(name="introduction")
+                    .row
+                        .column-12
+                                a(name="visualizations", href="#visualizations")
+                                    h2
+                                        | Visualizations
+                
+
+
+
+                section(name="streaming")
+                    .row
+                        .column-12
+                                a(name="streaming", href="#streaming")
+                                    h2
+                                        | Streaming
+
+
+
+                                a(name="line", href="#line")
+                                    h4
+                                        | Streaming Line
+
+                                p
+                                    | TODO
+
+
+
+                section(name="plots")
+                    .row
+                        .column-12
+                                a(name="plots", href="/visualizations")
+                                    h2
+                                        | Plots
+                                
+                                a(href="/visualizations")
+                                    h4
+                                        | Click to view plot-based visualizations
+
+                section(name="images")
+                    .row
+                        .column-12
+                                a(name="images", href="/visualizations/images")
+                                    h2
+                                        | Images
+
+                                a(href="/visualizations/images")
+                                    h4
+                                        | Click to view image-based visualizations
+
+
+                section(name="3d")
+                    .row
+                        .column-12
+                                a(name="3d", href="/visualizations/3d")
+                                    h2
+                                        | 3D
+
+                                a(href="/visualizations/3d")
+                                    h4
+                                        | Click to view 3d visualizations
+
+                                
+
+    .bottom.bar.visible-mobile
