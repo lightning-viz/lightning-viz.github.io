@@ -980,8 +980,6 @@ ul.styled {
       display: inline-block;
       zoom: 1;
       *display: inline;
-      border: solid 1px #626c7c;
-      border-bottom: none;
       cursor: pointer; }
       .tab-container ul li a {
         font-size: 14px;
@@ -995,17 +993,18 @@ ul.styled {
         .tab-container ul li a.active {
           font-weight: bold; }
       .tab-container ul li.active {
-        background: #fff;
+        background-color: #f6f7fa;
         padding-top: 6px;
         position: relative;
         top: 1px;
-        border-color: #626c7c; }
+        border-top: solid 2px #9175f0; }
   .tab-container .content-container {
-    background: #fff;
-    border: solid #626c7c 1px;
+    background-color: #f6f7fa;
     padding: 10px; }
   .tab-container .code, .tab-container pre {
     margin: 0; }
+  .tab-container .code, .tab-container pre, .tab-container code {
+    background: white; }
 
 .documentation-container a {
   outline: none; }
