@@ -374,9 +374,7 @@ ul.styled {
         margin: 0; padding: 0; 
         li { 
             display: inline-block; 
-            zoom:1; *display:inline;  
-            border: solid 1px #626c7c; 
-            border-bottom: none;
+            zoom:1; *display:inline;
             cursor: pointer;
 
             a { 
@@ -397,24 +395,27 @@ ul.styled {
             }
 
             &.active {
-                background: #fff; 
+                background-color: #f6f7fa;; 
                 padding-top: 6px; 
                 position: relative; 
                 top: 1px; 
-                border-color: #626c7c;
+                border-top: solid 2px $purple;
             }
         }
     }
     
     .content-container { 
-        background: #fff; 
-        border: solid #626c7c 1px; 
-    
+
+        background-color: #f6f7fa;
         padding: 10px;
     }
 
     .code, pre {
         margin: 0;
+    }
+
+    .code, pre, code {
+        background: white;
     }
 }
 
