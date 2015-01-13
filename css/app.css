@@ -764,13 +764,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'AvenirNext-UltraLight', sans-serif;
   font-weight: bold;
   color: #545E6B; }
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: #545E6B; }
 
 p {
   color: #222; }
 
 a {
   text-decoration: none;
-  font-size: 14px;
   color: #8F7BD9;
   line-height: 19px; }
   a:hover {
