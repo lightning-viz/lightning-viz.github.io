@@ -72,10 +72,21 @@ block content
                         li
                             a(href="#pym")
                                 | Pym.js
+                
+                section
+                    a(href="#editor")
+                        | Visualization Editor
+                    ul
+                        li
+                            a(href="#editor-basics")
+                                | Editor Basics
+                        li
+                            a(href="#editor-import")
+                                | Importing
 
                 section
                     a(href="#custom")
-                        | Developing Custom Plots
+                        | Developing Custom Visualizations
                     
 
                     ul
@@ -198,13 +209,34 @@ block content
                                 p
                                     | In order to run a local server, the following dependencies must first be installed:
 
-                                    ul
+                                    ul.styled
                                         li
-                                            | node.js - download here, or use a version manager such as nvm.
+                                            b
+                                                | node.js
+                                            |  - download 
+                                            a(href="http://nodejs.org/")
+                                                | here
+                                            | , or use a version manager such as 
+                                            a(href="https://github.com/creationix/nvm")
+                                                | nvm
+                                            |  (recommended).
                                         li
-                                            | gulp - once node is installed run `npm install -g gulp` to install. This command may need sudo depending on your nodejs installation. 
+                                            b
+                                                | gulp
+                                            |  - once node is installed run 
+                                            span.inline-code
+                                                | npm install -g gulp
+                                            |  to install. This command may need sudo depending on your nodejs installation. 
                                         li
-                                            | postgres - install instructions. On osx I recommend postgres.app. Make sure to start postgres after it is installed.
+                                            b
+                                                | Postgres
+                                            |  - 
+                                            a(href="https://wiki.postgresql.org/wiki/Detailed_installation_guides")
+                                                | Install instructions
+                                            | . On OSX it is recommended to use the pre-compiled 
+                                            a(href="http://postgresapp.com/")
+                                                | Postgres.app
+                                            |  instead. Make sure to start postgres after it is installed.
 
                                 p
                                     | Once the above dependencies are resolved, clone the lightning repository and install the server. 
@@ -275,7 +307,7 @@ block content
                                 p
                                     | To create a choropleth map, select “map” type and enter 
                                     span.inline-code 
-                                        | {"MI": 0.6, "NY": 0.3, "NM": 0.2}
+                                        | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
                                     | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
 
 
@@ -294,8 +326,17 @@ block content
                                         | Using with Python
 
                                 p
-                                    | The Python client makes it easy to generate interactive visualizations from Python, and embed them within an iPython notebook. The client provides access to all of Lightning’s core visualizations (link to example page).
+                                    | The 
+                                    a(href="http://lightning-viz.github.io/lightning-python/")
+                                        | python client 
+                                    |  makes it easy to generate interactive visualizations from Python, and 
+                                    a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/plots/scatter.ipynb") 
+                                        | embed them within an iPython notebook
+                                    | . The client provides access to all of Lightning’s core visualizations (link to example page).
 
+
+                                .screenshot
+                                    img(src="/images/screenshots/5.png")
 
                                 a(name="install-python", href="#install-python")
                                     h4
@@ -366,11 +407,20 @@ block content
                                     code.python
                                         | lgn.line([1, 1, 2, 3, 5, 8])
 
+                                .screenshot
+                                    img(src="/images/screenshots/6.png")
                                 p
                                     | and a line plot should be displayed in your browser. 
 
+                                .screenshot
+                                    img(src="/images/screenshots/7.png")
 
-                                    | To view all of the available commands see the lightning-python documentation page.
+
+                                p
+                                    | To view all of the available commands see the 
+                                    a(href="http://lightning-viz.github.io/lightning-python/")
+                                        | lightning-python documentation page
+                                    | .
 
 
 
@@ -396,9 +446,8 @@ block content
                                         | Full Docs
 
                                 p
-                                    | The full documentation for the python library can be found 
-                                    a(href="#")
-                                        | here.
+                                    a(href="http://lightning-viz.github.io/lightning-python/")
+                                        | The full documentation for the python library can be found here.
 
                 section
                     .row
@@ -437,11 +486,23 @@ block content
 
                                 pre
                                     code.html
-                                        | &lt;iframe src=”http://host/visualizations/vid/iframe”&gt;
+                                        | &lt;iframe src=”http://host/visualizations/vid/iframe” width="WIDTH IN PIXELS" height="HEIGHT IN PIXELS" &gt;
 
                                 p
                                     | making sure to replace host and vid with the proper values.
+
+                                p 
+                                    | For example:
+
+                                .iframe-block
+                                    iframe(src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/", width="300", height="180")
+
+                                p
+                                    | is produced by the following
                                 
+                                pre
+                                    code.html
+                                        | &lt;iframe src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/" width="300" height="300" &gt;
 
                                 a(name="pym", href="#pym")
                                     h4    
@@ -457,12 +518,107 @@ block content
                                     code
                                         | http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/pym/
 
-                                | the child script is automatically initialized, so you only have to worry about setting up the parent.
+
+                                p
+                                    | the child script is automatically initialized, so you only have to worry about setting up the parent.
+
+                                p
+                                    | For example:
+
+                                #pym-example-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/5/pym")
 
 
 
 
 
+
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="editor", href="#editor")
+                                    h2    
+                                        | Editor
+
+                                p
+                                    | The lightning server ships with a build in editor for tinkering with the visualization code. The editor provides a live preview of the changes that 
+                                    | are made to the code.
+
+                                .screenshot
+                                    img(src="/images/screenshots/8.png")
+
+
+                                a(name="editor-basics", href="#editor-basics")
+                                    h4
+                                        | Editor Basics
+
+                                .screenshot
+                                    img(src="/images/screenshots/9.gif")
+
+                                p
+                                    | The following keyboard shortcuts are used to interact with the editor:
+
+                                    ul.styled
+                                        li
+                                            span.inline-code
+                                                |  ctrl + enter
+                                            |  - evaluate code
+
+                                        li
+                                            span.inline-code
+                                                |  ctrl + s
+
+                                            |  - save changes
+
+                                    | the editor can be used to change any of the 
+                                    b
+                                        | javascript
+                                    | , 
+                                    b 
+                                        | stylesheets
+                                    | , and 
+                                    b
+                                        | example data.
+
+
+                                a(name="editor-import", href="#editor-import")
+                                    h4
+                                        | Importing
+
+                                p
+                                    | Custom visualization types can be fetched and previewed from any public git repository (read more about creating custom visualizations below). This means a 
+                                    b
+                                        | github.com 
+                                    |  or 
+                                    b
+                                        | gist.github.com
+                                    | url will work.
+
+                                p
+                                    | For example, if I have a custom visualization type at 
+                                    a(href="https://gist.github.com/mathisonian/77853979c58be91eb13c")
+                                        | https://gist.github.com/mathisonian/77853979c58be91eb13c
+                                    | , then I am able to preview this visualization simply by entering the url.
+
+
+                                .screenshot
+                                    img(src="/images/screenshots/10.gif")
+
+                                p
+                                    | If you like this visualization, and would like to use it with lightning, click the import button:
+
+
+                                .screenshot
+                                    img(src="/images/screenshots/11.png")
+                                p
+
+                                p
+                                    | this can then be used, e.g. from the python client like:
+
+                                pre
+                                    code.
+                                        lgn.plot(type="imported-viz", data=my_data)
                 section
                     .row
                         .column-12
@@ -724,12 +880,12 @@ block content
 
 
                                 
-                                a(name="custom-utils", href="#custom-utils")
-                                    h4
-                                        | lightning-client-utils
+                                //- a(name="custom-utils", href="#custom-utils")
+                                //-     h4
+                                //-         | lightning-client-utils
 
-                                p
-                                    | The lightning client utilities module exposes a few useful functions for interacting with the lightning server from the browser.
+                                //- p
+                                //-     | The lightning client utilities module exposes a few useful functions for interacting with the lightning server from the browser.
 
 
 
