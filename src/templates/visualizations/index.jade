@@ -233,7 +233,7 @@ block content
                                     | A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.
 
 
-                                #stacked-line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/25/pym")
+                                #stacked-line-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/78/pym")
 
                                 .tab-container
                                     ul
@@ -261,10 +261,12 @@ block content
 
                                             pre
                                                 code.
-                                                    neuron_data = [[6.627553044841961, 17.71663042972164, ...], ...]
-                                                    lgn.linestacked(neuron_data)
+                                                    from numpy import random
+                                                    from scipy.ndimage.filters import gaussian_filter
 
+                                                    y = gaussian_filter(random.rand(5,100), [0, 3])
 
+                                                    lgn.linestacked(y, size=6)
 
                                 a(name="force", href="#force")
                                     h4
@@ -274,7 +276,7 @@ block content
                                     | A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.
 
 
-                                #force-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/40/pym")
+                                #force-iframe(data-pym, data-url="https://lightning-docs.herokuapp.com/visualizations/82/pym")
                                 
                                 .tab-container
                                     ul
@@ -302,9 +304,14 @@ block content
 
                                             pre
                                                 code.
-                                                    
+                                                    import networkx as nx
 
-                                
+                                                    G = nx.random_lobster(60, 0.5, 0.0, seed=44)
+                                                    mat = nx.adjacency_matrix(G).todense()
+                                                    n = len(G.nodes())
+                                                    c = [list(asarray(hsv_to_rgb(float(x) / n , 0.8, 1.0))*255) if y > 1 else [150,150,150] for (x,y) in G.degree_iter()]
+
+                                                    lgn.force(mat, color=c)
 
 
                                 a(name="graph", href="#graph")
@@ -314,7 +321,7 @@ block content
                                 p
                                     | A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.
 
-                                #graph-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/53/pym")
+                                #graph-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/88/pym")
 
                                 .tab-container
                                     ul
@@ -342,16 +349,19 @@ block content
 
                                             pre
                                                 code.
-                                                    # load airline data
-                                                    # from https://github.com/upphiminn/d3.ForceBundle/blob/master/example/bundling_data/airlines.xml
-                                                    #
-                                                    # x = [array of x positions]
-                                                    # y = [array of y positions]
-                                                    #
-                                                    # mat = matrix mapping x,y pairs
-                                                    #
+                                                    import networkx as nx
+                                                    from sklearn import datasets
+                                                    from numpy import random, corrcoef
 
-                                                    lgn.graph(x, y, mat)
+                                                    d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
+
+                                                    c = corrcoef(d)
+                                                    c[c<0.95] = 0
+
+                                                    x = random.randn(50)
+                                                    y = random.randn(50)
+
+                                                    lgn.graph(x,y, c, label=l)
                                         
 
 
