@@ -27,41 +27,55 @@ from scipy.ndimage.filters import gaussian_filter
 x = random.randn(500)
 x = gaussian_filter(x, 10)
 lgn.line(x)
-</code></pre></div></div></div><a name="line-stacked" href="#line-stacked"><h4>Line Stacked</h4></a><p>A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.</p><div id="stacked-line-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/25/pym"></div><div class="tab-container"><ul><li><a href="#line-stacked-data-tab">Data Structure</a></li><li><a href="#line-stacked-python-tab">Python Example</a></li></ul><div class="content-container"><div id="line-stacked-data-tab"><pre><code>data = {
+</code></pre></div></div></div><a name="line-stacked" href="#line-stacked"><h4>Line Stacked</h4></a><p>A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.</p><div id="stacked-line-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/78/pym"></div><div class="tab-container"><ul><li><a href="#line-stacked-data-tab">Data Structure</a></li><li><a href="#line-stacked-python-tab">Python Example</a></li></ul><div class="content-container"><div id="line-stacked-data-tab"><pre><code>data = {
     "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
     "axis": [0, 1, ...]
     "color": [[r0,g0,b0], [r1,g1,b1], ...]
     "group": [g0, g1, ...]
     "size": [s0, s1, ...]
 }
-</code></pre></div><div id="line-stacked-python-tab"><pre><code>neuron_data = [[6.627553044841961, 17.71663042972164, ...], ...]
-lgn.linestacked(neuron_data)
+</code></pre></div><div id="line-stacked-python-tab"><pre><code>from numpy import random
+from scipy.ndimage.filters import gaussian_filter
 
+y = gaussian_filter(random.rand(5,100), [0, 3])
 
-</code></pre></div></div></div><a name="force" href="#force"><h4>Force</h4></a><p>A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.</p><div id="force-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/40/pym"></div><div class="tab-container"><ul><li><a href="#force-data-tab">Data Structure</a></li><li><a href="#force-python-tab">Python Example</a></li></ul><div class="content-container"><div id="force-data-tab"><pre><code>data = {
+lgn.linestacked(y, size=6)
+</code></pre></div></div></div><a name="force" href="#force"><h4>Force</h4></a><p>A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.</p><div id="force-iframe" data-pym data-url="https://lightning-docs.herokuapp.com/visualizations/82/pym"></div><div class="tab-container"><ul><li><a href="#force-data-tab">Data Structure</a></li><li><a href="#force-python-tab">Python Example</a></li></ul><div class="content-container"><div id="force-data-tab"><pre><code>data = {
     "nodes": [0, 1, 2, ...] 
     "links": [[source0, target0, value0], [source1, target1, value1], ...]
     "color": [[r0,g0,b0], [r1,g1,b1], ...]
     "group": [g0, g1, ...]
     "size": [s0, s1, ...]
 }
-</code></pre></div><div id="force-python-tab"><pre><code></code></pre></div></div></div><a name="graph" href="#graph"><h4>Graph</h4></a><p>A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.</p><div id="graph-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/53/pym"></div><div class="tab-container"><ul><li><a href="#graph-data-tab">Data Structure</a></li><li><a href="#graph-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-data-tab"><pre><code>data = {
+</code></pre></div><div id="force-python-tab"><pre><code>import networkx as nx
+
+G = nx.random_lobster(60, 0.5, 0.0, seed=44)
+mat = nx.adjacency_matrix(G).todense()
+n = len(G.nodes())
+c = [list(asarray(hsv_to_rgb(float(x) / n , 0.8, 1.0))*255) if y > 1 else [150,150,150] for (x,y) in G.degree_iter()]
+
+lgn.force(mat, color=c)
+
+</code></pre></div></div></div><a name="graph" href="#graph"><h4>Graph</h4></a><p>A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.</p><div id="graph-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/88/pym"></div><div class="tab-container"><ul><li><a href="#graph-data-tab">Data Structure</a></li><li><a href="#graph-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-data-tab"><pre><code>data = {
     "nodes": [[x0,y0], [x1,y1], ... ]
     "links": [[source0, target0, value0], [source1, target1, value1], ...]
     "color": [[r0,g0,b0], [r1,g1,b1], ...]
     "group": [g0, g1, ...]
     "size": [s0, s1, ...]
 }
-</code></pre></div><div id="graph-python-tab"><pre><code># load airline data
-# from https://github.com/upphiminn/d3.ForceBundle/blob/master/example/bundling_data/airlines.xml
-#
-# x = [array of x positions]
-# y = [array of y positions]
-#
-# mat = matrix mapping x,y pairs
-#
+</code></pre></div><div id="graph-python-tab"><pre><code>import networkx as nx
+from sklearn import datasets
+from numpy import random, corrcoef
 
-lgn.graph(x, y, mat)
+d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
+
+c = corrcoef(d)
+c[c<0.95] = 0
+
+x = random.randn(50)
+y = random.randn(50)
+
+lgn.graph(x,y, c, label=l)
 
 
 </code></pre></div></div></div><a name="graph-bundled" href="#graph-bundled"><h4>Graph Bundled</h4></a><p>The bundled graph is similar to the node-link graph, but links are bundled using the algorithm from (link) to emphasize regions of the graph where there is dense connectivity. Nodes can be clicked to highlight only the links to the selected node. The input data is the same as for the normal graph. </p><div id="graph-bundled-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/49/pym"></div><div class="tab-container"><ul><li><a href="#graph-bundled-data-tab">Data Structure</a></li><li><a href="#graph-bundled-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-bundled-data-tab"><pre><code>data = {
