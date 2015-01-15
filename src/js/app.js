@@ -46,3 +46,22 @@ $('[data-pym]').each(function(i) {
     });
     
 });
+
+var LineStreaming = require('./lib/viz/line-streaming');
+
+$('[data-streaming]').each(function() {
+
+    console.log('streaming');
+    console.log($(this));
+    var selector = $(this).attr('id');
+    console.log(selector);
+    var ls = new LineStreaming('#' + selector, {series: [0, 0, 0]});
+    console.log(ls);
+
+    setInterval(function() {
+
+        ls.appendData({
+            series: [Math.random() * 20 - 10]
+        });
+    }, 2000);
+})
