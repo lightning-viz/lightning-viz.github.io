@@ -212,14 +212,17 @@ block content
 
                                             pre
                                                 code.
-                                                    import urllib, cStringIO
+                                                    from PIL import Image
+                                                    import requests
+                                                    from StringIO import StringIO
+
                                                     image_urls = ["http://i.gif.fm/janelia-images/stack-2/plane%s.png" % i for i in range(1, 42)]
 
                                                     images = []
                                                     for image_url in image_urls:
-                                                        file = cStringIO.StringIO(urllib.urlopen(image_url).read())
-                                                        img = Image.open(file)
-                                                        images.append(images)
+                                                        response = requests.get(image_url)
+                                                        img = Image.open(StringIO(response.content))
+                                                        images.append(img)
 
                                                     lgn.volume(images)
 
