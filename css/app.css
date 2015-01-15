@@ -1009,6 +1009,26 @@ ul.styled {
   .tab-container .code, .tab-container pre, .tab-container code {
     background: white; }
 
+.line-plot .plot {
+  fill: #ffffff; }
+.line-plot .grid .tick {
+  stroke: #BEC9CE;
+  opacity: 0.6; }
+.line-plot .grid path {
+  stroke-width: 0; }
+.line-plot .axis path, .line-plot .axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges; }
+.line-plot .axis path {
+  display: none; }
+.line-plot .line {
+  fill: none;
+  stroke-width: 2px; }
+.line-plot text {
+  fill: #BEC9CE;
+  font-family: monospace; }
+
 .documentation-container a {
   outline: none; }
 .documentation-container a:visited {

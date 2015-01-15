@@ -48,6 +48,7 @@ lgn.linestacked(y, size=6)
     "size": [s0, s1, ...]
 }
 </code></pre></div><div id="force-python-tab"><pre><code>import networkx as nx
+from numpy import asarray
 
 G = nx.random_lobster(60, 0.5, 0.0, seed=44)
 mat = nx.adjacency_matrix(G).todense()
