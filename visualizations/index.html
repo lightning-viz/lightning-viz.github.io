@@ -63,8 +63,7 @@ lgn.force(mat, color=c)
     "group": [g0, g1, ...]
     "size": [s0, s1, ...]
 }
-</code></pre></div><div id="graph-python-tab"><pre><code>import networkx as nx
-from sklearn import datasets
+</code></pre></div><div id="graph-python-tab"><pre><code>from sklearn import datasets
 from numpy import random, corrcoef
 
 d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
@@ -102,11 +101,20 @@ mat = random.random((50, 50))
 lgn.matrix(mat)
 
 
-</code></pre></div></div></div><a name="adjacency" href="#adjacency"><h4>Adjacency</h4></a><p>An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.</p><div id="adjacency-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/24/pym" data-pym></div><div class="tab-container"><ul><li><a href="#adjacency-data-tab">Data Structure</a></li></ul><div class="content-container"><div id="adjacency-data-tab"><pre><code>data = {
+</code></pre></div></div></div><a name="adjacency" href="#adjacency"><h4>Adjacency</h4></a><p>An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.</p><div id="adjacency-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/92/pym" data-pym></div><div class="tab-container"><ul><li><a href="#adjacency-data-tab">Data Structure</a></li><li><a href="#adjacency-python-tab">Python Example</a></li></ul><div class="content-container"><div id="adjacency-data-tab"><pre><code>data = {
     "nodes": [0, 1, 2, ... ]
     "links": [[source0, target0, value0], [source1, target1, value1], ...]
     "group": [g0, g1, ...]
 }
+</code></pre></div><div id="adjacency-python-tab"><pre><code>from sklearn import datasets
+from numpy import corrcoef
+
+d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
+
+c = corrcoef(d)
+
+lgn.adjacency(c, label=l)
+
 </code></pre></div></div></div><a name="map" href="#map"><h4>Map</h4></a><p>A map plot shows geographic regions filled with colors that reflect numerical values. You can produce maps of either the world (by specifying countries) or the united states (by specifying states). The primary input data is a list of regions and values. Each region is a string, either two letters (for US states) or three letters (for countries), and each value is a scalar. Optional specifications include a colormap used to display the values.</p><div id="map-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/38/pym" data-pym></div><div class="tab-container"><ul><li><a href="#map-data-tab">Data Structure</a></li><li><a href="#map-python-tab">Python Example</a></li></ul><div class="content-container"><div id="map-data-tab"><pre><code>data = {
     "regions": [“NY”, “CA”, “MA”, ... ]
     "values": [v0, v1, v2, ...]
