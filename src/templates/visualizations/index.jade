@@ -24,6 +24,12 @@ block content
                         li
                             a(href="/documentation")
                                 | Documentation
+                        li
+                            a(href="/visualizations")
+                                | Examples
+                        li
+                            a(href="https://github.com/lightning-viz/lightning-example-notebooks")
+                                | IPython Examples
 
 
                 section
@@ -135,10 +141,6 @@ block content
 
                                 p
                                     | Scatter plots show collections of points. The primary data is an array of points, where each point is a two element-array with x and y coordinates. Optional specifications include color (or group label), alpha, and size. 
-
-
-                                h6
-                                    | Python Example
 
 
                                 #scatter-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/45/pym")
@@ -322,7 +324,7 @@ block content
                                 p
                                     | A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.
 
-                                #graph-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/88/pym")
+                                #graph-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/130/pym")
 
                                 .tab-container
                                     ul
@@ -350,19 +352,19 @@ block content
 
                                             pre
                                                 code.
-                                                    from sklearn import datasets
-                                                    from numpy import random, corrcoef
+                                                    from numpy import random, asarray, argmin
+                                                    import networkx as nx
 
-                                                    d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
+                                                    G = nx.random_geometric_graph(100, 0.2)
 
-                                                    c = corrcoef(d)
-                                                    c[c<0.95] = 0
+                                                    dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
 
-                                                    x = random.randn(50)
-                                                    y = random.randn(50)
+                                                    center = argmin(dists)
+                                                    p = nx.single_source_shortest_path_length(G, center)
+                                                    xy = asarray([pos[i,:] for i in p.keys()])
+                                                    l = p.values()
 
-                                                    lgn.graph(x,y, c, label=l)
-                                        
+                                                    lgn.graph(xy[:,0], xy[:,1], mat, label=l)
 
 
                                 a(name="graph-bundled", href="#graph-bundled")
