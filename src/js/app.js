@@ -55,13 +55,13 @@ $('[data-streaming]').each(function() {
     console.log($(this));
     var selector = $(this).attr('id');
     console.log(selector);
-    var ls = new LineStreaming('#' + selector, {series: [0, 0, 0]});
+    var ls = new LineStreaming('#' + selector, {series: [[0, 0, 0],[1, 1, 1]]});
     console.log(ls);
 
     setInterval(function() {
 
         ls.appendData({
-            series: [Math.random() * 20 - 10]
+            series: [[Math.random() * 20 - 10],[Math.random() * 20 - 5]]
         });
     }, 2000);
 })
