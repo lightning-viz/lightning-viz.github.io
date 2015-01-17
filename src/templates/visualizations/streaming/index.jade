@@ -173,12 +173,13 @@ block content
                                                     import random
 
                                                     # initialize with some zeroes
+                                                    # initialize with zeros
                                                     viz = lgn.linestreaming([0, 0, 0])
 
                                                     while True:
-                                                        # append a random data point
-                                                        viz.append_data(data=[random.random() * 20 - 10])
-                                                        sleep(2)
+                                                        # append a random entry
+                                                        viz.append([random.rand() * 20 - 10])
+                                                        sleep(1)
 
                 section(name="plots")
                     .row
