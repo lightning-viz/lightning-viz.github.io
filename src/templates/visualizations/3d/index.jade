@@ -147,7 +147,7 @@ block content
 
 
 
-                                #particles-iframe(data-url="https://lightning-docs.herokuapp.com/visualizations/59/pym", data-pym)
+                                #particles-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/146/pym", data-pym)
                                 
                                 .tab-container
                                     ul
@@ -173,14 +173,14 @@ block content
 
                                             pre
                                                 code.
-                                                    from numpy import random, ceil
+                                                    from numpy import random, column_stack
 
-                                                    x = random.randn(500) * 10
-                                                    y = random.randn(500) * 10
-                                                    z = random.randn(500) * 10
-                                                    l = ceil(random.rand(100) * 5)
-
-                                                    lgn.particles(x, y, z, label=l)
+                                                    n = 500
+                                                    x = random.rand(n)*255
+                                                    y = random.rand(n)*255
+                                                    z = random.rand(n)*255
+                                                    c = column_stack((x, y, z))
+                                                    lgn.scatter3(x, y, z, color=c, size=3)
 
                                     
                                 a(name="volume", href="#volume")
@@ -192,45 +192,32 @@ block content
                                     | same FPS-style controls as the particles visualization.
                                 
 
-                                #volume-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/57/pym", data-pym)
+                                #volume-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/154/pym", data-pym)
                                 
                                 .tab-container
                                     ul
-                                        //- li
-                                        //-     a(href="#volume-data-tab")
-                                        //-         | Data Structure
+
                                         li
                                             a(href="#volume-python-tab")
                                                 | Python Example
 
                                     .content-container
 
-                                        //- #volume-data-tab
-                                        //-     pre
-                                        //-         code.
-                                        //-             data = {
-                                        //-                 "regions": [“NY”, “CA”, “MA”, ... ]
-                                        //-                 "values": [v0, v1, v2, ...]
-                                        //-                 "colormap": “colorbrewername”
-                                        //-             }
 
                                         #volume-python-tab
 
                                             pre
                                                 code.
-                                                    from PIL import Image
-                                                    import requests
-                                                    from StringIO import StringIO
+                                                    nx, ny, nz = (50, 50, 50)
+                                                    rgb = ndarray((nx,ny,nz,3))
+                                                    hsv = ndarray((nx,ny,nz,3))
+                                                    for i, ii in enumerate(linspace(0,1,nx)):
+                                                        for j, jj in enumerate(linspace(0,1,ny)):
+                                                            for k, kk in enumerate(linspace(0,1,nz)):
+                                                                position = (i, j, k)
+                                                                rgb[position] = (kk, jj, ii)
 
-                                                    image_urls = ["http://i.gif.fm/janelia-images/stack-2/plane%s.png" % i for i in range(1, 42)]
-
-                                                    images = []
-                                                    for image_url in image_urls:
-                                                        response = requests.get(image_url)
-                                                        img = Image.open(StringIO(response.content))
-                                                        images.append(img)
-
-                                                    lgn.volume(images)
+                                                    lgn.volume([x for x in rgb])
 
                 section(name="plots")
                     .row
