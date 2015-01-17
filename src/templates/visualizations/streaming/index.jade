@@ -141,7 +141,7 @@ block content
                                     h4
                                         | Streaming Line
 
-                                #line-streaming(data-streaming)
+                                #line-streaming(line-data-streaming)
 
 
                                 .tab-container
@@ -172,13 +172,55 @@ block content
                                                 code.python.
                                                     import random
 
-                                                    # initialize with some zeroes
                                                     # initialize with zeros
                                                     viz = lgn.linestreaming([0, 0, 0])
 
                                                     while True:
                                                         # append a random entry
                                                         viz.append([random.rand() * 20 - 10])
+                                                        sleep(1)
+
+                                a(name="line", href="#line")
+                                    h4
+                                        | Streaming Scatter
+
+                                #scatter-streaming(scatter-data-streaming)
+
+
+                                .tab-container
+                                    ul
+                                        li
+                                            a(href="#scatter-streaming-data-tab")
+                                                | Data Structure
+                                        li
+                                            a(href="#scatter-streaming-python-tab")
+                                                | Python Example
+
+                                    .content-container
+
+                                        #scatter-streaming-data-tab
+                                            pre
+                                                code.
+                                                    data = {
+                                                        "points": [[x0,y0], [x1,y1], ... ]
+                                                        "color": [[r0,g0,b0], [10,20,0], ...]
+                                                        "group": [g0, g1, ...]
+                                                        "size": [s0, s1, ...]
+                                                    }
+
+                                        #scatter-streaming-python-tab
+
+                                            pre
+                                                code.python.
+                                                    import random
+
+                                                    # initialize with random points
+                                                    viz = lgn.scatterstreaming(random.rand(10),random.rand(10), label=0)
+
+                                                    while True:
+                                                        # append random points with random labels
+                                                        l = (random.rand(10)*5).astype('int')
+                                                        viz.append(random.rand(10), random.rand(10), label=l)
                                                         sleep(1)
 
                 section(name="plots")

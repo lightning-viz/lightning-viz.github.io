@@ -49,7 +49,7 @@ $('[data-pym]').each(function(i) {
 
 var LineStreaming = require('./lib/viz/line-streaming');
 
-$('[data-streaming]').each(function() {
+$('[line-data-streaming]').each(function() {
 
     console.log('streaming');
     console.log($(this));
@@ -63,5 +63,37 @@ $('[data-streaming]').each(function() {
         ls.appendData({
             series: [[Math.random() * 20 - 10],[Math.random() * 20 - 5]]
         });
-    }, 2000);
+    }, 1000);
+})
+
+var ScatterStreaming = require('./lib/viz/scatter-streaming');
+
+$('[scatter-data-streaming]').each(function() {
+
+    var selector = $(this).attr('id');
+
+    var centers = []
+    var newpoints = []
+    var labels = []
+    for (i = 0; i < 7; i++) {
+        var tmp = [Math.random(1)*2, Math.random(1)*2]
+        centers.push(tmp)
+        newpoints.push(tmp)
+        labels.push(i)
+    }
+
+    var ls = new ScatterStreaming('#' + selector, {points: centers, label: labels, size: [15]});
+
+    setInterval(function() {
+
+        for (i = 0; i < 7; i++) {
+            newpoints[i] = newpoints[i].map(function(d) { return d + (Math.random(1)-0.5)/3})
+        }
+
+        ls.appendData({
+            points: newpoints,
+            labels: labels,
+            size: [15]
+        });
+    }, 1000);
 })
