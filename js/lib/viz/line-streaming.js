@@ -64,6 +64,8 @@ LineStreaming.prototype.appendData = function(data) {
     
     data = this.data;
 
+    console.log(data);
+
     var yDomain = nestedExtent(data.series, function(d) {
         return d.y;
     });
@@ -82,18 +84,13 @@ LineStreaming.prototype.appendData = function(data) {
     var newdat = this.svg.selectAll('.line')
         .data(data.series)
         
-    newdat.exit().transition().style('opacity', 0.0).remove()
-    
     newdat
-        .attr('class', 'line')
-        .on('mouseover', self.highlight)
-        .on('mouseout', self.highlight) 
-        .transition()
+        // .transition()
         .attr('d', function(d) { return self.line(d.d)})   
-        .attr('stroke', function(d) {return d.c})
-        .style('stroke-width', function(d) {return d.s ? d.s : self.defaultSize})
-        .style('stroke-opacity', 0.9)
+
          
+    
+    newdat.exit().transition().style('opacity', 0.0).remove()
     
     newdat.enter()
         .append('path')
