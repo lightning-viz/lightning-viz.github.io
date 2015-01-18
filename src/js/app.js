@@ -55,13 +55,14 @@ $('[line-data-streaming]').each(function() {
     console.log($(this));
     var selector = $(this).attr('id');
     console.log(selector);
-    var ls = new LineStreaming('#' + selector, {series: [[0, 0, 0],[1, 1, 1]]});
+    var ls = new LineStreaming('#' + selector, {series: [0]});
     console.log(ls);
 
+    var t = 0;
     setInterval(function() {
-
+        t += 0.3;
         ls.appendData({
-            series: [[Math.random() * 20 - 10],[Math.random() * 20 - 5]]
+            series: [Math.sin(t)]
         });
     }, 1000);
 })
@@ -75,7 +76,7 @@ $('[scatter-data-streaming]').each(function() {
     var centers = []
     var newpoints = []
     var labels = []
-    for (i = 0; i < 7; i++) {
+    for (var i = 0; i < 7; i++) {
         var tmp = [Math.random(1)*2, Math.random(1)*2]
         centers.push(tmp)
         newpoints.push(tmp)
@@ -86,7 +87,7 @@ $('[scatter-data-streaming]').each(function() {
 
     setInterval(function() {
 
-        for (i = 0; i < 7; i++) {
+        for (var i = 0; i < 7; i++) {
             newpoints[i] = newpoints[i].map(function(d) { return d + (Math.random(1)-0.5)/3})
         }
 
