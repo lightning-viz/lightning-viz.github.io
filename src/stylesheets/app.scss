@@ -33,6 +33,13 @@ b {
     font-weight: bold;
 }
 
+a {
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.25s;
+}
 
 
 h1,
@@ -269,19 +276,50 @@ section.getting-started {
     }
 
     text-align: center;
-    .button {
-        padding-left: 30px;
-        padding-right: 30px;
-        background-image: linear-gradient(-151deg, #ECEEF1 0%, #DDE3EA 100%);
-        background-image: linear-gradient(-180deg, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.00) 100%);
-        border: 1px solid #B8C6D3;
-        box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.30);
+    // .button {
+    //     padding-left: 30px;
+    //     padding-right: 30px;
+    //     background-image: linear-gradient(-151deg, #ECEEF1 0%, #DDE3EA 100%);
+    //     background-image: linear-gradient(-180deg, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.00) 100%);
+    //     border: 1px solid #B8C6D3;
+    //     box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.30);
+    //     border-radius: 2px;
+    //     /* Submit: */
+    //     font-size: 14px;
+    //     color: #545E6B;
+    //     line-height: 26px;
+    // }
+
+
+    .button,
+    button,
+    input[type=submit] {
         border-radius: 2px;
-        /* Submit: */
-        font-size: 14px;
-        color: #545E6B;
-        line-height: 26px;
+        border: 1px solid $purple;
+        background-color: white;
+
+        font-size: 15px;
+        color: $purple;
+        line-height: 20px;
+        cursor: pointer;
+        text-align: center;
+        padding: 5px 0;
+
+        &:hover {
+            background-color: darken(white, 5%);
+            color: darken($purple, 15%);
+        }
+
+        &:focus {
+            outline:0;
+        }
     }
+
+    input[type=submit],
+    button {
+        padding: 5px 10px;
+    }
+
 
     /* BG: */
 }
