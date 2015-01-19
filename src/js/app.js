@@ -93,7 +93,7 @@ $('[scatter-data-streaming]').each(function() {
 
         ls.appendData({
             points: newpoints,
-            labels: labels,
+            label: labels,
             size: [15]
         });
     }, 1000);
