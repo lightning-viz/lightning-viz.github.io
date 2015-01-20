@@ -328,7 +328,7 @@ block content
                                     | A matrix can be used to represent the values in any two-dimensional table of numbers. It renders the entries of the matrix as cells in a two-dimensional grid, with colors showing the relative values. The matrix can be panned and zoomed, and can be square or rectangle. The primary input data is a matrix which is a two-dimensional array containing the entries for each row and column. Optional specifications include the colormap used to display the values.
 
 
-                                #matrix-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/37/pym", data-pym)
+                                #matrix-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/171/pym", data-pym)
                                 
                                 .tab-container
                                     ul
@@ -355,10 +355,9 @@ block content
                                                 code.
                                                     from numpy import random, array
                                                     
-                                                    mat = random.random((50, 50))
-                                                    lgn.matrix(mat)
+                                                    mat = random.random((10, 10))
 
-
+                                                    lgn.matrix(mat, colormap="Blues")
 
                                 a(name="adjacency", href="#adjacency")
                                     h4
