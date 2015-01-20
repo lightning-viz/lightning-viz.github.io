@@ -9,100 +9,7 @@ block content
     .documentation-container
         .row
             .column-3.hidden-mobile.overview-container
-
-                section
-                    a(href="/")
-                        | Lightning
-
-                    ul
-                        li
-                            a(href="http://github.com/lightning-viz/lightning")
-                                | Github
-                        li
-                            a(href="/")
-                                | Website
-                        li
-                            a(href="/documentation")
-                                | Documentation
-                        li
-                            a(href="/visualizations")
-                                | Examples
-                        li
-                            a(href="https://github.com/lightning-viz/lightning-example-notebooks")
-                                | IPython Examples
-
-
-                section
-                    a(href="/visualizations#plots")
-                        | Plots
-
-                    ul
-                        li
-                            a(href="/visualizations#scatter")
-                                | Scatter
-                        li
-                            a(href="/visualizations#line")
-                                | Line
-                        li
-                            a(href="/visualizations#line-stacked")
-                                | Line Stacked
-                        li
-                            a(href="/visualizations#force")
-                                | Force
-                        li
-                            a(href="/visualizations#graph")
-                                | Graph
-                        li
-                            a(href="/visualizations#graph-bundled")
-                                | Graph Bundled
-                        li
-                            a(href="/visualizations#matrix")
-                                | Matrix
-
-                        li
-                            a(href="/visualizations#adjacency")
-                                | Adjacency
-
-                        li
-                            a(href="/visualizations#map")
-                                | Map                
-
-                section
-                    a(href="/visualizations/images")
-                        | Images
-
-                    ul
-                        li
-                            a(href="/visualizations/images#image")
-                                | Image
-                        li
-                            a(href="/visualizations/images#gallery")
-                                | Gallery
-                
-
-                section
-                    a(href="/visualizations/3d")
-                        | 3D
-
-                    ul
-                        li
-                            a(href="/visualizations/3d#particles")
-                                | Particles
-                        li
-                            a(href="/visualizations/3d#volume")
-                                | Volume
-                
-                section
-                    a(href="/visualizations/streaming")
-                        | Streaming
-
-                    ul
-                        li
-                            a(href="/visualizations/streaming#line")
-                                | Line
-                        li
-                            a(href="/visualizations/streaming#scatter")
-                                | Scatter
+                include ../includes/visualizations/sidebar
 
 
             //- .column-1
@@ -570,6 +477,17 @@ block content
                                 a(href="/visualizations/streaming")
                                     h4
                                         | Click to view streaming visualizations
+                
+                section(name="linked")
+                    .row
+                        .column-12
+                                a(name="linked", href="/visualizations/linked")
+                                    h2
+                                        | Linked
+
+                                a(href="/visualizations/linked")
+                                    h4
+                                        | Click to view linked visualizations
 
                                 
 
