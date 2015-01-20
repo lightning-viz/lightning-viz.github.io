@@ -92,6 +92,7 @@ block content
                                                     y = random.rand(n)*255
                                                     z = random.rand(n)*255
                                                     c = column_stack((x, y, z))
+
                                                     lgn.scatter3(x, y, z, color=c, size=3)
 
                                     
@@ -120,6 +121,8 @@ block content
 
                                             pre
                                                 code.
+                                                    from numpy import ndarray, linspace
+                                                    
                                                     nx, ny, nz = (50, 50, 50)
                                                     rgb = ndarray((nx,ny,nz,3))
                                                     hsv = ndarray((nx,ny,nz,3))
