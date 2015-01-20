@@ -282,7 +282,7 @@ block content
                                 p
                                     | The bundled graph is similar to the node-link graph, but links are bundled using the algorithm from (link) to emphasize regions of the graph where there is dense connectivity. Nodes can be clicked to highlight only the links to the selected node. The input data is the same as for the normal graph. 
 
-                                #graph-bundled-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/49/pym")
+                                #graph-bundled-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/132/pym")
 
                                 .tab-container
                                     ul
@@ -310,13 +310,15 @@ block content
 
                                             pre
                                                 code.
-                                                    from numpy import random, array
-                                                    
-                                                    mat = array([[random.uniform(0, 25) if random.random() > 0.6 else 0 for _ in xrange(25)] for _ in xrange(25)])
-                                                    x = random.randn(25)
-                                                    y = random.randn(25)
+                                                    import networkx as nx
+                                                    from numpy import asarray
 
-                                                    lgn.graphbundled(x, y, mat)
+                                                    G = nx.random_geometric_graph(50, 0.5)
+                                                    pos = asarray(nx.get_node_attributes(G, 'pos').values())
+                                                    dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
+                                                    mat = nx.adjacency_matrix(G).todense()
+
+                                                    lgn.graphbundled(pos[:,0], pos[:,1], mat)
 
                                 a(name="matrix", href="#matrix")
                                     h4
