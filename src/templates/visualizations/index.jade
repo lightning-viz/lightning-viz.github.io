@@ -188,7 +188,7 @@ block content
                                     | A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.
 
 
-                                #force-iframe(data-pym, data-url="https://lightning-docs.herokuapp.com/visualizations/82/pym")
+                                #force-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/202/pym")
                                 
                                 .tab-container
                                     ul
@@ -217,15 +217,13 @@ block content
                                             pre
                                                 code.
                                                     import networkx as nx
-                                                    from numpy import asarray
+                                                    from numpy import random
 
-                                                    G = nx.random_lobster(60, 0.5, 0.0, seed=44)
+                                                    G = nx.random_regular_graph(3,n)
                                                     mat = nx.adjacency_matrix(G).todense()
-                                                    n = len(G.nodes())
-                                                    c = [list(asarray(hsv_to_rgb(float(x) / n , 0.8, 1.0))*255) if y > 1 else [150,150,150] for (x,y) in G.degree_iter()]
-
+                                                    l = (random.rand(n)*5).astype('int')
+                                                    
                                                     lgn.force(mat, color=c)
-
 
                                 a(name="graph", href="#graph")
                                     h4
