@@ -135,6 +135,7 @@ block content
 
                                                     x = random.randn(500)
                                                     x = gaussian_filter(x, 10)
+
                                                     lgn.line(x)
 
                                 a(name="line-stacked", href="#line-stacked")
@@ -264,16 +265,13 @@ block content
                                                     import networkx as nx
 
                                                     G = nx.random_geometric_graph(100, 0.2)
-
                                                     dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
-
                                                     center = argmin(dists)
                                                     p = nx.single_source_shortest_path_length(G, center)
                                                     xy = asarray([pos[i,:] for i in p.keys()])
                                                     l = p.values()
 
                                                     lgn.graph(xy[:,0], xy[:,1], mat, label=l)
-
 
                                 a(name="graph-bundled", href="#graph-bundled")
                                     h4
@@ -402,7 +400,6 @@ block content
 
                                                     lgn.adjacency(c, label=l)
 
-
                                 a(name="map", href="#map")
                                     h4
                                         | Map
@@ -436,6 +433,8 @@ block content
 
                                             pre
                                                 code.
+                                                    from numpy import random
+
                                                     states = ["NA", "AK", "AL", "AR", "AZ", "CA", "CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
                                                     values = random.randn(len(states))
 
