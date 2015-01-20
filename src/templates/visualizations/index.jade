@@ -366,7 +366,7 @@ block content
                                 p
                                     | An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.
 
-                                #adjacency-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/92/pym", data-pym)
+                                #adjacency-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/183/pym", data-pym)
                                 
 
                                 .tab-container
@@ -396,9 +396,9 @@ block content
                                                     from sklearn import datasets
                                                     from numpy import corrcoef
 
-                                                    d, l = datasets.make_blobs(n_features=5, n_samples=50, centers=5, cluster_std=2.0, random_state=100)
-
+                                                    d, l = datasets.make_blobs(n_features=5, n_samples=20, centers=5, cluster_std=1.0)
                                                     c = corrcoef(d)
+                                                    c[c<0.75] = 0
 
                                                     lgn.adjacency(c, label=l)
 
