@@ -6,7 +6,13 @@ html(lang="en")
         meta(charset="UTF-8")
         link(href="/images/favicon.ico", rel="shortcut icon", type="image/x-icon")
 
+        title
+            | Lightning | Data Visualization Server
         block meta
+            meta(property="og:title", content="Lightning: Data Visualization Server")
+            meta(property="og:url", content="http://lightning-viz.org")
+            meta(property="og:image", content="http://lightning-viz.org/images/examples/particles.png")
+            meta(property="og:description", content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization.")
         block css
             link(rel='stylesheet', href='#{STATIC_URL}css/app.css')
 
