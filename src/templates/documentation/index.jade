@@ -233,16 +233,6 @@ block content
                                             span.inline-code
                                                 | npm install -g gulp
                                             |  to install. This command may need sudo depending on your nodejs installation. 
-                                        li
-                                            b
-                                                | Postgres
-                                            |  - 
-                                            a(href="https://wiki.postgresql.org/wiki/Detailed_installation_guides")
-                                                | Install instructions
-                                            | . On OSX it is recommended to use the pre-compiled 
-                                            a(href="http://postgresapp.com/")
-                                                | Postgres.app
-                                            |  instead. Make sure to start postgres after it is installed.
 
                                 p
                                     | Once the above dependencies are resolved, clone the lightning repository and install the server. 
@@ -252,14 +242,6 @@ block content
                                         | $ git clone git@github.com:lightning-viz/lightning.git
                                         | $ cd lightning
                                         | $ npm install
-
-                                p
-                                    | then to initialize the database run
-
-                                pre
-                                    code
-                                        | $ npm run createdb
-                                        | $ npm run migrate
 
                                 p
                                     | finally compile the static assets:
@@ -282,6 +264,42 @@ block content
                                         | http://localhost:3000
                                     
                                     |. 
+
+                                h6
+                                    | Using Postgres
+
+                                p
+
+                                p
+                                    | For larger data sets using Postgres will be more efficient than the
+                                    | default SQLite database.
+
+                                p
+                                    | To start using Postgres with lightning, do the following: 
+
+                                ul.styled
+                                    li
+                                        | Change your 
+                                        a(href="https://github.com/lightning-viz/lightning/blob/master/config/database.js#L16")
+                                            | database config 
+                                        | from `sqlite` to `postgres`.
+                                    li
+                                        | Make sure postgres is installed and a server is running. On OSX we recommend using 
+                                        a(href="http://postgresapp.com/")
+                                            | Postgres.app.
+
+                                p
+                                p
+                                    | Then run the following to initialize the database:
+
+                                pre
+                                    code
+                                        | $ npm run createdb
+                                        | $ npm run migrate
+
+                                p
+                                    | Start the lightning server as described above. Lightning will now be running using Postgres.
+
 
                                 a(name="first-viz", href="#first-viz")
                                     h4
