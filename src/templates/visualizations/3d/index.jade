@@ -9,99 +9,8 @@ block content
     .documentation-container
         .row
             .column-3.hidden-mobile.overview-container
-
-                section
-                    a(href="/")
-                        | Lightning
-
-                    ul
-                        li
-                            a(href="http://github.com/lightning-viz/lightning")
-                                | Github
-                        li
-                            a(href="/")
-                                | Website
-                        li
-                            a(href="/documentation")
-                                | Documentation
-                        li
-                            a(href="/visualizations")
-                                | Examples
-                        li
-                            a(href="https://github.com/lightning-viz/lightning-example-notebooks")
-                                | IPython Examples
-
-                section
-                    a(href="/visualizations#plots")
-                        | Plots
-
-                    ul
-                        li
-                            a(href="/visualizations#scatter")
-                                | Scatter
-                        li
-                            a(href="/visualizations#line")
-                                | Line
-                        li
-                            a(href="/visualizations#line-stacked")
-                                | Line Stacked
-                        li
-                            a(href="/visualizations#force")
-                                | Force
-                        li
-                            a(href="/visualizations#graph")
-                                | Graph
-                        li
-                            a(href="/visualizations#graph-bundled")
-                                | Graph Bundled
-                        li
-                            a(href="/visualizations#matrix")
-                                | Matrix
-
-                        li
-                            a(href="/visualizations#adjacency")
-                                | Adjacency
-
-                        li
-                            a(href="/visualizations#map")
-                                | Map                
-
-                section
-                    a(href="/visualizations/images")
-                        | Images
-
-                    ul
-                        li
-                            a(href="/visualizations/images#image")
-                                | Image
-                        li
-                            a(href="/visualizations/images#gallery")
-                                | Gallery
-                
-
-                section
-                    a(href="/visualizations/3d")
-                        | 3D
-
-                    ul
-                        li
-                            a(href="/visualizations/3d#particles")
-                                | Particles
-                        li
-                            a(href="/visualizations/3d#volume")
-                                | Volume
-                
-                section
-                    a(href="/visualizations/streaming")
-                        | Streaming
-
-                    ul
-                        li
-                            a(href="/visualizations/streaming#line")
-                                | Line
-                        li
-                            a(href="/visualizations/streaming#scatter")
-                                | Scatter
+                - var section = '3d'
+                include ../../includes/visualizations/sidebar
 
 
             //- .column-1
@@ -140,12 +49,12 @@ block content
 
 
 
-                                a(name="particles", href="#particles")
+                                a(name="scatter3", href="#scatter3")
                                     h4
-                                        | Particles
+                                        | Scatter3
 
                                 p
-                                    | A particle visualization produces a three dimensional scatter plot using three.js. The camera can be controled by using the WASD and arrow keys. Use WASD to move the 
+                                    | A scatter3 visualization produces a three dimensional scatter plot using three.js. The camera can be controled by using the WASD and arrow keys. Use WASD to move the 
                                     | camera's position, and use the arrow keys to change the direction of the focus (FPS style controls).
 
 
@@ -168,8 +77,8 @@ block content
                                                 code.
                                                     data = {
                                                         "points": [[x0,y0,z0], [x1,y1,z0], ... ]
-                                                        "color": [[r0,g0,b0], [10,20,0], ...]
-                                                        "group": [g0, g1, ...]
+                                                        "color": [[r0,g0,b0], [r1,g1,b1], ...]
+                                                        "label": [l0, l1, ...]
                                                     }
 
                                         #particles-python-tab
@@ -183,6 +92,7 @@ block content
                                                     y = random.rand(n)*255
                                                     z = random.rand(n)*255
                                                     c = column_stack((x, y, z))
+
                                                     lgn.scatter3(x, y, z, color=c, size=3)
 
                                     
@@ -195,7 +105,7 @@ block content
                                     | same FPS-style controls as the particles visualization.
                                 
 
-                                #volume-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/154/pym", data-pym)
+                                #volume-iframe(data-url="http://lightning-docs.herokuapp.com/visualizations/169/pym", data-pym)
                                 
                                 .tab-container
                                     ul
@@ -211,6 +121,8 @@ block content
 
                                             pre
                                                 code.
+                                                    from numpy import ndarray, linspace
+                                                    
                                                     nx, ny, nz = (50, 50, 50)
                                                     rgb = ndarray((nx,ny,nz,3))
                                                     hsv = ndarray((nx,ny,nz,3))

@@ -55,7 +55,7 @@ block content
                                     .callout
                                         | Featured Use
                                     .description
-                                        | The Freeman Lab at Janelia Research Campus uses lightning to visualize large-scale neural recordings from larval zebrafish, in collaboration with the lab of Misha Ahrens.
+                                        | The Freeman Lab at Janelia Research Campus uses Lightning to visualize large-scale neural recordings from zebrafish, in collaboration with the Ahrens Lab.
 
 
                             a.slidesjs-previous.slidesjs-navigation
@@ -78,10 +78,13 @@ block content
                             | API Driven
                         img(src="/images/icons/server.svg")
                         .description
-                            | Data is pushed to the server via a REST API. An 
+                            | Data is pushed to the server via a REST API. Official
                             a(href="https://github.com/lightning-viz/lightning-python", target="_blank")
-                                | official python client
-                            |  is provided. We hope to support more languages soon.
+                                | python
+                            |  and 
+                            a(href="https://github.com/lightning-viz/lightning.js", target="_blank")
+                                | node.js
+                            |  clients are provided. We hope to support more languages soon.
 
                 .column-4
                     .feature-callout
@@ -98,7 +101,7 @@ block content
                         img(src="/images/icons/ipython.svg")
                         .description
                             | Experience the full power of interactive visualizations inside of the iPython notebook. 
-                            a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/plots/scatter.ipynb")
+                            a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb")
                                 | Click here to see a demo.
 
         section.how-it-works
@@ -175,7 +178,7 @@ block content
             .row
                 .column-4
 
-                    +example('Particles', '/3d#particles', '/images/examples/particles.png')
+                    +example('Scatter3', '/3d#scatter3', '/images/examples/particles.png')
                 .column-4
 
                     +example('Force Graph', '#force', '/images/examples/force-graph.png')

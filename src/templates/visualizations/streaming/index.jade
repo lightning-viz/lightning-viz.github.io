@@ -9,100 +9,8 @@ block content
     .documentation-container
         .row
             .column-3.hidden-mobile.overview-container
-
-                section
-                    a(href="/")
-                        | Lightning
-
-                    ul
-                        li
-                            a(href="http://github.com/lightning-viz/lightning")
-                                | Github
-                        li
-                            a(href="/")
-                                | Website
-                        li
-                            a(href="/documentation")
-                                | Documentation
-                        li
-                            a(href="/visualizations")
-                                | Examples
-                        li
-                            a(href="https://github.com/lightning-viz/lightning-example-notebooks")
-                                | IPython Examples
-
-                section
-                    a(href="/visualizations#plots")
-                        | Plots
-
-                    ul
-                        li
-                            a(href="/visualizations#scatter")
-                                | Scatter
-                        li
-                            a(href="/visualizations#line")
-                                | Line
-                        li
-                            a(href="/visualizations#line-stacked")
-                                | Line Stacked
-                        li
-                            a(href="/visualizations#force")
-                                | Force
-                        li
-                            a(href="/visualizations#graph")
-                                | Graph
-                        li
-                            a(href="/visualizations#graph-bundled")
-                                | Graph Bundled
-                        li
-                            a(href="/visualizations#matrix")
-                                | Matrix
-
-                        li
-                            a(href="/visualizations#adjacency")
-                                | Adjacency
-
-                        li
-                            a(href="/visualizations#map")
-                                | Map                
-
-                section
-                    a(href="/visualizations/images")
-                        | Images
-
-                    ul
-                        li
-                            a(href="/visualizations/images#image")
-                                | Image
-                        li
-                            a(href="/visualizations/images#gallery")
-                                | Gallery
-                
-
-                section
-                    a(href="/visualizations/3d")
-                        | 3D
-
-                    ul
-                        li
-                            a(href="/visualizations/3d#particles")
-                                | Particles
-                        li
-                            a(href="/visualizations/3d#volume")
-                                | Volume
-                
-                section
-                    a(href="/visualizations/streaming")
-                        | Streaming
-
-                    ul
-                        li
-                            a(href="/visualizations/streaming#line")
-                                | Line
-                        li
-                            a(href="/visualizations/streaming#scatter")
-                                | Scatter
-
+                - var section = 'streaming'
+                include ../../includes/visualizations/sidebar
 
             //- .column-1
             .column-3.hidden-mobile.empty-container
@@ -165,7 +73,7 @@ block content
                                                         "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
                                                         "axis": [0, 1, ...]
                                                         "color": [[r0,g0,b0], [r1,g1,b1], ...]
-                                                        "group": [g0, g1, ...]
+                                                        "label": [l0, l1, ...]
                                                         "size": [s0, s1, ...]
                                                     }
 
@@ -173,7 +81,7 @@ block content
 
                                             pre
                                                 code.python.
-                                                    import random
+                                                    from numpy import random
 
                                                     # initialize with zeros
                                                     viz = lgn.linestreaming([0, 0, 0])
@@ -207,7 +115,7 @@ block content
                                                     data = {
                                                         "points": [[x0,y0], [x1,y1], ... ]
                                                         "color": [[r0,g0,b0], [10,20,0], ...]
-                                                        "group": [g0, g1, ...]
+                                                        "label": [l0, l1, ...]
                                                         "size": [s0, s1, ...]
                                                     }
 
@@ -215,7 +123,7 @@ block content
 
                                             pre
                                                 code.python.
-                                                    import random
+                                                    from numpy import random
 
                                                     # initialize with random points
                                                     viz = lgn.scatterstreaming(random.rand(10),random.rand(10), label=0)
