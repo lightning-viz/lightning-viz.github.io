@@ -221,11 +221,11 @@ block content
                                                     import networkx as nx
                                                     from numpy import random
 
-                                                    G = nx.random_regular_graph(3,n)
+                                                    G = nx.random_regular_graph(3,100)
                                                     mat = nx.adjacency_matrix(G).todense()
-                                                    l = (random.rand(n)*5).astype('int')
+                                                    l = (random.rand(100)*5).astype('int')
                                                     
-                                                    lgn.force(mat, color=c)
+                                                    lgn.force(mat, label=l)
 
                                 a(name="graph", href="#graph")
                                     h4
@@ -266,10 +266,13 @@ block content
                                                     import networkx as nx
 
                                                     G = nx.random_geometric_graph(100, 0.2)
+                                                    pos = asarray(nx.get_node_attributes(G, 'pos').values())
                                                     dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
                                                     center = argmin(dists)
                                                     p = nx.single_source_shortest_path_length(G, center)
+                                                    
                                                     xy = asarray([pos[i,:] for i in p.keys()])
+                                                    mat = nx.adjacency_matrix(G).todense()
                                                     l = p.values()
 
                                                     lgn.graph(xy[:,0], xy[:,1], mat, label=l)
@@ -356,7 +359,7 @@ block content
                                                     
                                                     mat = random.random((10, 10))
 
-                                                    lgn.matrix(mat, colormap="Blues")
+                                                    lgn.matrix(mat, colormap="Purples")
 
                                 a(name="adjacency", href="#adjacency")
                                     h4
