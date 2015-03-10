@@ -51,11 +51,11 @@ lgn.linestacked(y, size=6)
 </code></pre></div><div id="force-python-tab"><pre><code>import networkx as nx
 from numpy import random
 
-G = nx.random_regular_graph(3,n)
+G = nx.random_regular_graph(3,100)
 mat = nx.adjacency_matrix(G).todense()
-l = (random.rand(n)*5).astype('int')
+l = (random.rand(100)*5).astype('int')
 
-lgn.force(mat, color=c)
+lgn.force(mat, label=l)
 </code></pre></div></div></div><a name="graph" href="#graph"><h4>Graph</h4></a><p>A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.</p><div id="graph-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/130/pym"></div><div class="tab-container"><ul><li><a href="#graph-data-tab">Data Structure</a></li><li><a href="#graph-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-data-tab"><pre><code>data = {
     "nodes": [[x0,y0], [x1,y1], ... ]
     "links": [[source0, target0, value0], [source1, target1, value1], ...]
@@ -67,10 +67,13 @@ lgn.force(mat, color=c)
 import networkx as nx
 
 G = nx.random_geometric_graph(100, 0.2)
+pos = asarray(nx.get_node_attributes(G, 'pos').values())
 dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
 center = argmin(dists)
 p = nx.single_source_shortest_path_length(G, center)
+
 xy = asarray([pos[i,:] for i in p.keys()])
+mat = nx.adjacency_matrix(G).todense()
 l = p.values()
 
 lgn.graph(xy[:,0], xy[:,1], mat, label=l)
@@ -98,7 +101,7 @@ lgn.graphbundled(pos[:,0], pos[:,1], mat)
 
 mat = random.random((10, 10))
 
-lgn.matrix(mat, colormap="Blues")
+lgn.matrix(mat, colormap="Purples")
 </code></pre></div></div></div><a name="adjacency" href="#adjacency"><h4>Adjacency</h4></a><p>An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.</p><div id="adjacency-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/183/pym" data-pym></div><div class="tab-container"><ul><li><a href="#adjacency-data-tab">Data Structure</a></li><li><a href="#adjacency-python-tab">Python Example</a></li></ul><div class="content-container"><div id="adjacency-data-tab"><pre><code>data = {
     "nodes": [0, 1, 2, ... ]
     "links": [[source0, target0, value0], [source1, target1, value1], ...]
