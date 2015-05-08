@@ -35,24 +35,13 @@
     ]
   },
   "scripts": {
-    "deploy": "gh-pages-deploy",
+    "deploy": "./build.sh",
     "build": "gulp build"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "public",
-    "cname": "lightning-viz.org",
-    "prep": [
-      "build"
-    ],
-    "srcbranch": "src",
-    "deploybranch": "master",
-    "noprompt": false
   },
   "devDependencies": {
     "browserify": "~4.1.8",
     "colors": "~0.6.2",
     "express": "~4.0.0",
-    "gh-pages-deploy": "^0.3.0",
     "gulp": "~3.8.0",
     "gulp-browserify": "~0.5.0",
     "gulp-buster": "git://github.com/mathisonian/gulp-buster",
