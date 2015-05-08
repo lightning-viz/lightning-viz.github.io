@@ -799,7 +799,25 @@ block content
                                             // now do something different with the data
                                         }
 
+                                a(name="prototype-locally", href="#prototype-locally")
+                                    h4
+                                        | Prototyping custom plots locally                                     
 
+                                p
+                                    | If you are running a local Lightning server, you can go to:
+
+                                pre
+                                    code. 
+                                        http://localhost:3000/visualization-types/preview/full/?path=/path/to/viz/my-vis
+
+                                p
+                                    | this will render whatever visualization is inside the folder  
+                                    span.inline-code 
+                                        | my-vis
+                                    |  assuming that the visualization conforms to the basic structure for a Lightning visualization type.
+
+                                p
+                                    | This approach can be useful designing and debugging visualizations locally. For live, light-weight editing the built-in Lightning visualization editor is your friend.
                                 
                                 //- a(name="custom-utils", href="#custom-utils")
                                 //-     h4
