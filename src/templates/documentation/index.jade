@@ -606,7 +606,7 @@ block content
                                          * Initialize the visualization. This is kept separate by convention to make it easy
                                          * to inherit from other visualization types.
                                          */
-                                        MyCusomViz.prototype._init = function() {
+                                        MyCustomViz.prototype._init = function() {
                                             // draw the actual visualization here
                                             // e.g.
                                             var svg = d3.select(this.selector)
@@ -618,7 +618,7 @@ block content
                                         /*
                                          * Take the provided data and return it in whatever data format is needed
                                          */
-                                        MyCusomViz.prototype._formatData = function(data) {
+                                        MyCustomViz.prototype._formatData = function(data) {
                                            var transformedData = data;
 
                                            // …
@@ -632,7 +632,7 @@ block content
                                         /*
                                          * Optional function, use this if you want to users to send updated data to this plot
                                          */
-                                        MyCusomViz.prototype.updateData = function(data) {
+                                        MyCustomViz.prototype.updateData = function(data) {
                                             this.data = this._formatData(data);
                                             // then update the visualization
                                         }
@@ -640,7 +640,7 @@ block content
                                         /*
                                          * Optional function, use this if you want to enable streaming updates to this plot
                                          */
-                                        MyCusomViz.prototype.appendData = function(data) {
+                                        MyCustomViz.prototype.appendData = function(data) {
                                             this.data = this.data.concat(this._formatData(data));
                                             // then update the visualization
                                         }
