@@ -43,7 +43,7 @@ var MyCustomViz = function(selector, data, images, opts) {
  * Initialize the visualization. This is kept separate by convention to make it easy
  * to inherit from other visualization types.
  */
-MyCusomViz._init = function() {
+MyCustomViz.prototype._init = function() {
     // draw the actual visualization here
     // e.g.
     var svg = d3.select(this.selector)
@@ -55,7 +55,7 @@ MyCusomViz._init = function() {
 /*
  * Take the provided data and return it in whatever data format is needed
  */
-MyCusomViz._formatData = function(data) {
+MyCustomViz.prototype._formatData = function(data) {
    var transformedData = data;
    
    // …
@@ -69,7 +69,7 @@ MyCusomViz._formatData = function(data) {
 /*
  * Optional function, use this if you want to users to send updated data to this plot
  */
-MyCusomViz.updateData = function(data) {
+MyCustomViz.prototype.updateData = function(data) {
     this.data = this._formatData(data);
     // then update the visualization
 }
@@ -77,7 +77,7 @@ MyCusomViz.updateData = function(data) {
 /*
  * Optional function, use this if you want to enable streaming updates to this plot
  */
-MyCusomViz.appendData = function(data) {
+MyCustomViz.prototype.appendData = function(data) {
     this.data = this.data.concat(this._formatData(data));
     // then update the visualization
 }
