@@ -564,7 +564,7 @@ block content
                                             | style.scss (optional) - optional scss styles to be applied
 
                                         li
-                                            | template.jade (optional) - a markup file for any html that is needed
+                                            | <visualization-name>.jade (optional) - a markup file for any html that is needed
 
 
                                 p
@@ -702,10 +702,10 @@ block content
                                 
                                 a(name="custom-template", href="#custom-template")
                                     h4
-                                        | template.jade
+                                        | <visualization-name>.jade
 
                                 p
-                                    | This is a jade file that can be required in index.js. For example, the gallery visualization has a markdown file that looks like
+                                    | This is a jade file that can be required in index.js. Note: the name of the file must be the same as the name of the project. For example, the gallery visualization is named gallery.jade and has a markdown file that looks like
 
                                 pre
                                     code.
@@ -724,7 +724,7 @@ block content
                                     | then in index.js 
                                 pre
                                     code.
-                                        var markup = require(‘./template.jade’);
+                                        var markup = require(‘./gallery.jade’);
                                         var templateVars = {};
                                         var compiledHTML = markup();
 
