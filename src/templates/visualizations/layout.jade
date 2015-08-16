@@ -1,0 +1,51 @@
+extends ../layout
+
+mixin editorJS(name, moduleName)
+    script(src="http://localhost:3000/js/dynamic/viz/?visualizations[]=#{name}")
+    script.
+        window.lightning = window.lightning || {};
+        window.lightning.editor = {
+            moduleName: '#{moduleName}'
+        };
+
+block content
+
+    .top.bar
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                - var section = 'plots'
+                include ../includes/visualizations/sidebar
+
+            //- .column-1
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                header            
+                    .row
+                        .column-12
+                            .row.header
+                                .column-1.mobile-column-1
+                                    img(src="/images/logo.png")
+
+                                .column-10.mobile-column-3
+                                    h1
+                                        | Lightning
+
+                                    | DATA VISUALIZATION SERVER  
+
+
+                section(name="introduction")
+                    .row
+                        .column-12
+                            block container
+                                #editor-component
+                
+
+    .bottom.bar.visible-mobile
+
+
+block scripts
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    block editor-scripts
+    script(src='#{STATIC_URL}js/editor.js')

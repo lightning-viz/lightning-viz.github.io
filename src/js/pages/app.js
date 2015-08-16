@@ -5,7 +5,7 @@ var $example = $('.example');
 var ew = $example.width() * 0.66;
 $example.css({'height':ew+'px'});
 
-require('./lib/jquery.slides');
+require('../lib/jquery.slides');
 
 
 var width = $('.column-12').first().width();
@@ -47,7 +47,7 @@ $('[data-pym]').each(function(i) {
     
 });
 
-var LineStreaming = require('./lib/viz/line-streaming');
+var LineStreaming = require('../lib/viz/line-streaming');
 
 $('[line-data-streaming]').each(function() {
 
@@ -67,7 +67,7 @@ $('[line-data-streaming]').each(function() {
     }, 1000);
 })
 
-var ScatterStreaming = require('./lib/viz/scatter-streaming');
+var ScatterStreaming = require('../lib/viz/scatter-streaming');
 
 $('[scatter-data-streaming]').each(function() {
 

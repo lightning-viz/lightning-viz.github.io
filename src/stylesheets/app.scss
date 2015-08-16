@@ -411,7 +411,7 @@ ul.styled {
     margin-top: 15px;
     margin-bottom: 20px;
 
-    ul { 
+    nav ul { 
         margin: 0; padding: 0; 
         li { 
             display: inline-block; 
@@ -429,23 +429,23 @@ ul.styled {
                 &:visited {
                     color: #444;
                 }
-
-                &.active {
-                    font-weight: bold;
-                }
             }
 
-            &.active {
+            &.is-active {
                 background-color: #f6f7fa;; 
                 padding-top: 6px; 
                 position: relative; 
                 top: 1px; 
                 border-top: solid 2px $purple;
+
+                a {
+                    font-weight: bold;
+                }
             }
         }
     }
     
-    .content-container { 
+    .tab-panel { 
 
         background-color: #f6f7fa;
         padding: 10px;
@@ -526,5 +526,45 @@ ul.styled {
     }
 }
 
+.button,
+button,
+input[type=submit] {
+    border-radius: 2px;
+    border: 1px solid #719BEC;
+    background-color: white;
+
+    font-size: 15px;
+    color: $blue;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 0;
+
+    &:hover {
+        background-color: darken(white, 5%);
+        color: darken($blue, 15%);
+    }
+
+    &:focus {
+        outline:0;
+    }
+}
+
+input[type=submit],
+button {
+    padding: 5px 10px;
+}
+
+.data-button {
+    /*margin-top: 13px;*/
+
+    margin-right: 10px;
+    margin-top: 10px;
+
+    &.active {
+        color: #fff;
+        background-color: $blue;
+    }
+}
 
 @import "views/documentation";

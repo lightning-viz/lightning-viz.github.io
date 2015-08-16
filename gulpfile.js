@@ -45,7 +45,7 @@ gulp.task('gzip', ['build'], function() {
 
 gulp.task('browserify', function() {
     // Single entry point to browserify
-    return gulp.src('src/js/app.js')
+    return gulp.src('src/js/pages/*.js')
         .pipe(browserify({
             debug : !PRODUCTION_MODE
         }))
