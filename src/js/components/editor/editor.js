@@ -40,6 +40,12 @@ var Editor = React.createClass({
         });
     },
 
+    componentDidUpdate: function() {
+        if(this.state.isEditing) {
+            React.findDOMNode(this.refs.contentEditable).focus();;
+        }
+    },
+
     renderInnerComponent: function() {
         if(this.state.isEditing) {
             var html = $('#inner-editor pre').parent().html();
