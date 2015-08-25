@@ -96,6 +96,55 @@ ul, li {
     }
 }
 
+.caption {
+    font-family: "AvenirNext-UltraLight";
+    font-size: 22px;
+    line-height: 1.2em;
+    padding-bottom: 20px;
+}
+
+.method-header {
+    font-size: 24px;
+    line-height: 1.2em;
+    font-family: "AvenirNext";
+    font-weight: 800;
+    margin-bottom: 3px;
+    margin-top: 20px;
+    color: #9E62F2;
+}
+
+.method-divider {
+    border: solid 2px #9E62F2;
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.method-item {
+    font-family: "HelveticaNeue" sans-serif;
+    cursor: pointer;
+    font-size: 18px;
+    border: solid 2px #9E62F2;
+    font-weight: 800;
+    color: #9E62F2;
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.method-item:hover {
+    background-color: #9E62F2;
+    color: white;
+}
+
+.lang {
+    text-transform: none;
+    width: 25px;
+    text-align: center;
+}
+
 
 .example {
 

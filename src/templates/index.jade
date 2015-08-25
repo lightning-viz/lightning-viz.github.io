@@ -1,191 +1,72 @@
 extends layout
 
 
-mixin example(name, url, image)
-    a(href="/visualizations#{url}")
-        .example(style="background-image: url(#{image})")
-            .overlay
-                | #{name}
-
 block content
 
     .top.bar
 
-    .container
-        header           
-            .row.header
-                .column-1.mobile-column-1
-                    img(src="/images/logo.png")
 
-                .column-10.mobile-column-3
-                    h1
-                        | Lightning
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include includes/sidebar
 
-                    | DATA VISUALIZATION SERVER
-                .column-1
-                    .github-container
-                        iframe(src="http://ghbtns.com/github-btn.html?user=lightning-viz&repo=lightning&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")
+            //- .column-1
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                header      
+                    .row(style='margin-top:20px')
+                        .column-12
+                            .row.header
+                                .column-1.mobile-column-1
+                                    img(src="/images/logo5.png" width="70px")
 
+                                .column-10.hidden-mobile
+                                    h1(style="font-size: 58px; font-family: 'AvenirNext'; color: #9E62F2")
+                                        | Lightning
 
-        section.hero
-            .row
-                .column-12
+                            .row(style='margin-top:10px')
+                                .column-4.hidden-mobile
+                                    img(src="/images/gallery.png" width="440px" style='margin-top:10px')
 
-                    .slide-container
-                        
-                        #slides
-                            .hero-image
-                                iframe(src="https://lightning-docs.herokuapp.com/visualizations/4/iframe/")
-                                .overlay
-                                    .callout
-                                        | An API for data visualizations
-                                    .description
-                                        | Lightning provides a set of web-based visualizations that can plug into your existing workflow.
+                                .column-3
+                                    h2.caption
+                                        | Lightning provides API-based access to reproducible web-based visualizations.
 
-                            .hero-image
-                                iframe(src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/")
-                                .overlay
-                                    .callout
-                                        | Fully interactive, easy to embed
-                                    .description
-                                        | Click on points in the graph to see their connections.
+                                    h2.caption
+                                        | Turn your data into rich, interactive visualizations, straight from your favorite language, with or without a server.
 
-                            .hero-image.featured-image
-                                .overlay
-                                    .callout
-                                        | Featured Use
-                                    .description
-                                        | The Freeman Lab at Janelia Research Campus uses Lightning to visualize large-scale neural recordings from zebrafish, in collaboration with the Ahrens Lab.
+                                    h2.caption
+                                        | All visualizations are npm modules, built with the latest web technologies, and endlessly customizable.
 
+                            .row
+                                .column-3
+                                    h1.method-header
+                                        | Many ways to run
+                                    hr.method-divider
+                                    div
+                                        span.method-item
+                                            | heroku
+                                        span.method-item
+                                            | public
+                                        span.method-item
+                                            | docker
+                                        span.method-item
+                                            | jupyter
+                                        span.method-item
+                                            | linux 64
+                                        span.method-item
+                                            | OS X
 
-                            a.slidesjs-previous.slidesjs-navigation
-                                | &lsaquo;
-                            a.slidesjs-next.slidesjs-navigation
-                                | &rsaquo;
+                                .column-3.prefix-1
+                                    h1.method-header
+                                        | Clients in many languages
+                                    hr.method-divider
+                                    div
+                                        span.method-item
+                                            | python
+                                        span.method-item
+                                            | node
+                                        span.method-item
+                                            | scala
 
-        section.tagline
-
-            .row
-                .column-8.center-column
-                    h5
-                        | Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization. Lightning supports modern libraries like d3.js and three.js, and is designed for interactivity over large data sets and continuously updating data streams.
-
-        section.features
-            .row
-                .column-4
-                    .feature-callout
-                        .callout
-                            | API Driven
-                        img(src="/images/icons/server.svg")
-                        .description
-                            | Data is pushed to the server via a REST API. Official 
-                            a(href="https://github.com/lightning-viz/lightning-python", target="_blank")
-                                | python
-                            |  and 
-                            a(href="https://github.com/lightning-viz/lightning.js", target="_blank")
-                                | node.js
-                            |  clients are provided. We hope to support more languages soon.
-
-                .column-4
-                    .feature-callout
-                        .callout
-                            | Library Agnostic
-                        img(src="/images/icons/library.svg")
-                        .description
-                            | Lightning is compatible with most web-based visualization libraries, including d3, three.js, leaflet, and more. Users can add custom charts using any library they prefer.
-
-                .column-4
-                    .feature-callout
-                        .callout
-                            | iPython Support
-                        img(src="/images/icons/ipython.svg")
-                        .description
-                            | Experience the full power of interactive visualizations inside of the iPython notebook. 
-                            a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb")
-                                | Click here to see a demo.
-
-        section.how-it-works
-            .row
-                .column-12
-                    h1
-                        | How it Works
-
-            .row
-                .column-12
-                    img(src="/images/how-it-works.png")
-
-            .row
-                .column-12
-                    h4
-                        | Send data to a Lightning server and it creates 
-                        a(href="/visualizations")
-                            | beautiful visualizations 
-                        | using modern web technologies.
-
-        section.getting-started
-
-            .row
-                .column-12
-                    h1
-                        a(href="/documentation")
-                            | Getting Started
-
-            //- .row
-                .column-3.center-column
-                    a(href="http://lightning.mathisonian.com", target="_blank")
-                        .button
-                            | Demo Server
-
-            .row
-                .column-3.center-column
-                    a(href="/documentation")
-                        .button
-                            | Guide to Getting Started
-
-            //- .row
-                .column-3.center-column
-                    a(href="#")
-                        .button
-                            | Github
-        section.examples
-
-            .row
-                .column-12
-                    h1
-                        a(href="/visualizations")
-                            | Examples
-
-                    h4
-                        a(href="/visualizations")
-                            | Click to view interactive version
-
-            .row
-                .column-4
-                    +example('Line', '#line', '/images/examples/line.png')
-                .column-4
-                    +example('Scatter', '#scatter', '/images/examples/scatter.png')
-                .column-4
-                    +example('Graph', '#graph', '/images/examples/graph.png')
-
-            .row
-                .column-4
-                    +example('Matrix', '#matrix', '/images/examples/matrix.png')
-                .column-4
-                    +example('Image', '/images#image', '/images/examples/image.png')
-                .column-4
-                    +example('Map', '#map', '/images/examples/map.png')
-            
-            .row
-                .column-4
-
-                    +example('Scatter3', '/3d#scatter3', '/images/examples/particles.png')
-                .column-4
-
-                    +example('Force Graph', '#force', '/images/examples/force-graph.png')
-                .column-4
-                    
-                    +example('Volume', '/3d#volume', '/images/examples/volume.png')
-
-
-
-    .bottom.bar
