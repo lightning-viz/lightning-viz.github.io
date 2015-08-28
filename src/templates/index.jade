@@ -18,30 +18,36 @@ block content
                     .row(style='margin-top:20px')
                         .column-12
                             .row.header
-                                .column-4.mobile-column-1
+                                .column-6.mobile-column-1
                                     img(src="/images/logo5.png" width="70px" style='vertical-align: middle;')
-                                    h1(style="font-size: 58px; font-family: 'AvenirNext'; color: #9E62F2; display:inline-block; padding-left: 30px; vertical-align: middle; margin-top: 0px" class='hidden-mobile')
+                                    h1(style="font-size: 58px; font-family: 'AvenirNext'; color: rgb(145, 117, 240); display:inline-block; padding-left: 30px; vertical-align: middle; margin-top: 0px" class='hidden-mobile')
                                         | Lightning
 
-                                .column-1
-                                    .github-container.hidden-mobile
-                                        iframe(src="http://ghbtns.com/github-btn.html?user=lightning-viz&repo=lightning&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20", style="margin-top:40px; margin-left:-20px")
-
-                            .row(style='margin-top:10px')
+                            .row(style='margin-top:4%')
                                 .column-4.hidden-mobile
-                                    img(src="/images/gallery.png" width="440px" style='margin-top:10px')
+                                    each val in ["line", "scatter", "graph", "matrix", "image", "map", "adjacency", "circle", "line", "scatter-3", "volume", "graph-bundled"]
+                                        a(href="/visualizations/" + val)
+                                            img(src="https://raw.githubusercontent.com/lightning-viz/lightning-default-index/master/thumbnails/" + val + ".png" class='viz-thumbnail' width="100px" )
 
                                 .column-3
                                     h2.caption
-                                        | Lightning provides API-based access to reproducible web-based visualizations.
+                                        | Lightning provides API-based access to reproducible web visualizations.
 
                                     h2.caption
-                                        | Turn your data into rich, interactive visualizations, straight from your favorite language, with or without a server.
+                                        | Turn your data into interactive visualizations, using your favorite language, with or without a server.
 
                                     h2.caption
                                         | All visualizations are npm modules, built with the latest web technologies, and endlessly customizable.
 
-                            .row
+                                    a(href='/documentation/')
+                                        span.method-item.getting-started
+                                            | Get started
+
+
+                        
+
+                            .row(style='margin-top:4%; margin-bottom: 5%')
+                                
                                 .column-3
                                     h1.method-header
                                         | Many ways to run
@@ -60,7 +66,8 @@ block content
                                         span.method-item
                                             | OS X
 
-                                .column-3.prefix-1
+                                .column-1.empty-container
+                                .column-3
                                     h1.method-header
                                         | Clients in many languages
                                     hr.method-divider
