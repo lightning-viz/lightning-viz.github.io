@@ -4,6 +4,7 @@
 
     a {
         outline: none;
+
     }
     a:visited {
         color: $purple;
@@ -33,7 +34,8 @@
             padding-bottom: 0;
 
             > a {
-                font-size: 24px;
+                font-family: 'AvenirNext', sans-serif;
+                font-size: 22px;
             }
 
             ul {

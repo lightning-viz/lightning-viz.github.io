@@ -96,6 +96,69 @@ ul, li {
     }
 }
 
+.caption {
+    font-family: "AvenirNext-UltraLight";
+    font-size: 18px;
+    line-height: 1.2em;
+    padding-bottom: 20px;
+}
+
+.gh-btn {
+    background-color: red !important;
+    background-image: none;
+}
+
+.method-header {
+    font-size: 22px;
+    line-height: 1.2em;
+    font-family: "AvenirNext-UltraLight";
+    margin-bottom: 3px;
+    margin-top: 20px;
+}
+
+.method-divider {
+    border: solid 2px rgb(145, 117, 240);
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.method-item {
+    font-family: "AvenirNext" sans-serif;
+    cursor: pointer;
+    font-size: 15px;
+    border: solid 1px rgb(120,120,120);
+    font-weight: 800;
+    color: rgb(120,120,120);
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: 0.1s;
+}
+
+.method-item:hover {
+    background-color: rgb(120,120,120);
+    color: white;
+}
+
+.getting-started {
+    border: dotted 2px rgb(145, 117, 240);
+    color: rgb(145, 117, 240);
+    font-style: italic;
+}
+
+.getting-started:hover {
+    background-color: rgb(145, 117, 240);
+}
+
+.lang {
+    text-transform: none;
+    width: 25px;
+    text-align: center;
+}
+
 
 .example {
 
@@ -405,6 +468,16 @@ ul.styled {
     li {
         list-style: inherit;
     }
+}
+
+.viz-thumbnail {
+    margin-right: 5px;
+    opacity:0.8;
+    transition: all 0.2s;
+}
+
+.viz-thumbnail:hover {
+    opacity:0.4 !important;
 }
 
 .tab-container {
