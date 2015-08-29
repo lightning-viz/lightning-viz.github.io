@@ -8,6 +8,10 @@ mixin editorJS(name, moduleName)
             moduleName: '#{moduleName}'
         };
 
+mixin heading(name)
+    h2
+        | #{name}
+
 block content
 
     .top.bar
@@ -21,23 +25,11 @@ block content
             //- .column-1
             .column-3.hidden-mobile.empty-container
             .column-7.mobile-column-3.details-container
-                header            
-                    .row
-                        .column-12
-                            .row.header
-                                .column-1.mobile-column-1
-                                    img(src="/images/logo.png")
-
-                                .column-10.mobile-column-3
-                                    h1
-                                        | Lightning
-
-                                    | DATA VISUALIZATION SERVER  
-
 
                 section(name="introduction")
                     .row
                         .column-12
+                            block heading
                             block container
                                 #editor-component
                 
