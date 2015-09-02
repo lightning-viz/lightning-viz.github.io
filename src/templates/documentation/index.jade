@@ -68,7 +68,7 @@ block content
                                     | We've designed many ways to use Lightning, to support a variety of use cases. The options fall into three categories: use a prebuilt server, run your own server, or use locally without a server. Here we introduce the approaches; see individual sections below for more details.
 
                                 p 
-                                    | The prebuilt servers are the easiest way to get started with Lightning. You can use our public server  at [http://public.lightning-viz.org] to generate and share any of the core Lightning visualization types, or download the local standalone app, which is perfect for data science applications.
+                                    | The prebuilt servers are the easiest way to get started with Lightning. You can use our public server  at [http://public.lightning-viz.org] to generate and share any of the core Lightning visualization types, or download the standalone app, which is perfect for doing local data analysis.
                                 div
                                     span.method-item
                                         | public
@@ -106,7 +106,7 @@ block content
                                         | Use a prebuilt server
 
                                 p
-                                    | There are a couple ways to use a prebuilt server. This is the easiest way to get started.
+                                    | This is the easiest way to get started, and there are a couple options depending on your use case.
 
                                 a(name="public", href="#public")
                                     h4
@@ -263,76 +263,69 @@ block content
                                 p
                                     | Start the lightning server as described above. Lightning will now be running using Postgres.
 
-
-                                a(name="first-viz", href="#first-viz")
-                                    h4
-                                        | Creating Your First Visualization
-
-                                p
-                                    | Navigate to your lightning host, and create a new session.
-
-
-                                p
-                                    | Then, click “create visualization”
-
-                                .screenshot
-                                    img(src="/images/screenshots/1.png")
-                                p
-                                    | Select the “line” type, and enter 
-                                    span.inline-code 
-                                        | {"series": [1, 1, 2, 3, 5, 8]}
-                                    | .
-                                    | NOTE: the data must be a properly formed JSON object.
-
-                                .screenshot
-                                    img(src="/images/screenshots/2.png")
-                                p
-                                    | Submit the form and you should see a line plot of that data.
-
-                                .screenshot
-                                    img(src="/images/screenshots/3.png")
-                                p
-                                    | To create a choropleth map, select “map” type and enter 
-                                    span.inline-code 
-                                        | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
-                                    | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
-
-
-                                .screenshot
-                                    img(src="/images/screenshots/4.png")
-
-                                p 
-                                    | This method works for all data visualization types, but generally it is preferable to interact through an API client. To learn how to use the python client, continue below.
-
                 section
                     .row
                         .column-12
                                 
-                                a(name="python", href="#python")
-                                    h2    
-                                        | Using with Python
+                                a(name="first-viz", href="#first-viz")
+                                    h2
+                                        | Creating a visualization
 
                                 p
-                                    | The 
-                                    a(href="http://lightning-viz.github.io/lightning-python/")
-                                        | python client 
-                                    |  makes it easy to generate interactive visualizations from Python, and 
-                                    a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/plots/scatter.ipynb") 
-                                        | embed them within an iPython notebook
-                                    | . The client provides access to all of 
-                                    a(href="/visualizations")
-                                        | Lightning’s core visualizations.
+                                    | Once you have a server, creating a visualization is easy. Here we describe the three most common ways you'll generate visualizations: creating a visualization directly, using a client library, or via the REST API.
+
+                                a(name="direct", href="#direct")
+                                    h4
+                                        | From the server
+
+                                    p
+                                        | Navigate to your lightning host, and create a new session.
 
 
+                                    p
+                                        | Then, click “create visualization”
+
+                                    .screenshot
+                                        img(src="/images/screenshots/1.png")
+                                    p
+                                        | Select the “line” type, and enter 
+                                        span.inline-code 
+                                            | {"series": [1, 1, 2, 3, 5, 8]}
+                                        | .
+                                        | NOTE: the data must be a properly formed JSON object.
+
+                                    .screenshot
+                                        img(src="/images/screenshots/2.png")
+                                    p
+                                        | Submit the form and you should see a line plot of that data.
+
+                                    .screenshot
+                                        img(src="/images/screenshots/3.png")
+                                    p
+                                        | To create a choropleth map, select “map” type and enter 
+                                        span.inline-code 
+                                            | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
+                                        | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
+
+
+                                    .screenshot
+                                        img(src="/images/screenshots/4.png")
+
+                                a(name="client", href="#client")
+                                    h4
+                                        | Through a client
+
+                                p
+                                    | The client libraries make it easy to generate visualizations straight your favorite data analysis environment, including from within interactive notebooks. This is the most common way to generate visualizations. 
+
+                                p 
+                                    | We'll walk through an example using the Python client, see below to read more about the different client libraries.
+                            
                                 .screenshot
                                     img(src="/images/screenshots/5.png")
 
-                                a(name="install-python", href="#install-python")
-                                    h4
-                                        | Installation
-
                                 p
-                                    | The python client can be found on github here. It can be installed from pypi by running
+                                    | To install the Python client from PyPi, just call
 
 
                                 pre
@@ -340,21 +333,7 @@ block content
                                         | $ pip install lightning-python
 
                                 p
-                                    | Alternatively if you would like to install directly from the github repo, run the following commands:
-
-                                pre
-                                    code
-                                        | $ git clone git@github.com:lightning-viz/lightning-python.git
-                                        | $ cd lightning-python
-                                        | $ sudo pip install -e .
-
-
-                                a(name="initialize-python", href="#initialize-python")
-                                    h4
-                                        | Initializing the Client
-
-                                p
-                                    | To use lightning with a local server, simply import the library and instantiate a lightning object:
+                                    | If you are running a local server, simply import the library and instantiate a lightning object:
 
 
                                 pre
@@ -362,22 +341,20 @@ block content
                                         | from lightning import Lightning
                                         | lgn = Lightning()
                                 p
-                                    | If you are using a remote server (e.g. Heroku), pass in the `host` during instantiation
+                                    | If you are using a remote server (e.g. the public server, Docker, or Heroku), pass in the `host` during instantiation
 
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lightning(host=’https://public.lightning-viz.org’)
+
+                                p
+                                    | or
 
                                 pre
                                     code.python
                                         | from lightning import Lightning
                                         | lgn = Lightning(host=’https://<herokuappname>.herokuapp.com’)
-
-
-                                a(name="plotting-python", href="#plotting-python")
-                                    h4
-                                        | Creating Plots
-
-                                p
-                                    | The python client provides methods to plot data in the browser using all of lightning’s standard visualization types. The first thing to do is create a session (a session is simply a group or a feed of data visualizations - this is how lightning knows where to display the data).
-
 
                                 p
                                     | Once you have instantiated the lightning object, try running:
@@ -387,7 +364,7 @@ block content
                                         | lgn.create_session(‘hello world’)
 
                                 p
-                                    | This line tells lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
+                                    | This line tells Lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
 
                                     | You should see that this session has no data yet. To create a line plot call
 
@@ -412,31 +389,44 @@ block content
                                     | .
 
 
-
-
-                                a(name="ipython", href="#ipython")
+                                a(name="rest", href="#rest")
                                     h4
-                                        | IPython
+                                        | Using the REST API
 
                                 p
-                                    | Lightning aims to be fully compatible for use within the IPython notebook. To use in a notebook, simply pass in the ipython flag during instantiation:
+                                    | It's also possible to generate visualizations directly using Lightning's REST API.
 
-                                pre
-                                    code.python
-                                        | from lightning import Lightning
-                                        | lgn = Lightning(ipython=True)
+                                p
+                                    | Brief overview, methods, example 
+
+
+                section
+                    .row
+                        .column-12
                                 
-                                p
-                                    | and plot normally.
-
-
-                                a(name="docs-python", href="#docs-python")
-                                    h4
-                                        | Full Docs
+                                a(name="python", href="#python")
+                                    h2    
+                                        | Client libraries
 
                                 p
-                                    a(href="http://lightning-viz.github.io/lightning-python/")
-                                        | The full documentation for the python library can be found here.
+                                    | [This should probably just provide an overview of each client, where to find documentation, and for the Python client some description of the headless mode]
+
+                                a(name="python", href="#python")
+                                    h4    
+                                        | Python
+
+                                a(name="scala", href="#scala")
+                                    h4    
+                                        | Scala
+
+                                a(name="nodejs", href="#nodejs")
+                                    h4    
+                                        | node.js
+
+                                a(name="rstats", href="#rstats")
+                                    h4    
+                                        | R
+
 
                 section
                     .row
