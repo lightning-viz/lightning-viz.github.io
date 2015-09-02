@@ -11,7 +11,6 @@ block content
             .column-3.hidden-mobile.overview-container
                 include ../includes/sidebar
 
-            //- .column-1
             .column-3.hidden-mobile.empty-container
             .column-7.mobile-column-3.details-container
 
@@ -23,16 +22,19 @@ block content
                                         | Introduction
 
                                 p
-                                    | Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization. Lightning supports modern libraries like d3.js and three.js, and is designed for interactivity over large data sets and continuously updating data streams.
+                                    | Lightning is a framework for interactive data visualization. 
 
                                 p 
-                                    | To see examples of the types of visualizations that lightning can produce, check out the 
-                                    a(href="/visualizations") 
-                                        | visualizations page
-                                    | . To learn how to visualize your own data with lightning, continue reading here.
-                                p
-                                    | To start producing visualizations, you just need two things: (1) a running instance of a lightning server, and (2) a way to send data to the server. These instructions show you how to get both.
+                                    | The Lightning server provides API-based access to reproducible, web-based, interactive visualizations. It can be deployed in a variety of ways, including Heroku, Docker, a local app for OS X and Linux — and even a server-less version well-suited to notebooks like Jupyter. It comes bundled with a core set of visualizations, but is built to support an ecosystem of custom ones. 
 
+                                p
+                                    | Each visualization in Lightning is an npm module. This makes it easy to create new custom visualizations, using all of your favorite npm libraries (see [below]). If you design a custom visualization and publish it to npm, anyone can install it into their server. And if you've made something general-purpose, we can add it to the core set. 
+
+                                p
+                                    | Lightning can expose a single visualization to all the languages of data science. Client libraries are available in multiple languages, including Python, Scala, Node, and R, with more coming soon. If you want to contribute a client for your favorite language, let us know [chatroom].
+
+                                p 
+                                    | To see examples of the types of visualizations that Lightning can produce, check out the examples in the sidebar. To learn how to visualize your own data with lightning, continue reading here.
                 
                 section(name="server")
                     .row
