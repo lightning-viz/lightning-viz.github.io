@@ -22,19 +22,40 @@ block content
                                         | Introduction
 
                                 p
-                                    | Lightning is a framework for interactive data visualization. 
+                                    | Lightning is a framework for interactive data visualization, including a server, visualizations, and clients. 
 
                                 p 
-                                    | The Lightning server provides API-based access to reproducible, web-based, interactive visualizations. It can be deployed in a variety of ways, including Heroku, Docker, a public server, a local app for OS X and Linux — and even a server-less version well-suited to notebooks like Jupyter. It comes bundled with a core set of visualizations, but is built to support an ecosystem of custom ones. 
+                                    | The Lightning server provides API-based access to reproducible, web-based, interactive visualizations. It can be deployed in a variety of ways, including Heroku, Docker, a public server, a local app for OS X and Linux — and even a server-less version well-suited to notebooks like Jupyter. It comes bundled with a core set of visualizations, but is built to support custom ones. 
 
                                 p
-                                    | Each visualization in Lightning is an npm module. This makes it easy to create new custom visualizations, using all of your favorite npm libraries (see [below]). If you design a custom visualization and publish it to npm, anyone can install it into their server. And if you've made something general-purpose, we can add it to the core set. 
+                                    | Each visualization in Lightning is an 
+                                    span.inline-code
+                                        | npm
+                                    |  module. This makes it easy to create new custom visualizations using all of your favorite 
+                                    span.inline-code
+                                        | npm
+                                    |  libraries (see [below]). If you design a custom visualization and publish it to 
+                                    span.inline-code
+                                        | npm
+                                    | , anyone can install it into their server. And if you've made something general-purpose, we can add it to the core set. 
 
                                 p
-                                    | Lightning can expose a single visualization to all the languages of data science. Client libraries are available in multiple languages, including Python, Scala, Node, and R, with more coming soon. If you want to contribute a client for your favorite language, let us know [chatroom].
+                                    | Lightning can expose a single visualization to all the languages of data science. Client libraries are available in multiple languages, including 
+                                    span.inline-code
+                                        | python
+                                    | , 
+                                    span.inline-code
+                                        | scala
+                                    | , 
+                                    span.inline-code
+                                        | node.js
+                                    | , and 
+                                    span.inline-code
+                                        | r
+                                    | , with more coming soon. If you want to contribute a client for your favorite language, let us know [chatroom].
 
                                 p 
-                                    | To see examples of the types of visualizations that Lightning can produce, check out the examples in the sidebar. To learn how to visualize your own data with lightning, continue reading here.
+                                    | To see examples of the types of visualizations that Lightning can produce, check out the examples in the sidebar. To learn how to visualize your own data with Lightning, continue reading here.
                 
                 section(name="server")
                     .row
