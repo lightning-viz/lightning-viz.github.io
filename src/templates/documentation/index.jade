@@ -57,13 +57,78 @@ block content
                                 p 
                                     | To see examples of the types of visualizations that Lightning can produce, check out the examples in the sidebar. To learn how to visualize your own data with Lightning, continue reading here.
                 
-                section(name="server")
+                section(name="getting-started")
                     .row
                         .column-12
-                                a(name="server", href="#server")
+                                a(name="getting-started", href="#getting-started")
                                     h2
-                                        | Launching a server
+                                        | Getting started
 
+                                p
+                                    | We've designed many ways to use Lightning, to support a variety of use cases. The options fall into three categories: use a prebuilt server, run your own server, or use locally without a server. Here we introduce the approaches; see individual sections below for more details.
+
+                                p 
+                                    | The prebuilt servers are the easiest way to get started with Lightning. You can use our public server  at [http://public.lightning-viz.org] to generate and share any of the core Lightning visualization types, or download the local standalone app, which is perfect for data science applications.
+                                div
+                                    span.method-item
+                                        | public
+                                    span.method-item
+                                        | linux 64
+                                    span.method-item
+                                        | os x
+                                br
+                                p 
+                                    | Deploying your own server provides the most control and flexibility. You'll be able to view and edit visualizations, install and manage visualization types, and prototype new ones. You can use a one-click deployment to Heroku, run from our official Docker images, or install and run locally using 
+                                    span.inline-code
+                                        | node
+                                    |  and 
+                                    span.inline-code
+                                        | npm
+                                div
+                                    span.method-item
+                                        | heroku
+                                    span.method-item
+                                        | docker
+                                    span.method-item
+                                        | npm
+                                br
+                                p 
+                                    | You can also use Lightning without running a server at all through our client libraries (currently only Python). Just by installing the client you have access to Lightning's custom visualizations. This approach is great for data science applications, especially inside of notebooks, but has a few limitations. See the section on the Python client for more.
+                                div
+                                    span.method-item
+                                        | python
+
+                section(name="prebuilt-server")
+                    .row
+                        .column-12
+                                a(name="prebuilt-server", href="#prebuilt-server")
+                                    h2
+                                        | Use a prebuilt server
+
+                                p
+                                    | There are a couple ways to use a prebuilt server. This is the easiest way to get started.
+
+                                a(name="public", href="#public")
+                                    h4
+                                        | Public
+                                    p
+                                        | Explain the public server, where to access, example in Python, limitations (can't manage visualization types), free (but no guarentees), will be kept up to date.
+
+                                a(name="standalone", href="#standalone")
+                                    h4
+                                        | Standalone app
+                                    p
+                                        | Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
+
+                section(name="deploy-server")
+                    .row
+                        .column-12
+                                a(name="deploy-server", href="#deploy-server")
+                                    h2
+                                        | Deploy your own server
+
+                                p
+                                    | There are several ways to deploy your own Lightning server, for maximum control and flexibility.
 
                                 a(name="heroku", href="#heroku")
                                     h4
@@ -112,10 +177,17 @@ block content
                                                 | S3_SECRET
                                             | - if these values are provided lightning will use s3 to store user uploaded images. Note that because of Heroku restrictions if these are not provided, user uploading images will periodically be deleted.
 
+                                a(name="docker", href="#docker")
+                                    h4
+                                        | Docker
+
+                                    p
+                                        | Describe running a server with Docker, where to get the official image, how to run and access on OS X or Linux, how to customize with docker compose
+
 
                                 a(name="local-server", href="#local-server")
                                     h4
-                                        | Local Server
+                                        | npm
 
                                 p
                                     | In order to run a local server, the following dependencies must first be installed:
