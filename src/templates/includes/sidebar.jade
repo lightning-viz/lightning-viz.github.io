@@ -3,6 +3,8 @@ a(href="/")
 
 iframe(src="http://ghbtns.com/github-btn.html?user=lightning-viz&repo=lightning&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20", style="margin-top:40px; margin-left:20px")
 
+a(href="https://twitter.com/lightningviz" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false")
+
 section
     a(href="/documentation/")
         | Documentation
@@ -84,3 +86,21 @@ section
         li
             a(href="/visualizations/volume")
                 | Volume
+
+script.
+    window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+        t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));
