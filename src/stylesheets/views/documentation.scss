@@ -10,6 +10,7 @@
         color: $purple;
     }
 
+
     .row {
         max-width: none;
         padding-left: 0;
@@ -35,7 +36,11 @@
 
             > a {
                 font-family: 'AvenirNext', sans-serif;
-                font-size: 22px;
+                font-size: 28px;
+            }
+
+            > a:hover {
+                color: lighten($purple, 10%);
             }
 
             ul {
@@ -49,6 +54,9 @@
                 }
                 a, a:visited {
                     color: #444;
+                }
+                a:hover {
+                    color: lighten(#444, 20%);
                 }
             }
 
