@@ -90,7 +90,7 @@ block content
                                     span.method-item
                                         | docker
                                     span.method-item
-                                        | npm
+                                        | node
                                 br
                                 p 
                                     | You can also use Lightning without running a server at all through our client libraries (currently only Python). Just by installing the client you have access to Lightning's custom visualizations. This approach is great for data science applications, especially inside of notebooks, but has a few limitations. See the section on the Python client for more.
@@ -112,13 +112,13 @@ block content
                                     h4
                                         | Public
                                     p
-                                        | Explain the public server, where to access, example in Python, limitations (can't manage visualization types), free (but no guarentees), will be kept up to date.
+                                        | [[FILL IN]] explain the public server, where to access, example in Python, limitations (can't manage visualization types), free (but no guarentees), will be kept up to date.
 
                                 a(name="standalone", href="#standalone")
                                     h4
                                         | Standalone app
                                     p
-                                        | Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
+                                        | [[FILL IN]] Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
 
                 section(name="deploy-server")
                     .row
@@ -128,32 +128,24 @@ block content
                                         | Deploy your own server
 
                                 p
-                                    | There are several ways to deploy your own Lightning server, for maximum control and flexibility.
+                                    | Deploying your own Lightning server gives you maximum control and flexibility, and there are many ways to do it.
 
                                 a(name="heroku", href="#heroku")
                                     h4
                                         | Heroku
 
                                 p
-                                    | The easiest way to start a server is by hosting it on Heroku. This is free, but you must have a Heroku account (Sign up for one 
+                                    | Hosting a server on Heroku is free and easy, but you must have a Heroku account (Sign up for one 
                                     a(href="https://signup.heroku.com/identity")
                                         | here
-                                    |).
-                                p
-                                    | Once you have an account, simply navigate to the github README, and click the “deploy to Heroku button”, or click the button below:
+                                    |). Once you have an account, just click this “deploy to Heroku button” (also found on the project README on GitHub):
                                 
 
                                 p
                                     <a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning&button-url=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning"><img src="https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.png" style="max-width:100%;"></a>
 
                                 p
-                                    | The default options are fine for quick testing, but others are available for more advanced usage.
-
-                                h6
-                                    | Advanced Options
-
-                                p
-                                    | There are several options provided for advanced usage:
+                                    | The default options are fine for quick testing, but others are available for advanced usage:
 
                                     ul
                                         li
@@ -163,7 +155,7 @@ block content
                                             span.inline-code
                                                     | LIGHTNING_PASSWORD
 
-                                            | -  if these values are provided, lightning will run behind HTTP basic authentication with the provided username and password. Note that public links (for sessions, or individual visualizations) can be shared and are accessible without credentials.
+                                        |   If these values are provided, lightning will run behind HTTP basic authentication with the provided username and password. Note that public links (for sessions, or individual visualizations) can be shared and are accessible without credentials.
                                         li
                                             br
                                         li
@@ -175,37 +167,48 @@ block content
                                             | , 
                                             span.inline-code
                                                 | S3_SECRET
-                                            | - if these values are provided lightning will use s3 to store user uploaded images. Note that because of Heroku restrictions if these are not provided, user uploading images will periodically be deleted.
+                                        |   If these values are provided lightning will use s3 to store user uploaded images. Note that because of Heroku restrictions if these are not provided, user uploaded images will periodically be deleted.
+
+                                p
+                                    | You may also want to upgrade to Heroku's paid-tier for improved performance.
 
                                 a(name="docker", href="#docker")
                                     h4
                                         | Docker
 
                                     p
-                                        | Describe running a server with Docker, where to get the official image, how to run and access on OS X or Linux, how to customize with docker compose
+                                        | [[FILL IN]] Describe running a server with Docker, where to get the official image, how to run and access on OS X or Linux, how to customize with docker compose
 
 
                                 a(name="local-server", href="#local-server")
                                     h4
+                                        | Node
+
+                                p
+                                    | You can also run your own server just using 
+                                    span.inline-code
+                                        | node
+                                    |  and 
+                                    span.inline-code
                                         | npm
+                                    | . First, download 
+                                    span.inline-code
+                                        | node
+                                    a(href='http://nodejs.org')
+                                        |  here
+                                    | , or use a version manager such as 
+                                    a(href="https://github.com/creationix/nvm")
+                                        | nvm
+                                    |  (recommended). Then, you can either install and run an executable
+
+                                pre
+                                    code
+                                        | $ npm install -g lightning-server
+                                        | $ lightning-server
+
 
                                 p
-                                    | In order to run a local server, the following dependencies must first be installed:
-
-                                    ul.styled
-                                        li
-                                            b
-                                                | node.js
-                                            |  - download 
-                                            a(href="http://nodejs.org/")
-                                                | here
-                                            | , or use a version manager such as 
-                                            a(href="https://github.com/creationix/nvm")
-                                                | nvm
-                                            |  (recommended).
-
-                                p
-                                    | Once the above dependencies are resolved, clone the lightning repository and install the server. 
+                                    | or clone the lightning repository and install the server
 
                                 pre
                                     code
@@ -214,31 +217,27 @@ block content
                                         | $ npm install
 
                                 p
-                                    | finally start the server:
+                                    | and start it with:
 
                                 pre
                                     code
                                         | $ npm start
                                 p
 
-                                    | This should start a server at 
+                                    | Both options should start a server at 
                                     
                                     a(href="http://localhost:3000", target="_blank")
                                         | http://localhost:3000
                                     
                                     |. 
 
-                                h6
+                                h5
                                     | Using Postgres
 
                                 p
 
                                 p
-                                    | For larger data sets using Postgres will be more efficient than the
-                                    | default SQLite database.
-
-                                p
-                                    | To start using Postgres with lightning, do the following: 
+                                    | The default SQLite database should be suitable for development purposes, but in production you may want to use Postgres. To start using Postgres with lightning, do the following: 
 
                                 ul.styled
                                     li
@@ -267,28 +266,24 @@ block content
                     .row
                         .column-12
                                 
-                                a(name="first-viz", href="#first-viz")
+                                a(name="creating", href="#creating")
                                     h2
                                         | Creating a visualization
 
                                 p
-                                    | Once you have a server, creating a visualization is easy. Here we describe the three most common ways you'll generate visualizations: creating a visualization directly, using a client library, or via the REST API.
+                                    | Once you have a server, you can use it to create visualizations. Here we describe the three most common ways: directly from the server, from a client library, or from the REST API.
 
                                 a(name="direct", href="#direct")
                                     h4
                                         | From the server
 
                                     p
-                                        | Navigate to your lightning host, and create a new session.
-
-
-                                    p
-                                        | Then, click “create visualization”
+                                        | Navigate to your lightning host, and create a new session. Then, click “create visualization”
 
                                     .screenshot
                                         img(src="/images/screenshots/1.png")
                                     p
-                                        | Select the “line” type, and enter 
+                                        | Select the “line” type, and enter  
                                         span.inline-code 
                                             | {"series": [1, 1, 2, 3, 5, 8]}
                                         | .
@@ -302,7 +297,7 @@ block content
                                     .screenshot
                                         img(src="/images/screenshots/3.png")
                                     p
-                                        | To create a choropleth map, select “map” type and enter 
+                                        | To create a choropleth map, select “map” type and enter  
                                         span.inline-code 
                                             | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
                                         | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
@@ -313,19 +308,19 @@ block content
 
                                 a(name="client", href="#client")
                                     h4
-                                        | Through a client
+                                        | From a client
 
                                 p
                                     | The client libraries make it easy to generate visualizations straight your favorite data analysis environment, including from within interactive notebooks. This is the most common way to generate visualizations. 
 
                                 p 
-                                    | We'll walk through an example using the Python client, see below to read more about the different client libraries.
+                                    | We'll walk through an example using the Python client, see below to read more about the other client libraries. [[UPDATE GRAPHIC?]]
                             
                                 .screenshot
                                     img(src="/images/screenshots/5.png")
 
                                 p
-                                    | To install the Python client from PyPi, just call
+                                    | [[UPDATE CODE EXAMPLES]] To install the Python client from PyPi, just call
 
 
                                 pre
@@ -333,20 +328,22 @@ block content
                                         | $ pip install lightning-python
 
                                 p
-                                    | If you are running a local server, simply import the library and instantiate a lightning object:
-
+                                    | Then, in Python, import the library and instantiate a lightning object:
 
                                 pre
                                     code.python
                                         | from lightning import Lightning
                                         | lgn = Lightning()
                                 p
-                                    | If you are using a remote server (e.g. the public server, Docker, or Heroku), pass in the `host` during instantiation
+                                    | By default the client assumes that the host is at 
+                                    a(href='http://localhost:3000')
+                                        | http://localhost:3000
+                                    | ; if you want to use a remote server pass it in during instantiation, as in
 
                                 pre
                                     code.python
                                         | from lightning import Lightning
-                                        | lgn = Lightning(host=’https://public.lightning-viz.org’)
+                                        | lgn = Lightning(host='https://public.lightning-viz.org')
 
                                 p
                                     | or
@@ -354,7 +351,7 @@ block content
                                 pre
                                     code.python
                                         | from lightning import Lightning
-                                        | lgn = Lightning(host=’https://<herokuappname>.herokuapp.com’)
+                                        | lgn = Lightning(host='https://herokuappname.herokuapp.com')
 
                                 p
                                     | Once you have instantiated the lightning object, try running:
@@ -397,51 +394,73 @@ block content
                                     | It's also possible to generate visualizations directly using Lightning's REST API.
 
                                 p
-                                    | Brief overview, methods, example 
+                                    | [[FILL IN] Brief overview, methods, example 
 
 
                 section
                     .row
                         .column-12
                                 
-                                a(name="python", href="#python")
+                                a(name="clients", href="#clients")
                                     h2    
                                         | Client libraries
 
                                 p
-                                    | [This should probably just provide an overview of each client, where to find documentation, and for the Python client some description of the headless mode]
+                                    | [[FILL IN]] This should probably just provide an overview of each client, where to find documentation, and for the Python client a description of the headless mode.
 
                                 a(name="python", href="#python")
                                     h4    
                                         | Python
 
+                                p
+                                    | The Python client...
+
                                 a(name="scala", href="#scala")
                                     h4    
                                         | Scala
+
+                                p
+                                    | The Scala client...
 
                                 a(name="nodejs", href="#nodejs")
                                     h4    
                                         | node.js
 
+                                p
+                                    | The node client...
+
                                 a(name="rstats", href="#rstats")
                                     h4    
                                         | R
+
+                                p
+                                    | The R client...
 
 
                 section
                     .row
                         .column-12
                                 
-                                a(name="embed", href="#embed")
+                                a(name="sharing", href="#sharing")
                                     h2    
-                                        | Embedding Plots
+                                        | Sharing visualizations
+
+                                p
+                                    | Lightning makes it easy to share your visualizations with others.
+
+                                a(name="links", href="#links")
+                                    h4    
+                                        | Links
+
+                                p
+                                    | [[FILL IN]] Explain where to get links to visualizations and how to add descriptions in markdown?
 
                                 a(name="iframes", href="#iframes")
                                     h4    
                                         | iFrames
 
                                 p
-                                    | Lightning provides permalinks for each visualizations that can easily be embedded on other sites (particularly these are meant to be embedded using iframes).
+                                    | Lightning provides permalinks for each visualization that can easily be embedded on other sites (particularly these are meant to be embedded using iframes).
 
                                 p
                                     | To embed a visualization, use the url format
@@ -465,7 +484,7 @@ block content
 
                                 pre
                                     code.html
-                                        | &lt;iframe src=”http://host/visualizations/vid/iframe” width="WIDTH IN PIXELS" height="HEIGHT IN PIXELS" &gt;
+                                        | &lt;iframe src=”http://host/visualizations/vid/iframe” width="N PIXELS" height="N PIXELS" &gt;
 
                                 p
                                     | making sure to replace host and vid with the proper values.
@@ -502,109 +521,34 @@ block content
                                     | the child script is automatically initialized, so you only have to worry about setting up the parent.
 
                                 p
-                                    | For example:
+                                    | For example [[THIS IS NOT WORKING?]]:
 
                                 #pym-example-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/5/pym")
 
-
-
-
-
-
-
-                section
-                    .row
-                        .column-12
-                                
-                                a(name="editor", href="#editor")
-                                    h2    
-                                        | Editor
-
-                                p
-                                    | The lightning server ships with a build in editor for tinkering with the visualization code. The editor provides a live preview of the changes that 
-                                    | are made to the code.
-
-                                .screenshot
-                                    img(src="/images/screenshots/8.png")
-
-
-                                a(name="editor-basics", href="#editor-basics")
-                                    h4
-                                        | Editor Basics
-
-                                .screenshot
-                                    img(src="/images/screenshots/9.gif")
-
-                                p
-                                    | The following keyboard shortcuts are used to interact with the editor:
-
-                                    ul.styled
-                                        li
-                                            span.inline-code
-                                                |  ctrl + enter
-                                            |  - evaluate code
-
-                                        li
-                                            span.inline-code
-                                                |  ctrl + s
-
-                                            |  - save changes
-
-                                    | the editor can be used to change any of the 
-                                    b
-                                        | javascript
-                                    | , 
-                                    b 
-                                        | stylesheets
-                                    | , and 
-                                    b
-                                        | example data.
-
-
-                                a(name="editor-import", href="#editor-import")
-                                    h4
-                                        | Importing
-
-                                p
-                                    | Custom visualization types can be fetched and previewed from any public git repository (read more about creating custom visualizations below). This means a 
-                                    b
-                                        | github.com 
-                                    |  or 
-                                    b
-                                        | gist.github.com
-                                    | url will work.
-
-                                p
-                                    | For example, if I have a custom visualization type at 
-                                    a(href="https://gist.github.com/mathisonian/77853979c58be91eb13c")
-                                        | https://gist.github.com/mathisonian/77853979c58be91eb13c
-                                    | , then I am able to preview this visualization simply by entering the url.
-
-
-                                .screenshot
-                                    img(src="/images/screenshots/10.gif")
-
-                                p
-                                    | If you like this visualization, and would like to use it with lightning, click the import button:
-
-
-                                .screenshot
-                                    img(src="/images/screenshots/11.png")
-                                p
-
-                                p
-                                    | this can then be used, e.g. from the python client like:
-
-                                pre
-                                    code.
-                                        lgn.plot(type="imported-viz", data=my_data)
                 section
                     .row
                         .column-12
                                 
                                 a(name="custom", href="#custom")
                                     h2    
-                                        | Developing Custom Plots
+                                        | Customizing
+
+                                p
+                                    | There are many ways to both customize the set of visualizations included with your server, and develop entirely new ones.
+
+                                a(name="managing", href="#managing")
+                                    h4
+                                        | Managing
+
+                                p
+                                    | [[FILL IN]] How to install and manage visualizations
+
+                                a(name="developing", href="#developing")
+                                    h4
+                                        | Developing
+
+                                p
+                                    | [[FILL IN]] [[REWRITE THE BELOW]]
 
                                 p
                                     | In addition to Lightning’s core visualization types, users can easily develop their own plots, either by modifying the existing ones, or designing visualizations from scratch. This section serves as a walkthrough to create a custom visualization.
