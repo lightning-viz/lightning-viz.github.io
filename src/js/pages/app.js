@@ -23,13 +23,6 @@ $("#slides").slidesjs({
 });
 
 
-require('EasyTabs');
-
-$('.tab-container').easytabs({
-    updateHash: false
-});
-
-
 var hljs = require('highlight.js');
 hljs.initHighlightingOnLoad();
 

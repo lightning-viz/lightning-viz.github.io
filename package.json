@@ -19,7 +19,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "EasyTabs": "git://github.com/JangoSteve/jQuery-EasyTabs",
     "d3": "~3.4.6",
     "d3-multiaxis-zoom": "^1.0.4",
     "d3-tip": "git://github.com/lightning-viz/d3-tip",

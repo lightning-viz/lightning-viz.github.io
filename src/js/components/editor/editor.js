@@ -49,7 +49,7 @@ var Editor = React.createClass({
     renderInnerComponent: function() {
         if(this.state.isEditing) {
             var html = $('#inner-editor pre').parent().html();
-            return <ContentEditable html={html} onChange={this.handleChange} valueProp={this.props.value} />;
+            return <ContentEditable html={html} onChange={this.handleChange} valueProp={this.props.value} ref="contentEditable" />;
         }
 
         return (
@@ -69,5 +69,4 @@ var Editor = React.createClass({
 });
 
 module.exports = Editor;
-
 

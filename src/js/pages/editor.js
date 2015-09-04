@@ -2,7 +2,7 @@
 var React = require('react');
 var request = require('superagent');
 
-var PUBLIC_SERVER_URL = 'http://localhost:3000';
+var PUBLIC_SERVER_URL = 'http://public.lightning-viz.org';
 
 request
     .get(PUBLIC_SERVER_URL + '/visualization-types/' + window.lightning.editor.moduleName + '.json')

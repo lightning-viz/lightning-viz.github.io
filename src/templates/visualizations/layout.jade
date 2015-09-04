@@ -1,7 +1,7 @@
 extends ../layout
 
 mixin editorJS(name, moduleName)
-    script(src="http://localhost:3000/js/dynamic/viz/?visualizations[]=#{name}")
+    script(src="http://public.lightning-viz.org/js/dynamic/viz/?visualizations[]=#{name}")
     script.
         window.lightning = window.lightning || {};
         window.lightning.editor = {
