@@ -109,7 +109,7 @@ block content
 
                                 pre
                                     code
-                                        | lgn.create_session(‘hello world’)
+                                        | lgn.create_session('hello world')
 
                                 p
                                     | This line tells Lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
@@ -145,8 +145,31 @@ block content
                                     | It's also possible to generate visualizations directly using Lightning's REST API.
 
                                 p
-                                    | [[FILL IN] Brief overview, methods, example 
+                                    | First create a session to post visualizations to:
 
+                                pre
+                                    code.bash.
+                                        curl http://localhost:3000/sessions \
+                                          -d name="my session"
+                                p 
+                                    | This will return a response including a JSON representation of the session you've just created. e.g. 
+
+                                pre
+                                    code.json.
+                                        {
+                                            "id":"06a214f3-6de2-46d3-9a8a-ec5764c481ff",
+                                            "name":"my session",
+                                            "updatedAt":"2015-09-06T21:26:49.843Z",
+                                            "createdAt":"2015-09-06T21:26:49.843Z"
+                                        }
+                                p
+                                    | Then create a visualization using the returned id of the session:
+
+                                pre
+                                    code.bash.
+                                        curl http://localhost:3000/sessions/06ca1abc-e888-4985-9e19-eb91897a279c \
+                                          -d type="line" \
+                                          -d data='{"series": [1, 2, 3, 4, 5]}'
                 section
                     .row
                         .column-12

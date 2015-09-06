@@ -70,12 +70,17 @@ block content
                                 p 
                                     | The prebuilt servers are the easiest way to get started with Lightning. You can use our public server  at [http://public.lightning-viz.org] to generate and share any of the core Lightning visualization types, or download the standalone app, which is perfect for doing local data analysis.
                                 div
-                                    span.method-item
-                                        | public
-                                    span.method-item
-                                        | linux 64
-                                    span.method-item
-                                        | os x
+                                    a(href="/setup/#public")
+                                        span.method-item
+                                            | public
+
+                                    a(href="/setup/#standalone")
+                                        span.method-item
+                                            | linux 64
+
+                                    a(href="/setup/#standalone")
+                                        span.method-item
+                                            | os x
                                 br
                                 p 
                                     | Deploying your own server provides the most control and flexibility. You'll be able to view and edit visualizations, install and manage visualization types, and prototype new ones. You can use a one-click deployment to Heroku, run from our official Docker images, or install and run locally using 

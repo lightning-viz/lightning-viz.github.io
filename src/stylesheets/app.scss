@@ -157,6 +157,8 @@ ul, li {
     text-transform: uppercase;
     display: inline-block;
     transition: 0.1s;
+    min-width: 30px;
+    text-align: center;
 }
 
 .method-item:hover {
@@ -443,9 +445,9 @@ pre {
 }
 
 .inline-code {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.3em;
     margin: 0;
     font-size: 85%;
     background-color: rgba(0,0,0,0.04);

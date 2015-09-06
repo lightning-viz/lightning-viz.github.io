@@ -27,14 +27,25 @@ block content
                                 a(name="public", href="#public")
                                     h4
                                         | Public
-                                    p
-                                        | [[FILL IN]] explain the public server, where to access, example in Python, limitations (can't manage visualization types), free (but no guarentees), will be kept up to date.
+                                
+                                p
+                                    | There is a publicly accessible server running at 
+                                    a(href="http://public.lightning-viz.org/")
+                                        | http://public.lightning-viz.org/
+                                    | . The server is available to anyone for basic usage and testing. Your data is obscured by randomized identifiers so
+                                    | nobody will have access unless you explicity give them the link.
+    
+                                p                                    
+                                    | The major caveat of using the public server is that you won't be able to manage and customize the visualization types.
+
+                                p
+                                    | [insert recording of using the public server with python here]
 
                                 a(name="standalone", href="#standalone")
                                     h4
                                         | Standalone app
-                                    p
-                                        | [[FILL IN]] Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
+                                p
+                                    | [[FILL IN]] Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
 
                 section(name="deploy-server")
                     .row
@@ -122,25 +133,8 @@ block content
                                         | $ npm install -g lightning-server
                                         | $ lightning-server
 
-
                                 p
-                                    | or clone the lightning repository and install the server
-
-                                pre
-                                    code
-                                        | $ git clone git@github.com:lightning-viz/lightning.git
-                                        | $ cd lightning
-                                        | $ npm install
-
-                                p
-                                    | and start it with:
-
-                                pre
-                                    code
-                                        | $ npm start
-                                p
-
-                                    | Both options should start a server at 
+                                    | This should start a server at 
                                     
                                     a(href="http://localhost:3000", target="_blank")
                                         | http://localhost:3000
@@ -148,36 +142,14 @@ block content
                                     |. 
 
                                 h5
-                                    | Using Postgres
+                                    | Advanced
 
                                 p
 
                                 p
-                                    | The default SQLite database should be suitable for development purposes, but in production you may want to use Postgres. To start using Postgres with lightning, do the following: 
-
-                                ul.styled
-                                    li
-                                        | Change your 
-                                        a(href="https://github.com/lightning-viz/lightning/blob/master/config/database.js#L16")
-                                            | database config 
-                                        | from `sqlite` to `postgres`.
-                                    li
-                                        | Make sure postgres is installed and a server is running. On OSX we recommend using 
-                                        a(href="http://postgresapp.com/")
-                                            | Postgres.app.
-
-                                p
-                                p
-                                    | Then run the following to initialize the database:
-
-                                pre
-                                    code
-                                        | $ npm run createdb
-                                        | $ npm run migrate
-
-                                p
-                                    | Start the lightning server as described above. Lightning will now be running using Postgres.
-
-
+                                    | For advanced usage options see  
+                                    a(href="/setup/advanced")
+                                        | this page
+                                    | .
 
     .bottom.bar.visible-mobile

@@ -1,0 +1,92 @@
+extends ../../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+
+                section(name="advanced")
+                    .row
+                        .column-12
+                                a(name="advanced", href="#advanced")
+                                    h2
+                                        | Advanced Setup
+
+                                p
+                                    | For advanced customization of the lightning server first
+                                    | clone the lightning repository and install the server
+
+                                pre
+                                    code
+                                        | $ git clone git@github.com:lightning-viz/lightning.git
+                                        | $ cd lightning
+                                        | $ npm install
+
+                                p
+                                    | and start it with:
+
+                                pre
+                                    code
+                                        | $ npm start
+                                p
+
+                                    | This will start the server at 
+                                    
+                                    a(href="http://localhost:3000", target="_blank")
+                                        | http://localhost:3000
+                                    
+                                    |. 
+
+                                h5
+                                    | Using Postgres
+
+                                p
+
+                                p
+                                    | The default SQLite database should be suitable for development purposes, but in production you may want to use Postgres. To start using Postgres with lightning, do the following: 
+
+                                ul.styled
+
+                                    li
+                                        | Set the environmental variable 
+                                        span.inline-code
+                                            | NODE_ENV=production
+                                        |  and lightning will look for a postgres database to connect to. Alternatively change your 
+                                        a(href="https://github.com/lightning-viz/lightning/blob/master/config/database.js#L16")
+                                            | database config 
+                                        | from 
+                                        span.inline-code
+                                            |  sqlite
+                                        |  to 
+                                        span.inline-code
+                                            | postgres
+                                        | .
+                                    li
+                                        | Make sure postgres is installed and a server is running. On OSX we recommend using 
+                                        a(href="http://postgresapp.com/")
+                                            | Postgres.app.
+
+                                p
+                                p
+                                    | Then run the following to initialize the database:
+
+                                pre
+                                    code
+                                        | $ npm run createdb
+                                        | $ npm run migrate
+
+                                p
+                                    | Start the lightning server as described above. Lightning will now be running using Postgres.
+
+
+
+    .bottom.bar.visible-mobile
