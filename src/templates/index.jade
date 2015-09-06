@@ -53,18 +53,27 @@ block content
                                         | Many ways to run
                                     hr.method-divider
                                     div
-                                        span.method-item
-                                            | heroku
-                                        span.method-item
-                                            | public
-                                        span.method-item
-                                            | docker
-                                        span.method-item
-                                            | jupyter
-                                        span.method-item
-                                            | linux 64
-                                        span.method-item
-                                            | OS X
+                                        a(href="/setup/#heroku")
+                                            span.method-item
+                                                | heroku
+                                        a(href="/setup/#public")
+                                            span.method-item
+                                                | public
+                                        a(href="/setup/#docker")
+                                            span.method-item
+                                                | docker
+                                        //- a(href="/setup/#public")
+                                            span.method-item
+                                                | jupyter
+                                        a(href="/setup/#standalone")
+                                            span.method-item
+                                                | linux 64
+                                        a(href="/setup/#standalone")
+                                            span.method-item
+                                                | OS X
+                                        a(href="/setup/#local-server")
+                                            span.method-item
+                                                | NPM
 
                                 .column-1.empty-container
                                 .column-3
@@ -83,5 +92,5 @@ block content
                                                 | scala
                                         a(href="/clients/#rstats")
                                             span.method-item
-                                                | rstats
+                                                | r
 
