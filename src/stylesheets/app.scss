@@ -87,6 +87,12 @@ a {
     &:active {
         color: #59A2E6;
     }
+
+    &.outside-link {
+        h1,h2,h3,h4,h5,h6 {
+            color: $purple;
+        }
+    }
 }
 
 li {
@@ -113,7 +119,8 @@ ul, li {
     font-family: "AvenirNext-UltraLight";
     font-size: 18px;
     line-height: 1.2em;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+    padding-top: 0;
 }
 
 .gh-btn {
@@ -484,7 +491,7 @@ ul.styled {
 
 .viz-thumbnail {
     margin-right: 5px;
-    opacity:0.8;
+    // opacity:0.8;
     transition: all 0.2s;
 }
 

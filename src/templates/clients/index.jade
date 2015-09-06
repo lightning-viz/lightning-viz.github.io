@@ -1,0 +1,57 @@
+extends ../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="clients", href="#clients")
+                                    h2    
+                                        | Client libraries
+
+                                p
+                                    | [[FILL IN]] This should probably just provide an overview of each client, where to find documentation, and for the Python client a description of the headless mode.
+
+                                a(name="python", href="https://github.com/lightning-viz/lightning-python").outside-link
+                                    h4    
+                                        | Python
+
+                                p
+                                    | The Python client...
+
+                                a(name="scala", href="https://github.com/lightning-viz/lightning-scala").outside-link
+                                    h4    
+                                        | Scala
+
+                                p
+                                    | The Scala client...
+
+                                a(name="js", href="https://github.com/lightning-viz/lightning.js").outside-link
+                                    h4    
+                                        | Javascript
+
+                                p
+                                    | The javascript client supports both node.js and the browser.
+
+                                a(name="rstats", href="#rstats").outside-link
+                                    h4    
+                                        | R
+
+                                p
+                                    | The R client...
+
+
+    .bottom.bar.visible-mobile

@@ -1,0 +1,183 @@
+extends ../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+
+                section(name="prebuilt-server")
+                    .row
+                        .column-12
+                                a(name="prebuilt-server", href="#prebuilt-server")
+                                    h2
+                                        | Use a prebuilt server
+
+                                p
+                                    | This is the easiest way to get started, and there are a couple options depending on your use case.
+
+                                a(name="public", href="#public")
+                                    h4
+                                        | Public
+                                    p
+                                        | [[FILL IN]] explain the public server, where to access, example in Python, limitations (can't manage visualization types), free (but no guarentees), will be kept up to date.
+
+                                a(name="standalone", href="#standalone")
+                                    h4
+                                        | Standalone app
+                                    p
+                                        | [[FILL IN]] Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
+
+                section(name="deploy-server")
+                    .row
+                        .column-12
+                                a(name="deploy-server", href="#deploy-server")
+                                    h2
+                                        | Deploy your own server
+
+                                p
+                                    | Deploying your own Lightning server gives you maximum control and flexibility, and there are many ways to do it.
+
+                                a(name="heroku", href="#heroku")
+                                    h4
+                                        | Heroku
+
+                                p
+                                    | Hosting a server on Heroku is free and easy, but you must have a Heroku account (Sign up for one 
+                                    a(href="https://signup.heroku.com/identity")
+                                        | here
+                                    |). Once you have an account, just click this “deploy to Heroku button” (also found on the project README on GitHub):
+                                
+
+                                p
+                                    <a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning&button-url=https%3A%2F%2Fgithub.com%2Flightning-viz%2Flightning"><img src="https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.png" style="max-width:100%;"></a>
+
+                                p
+                                    | The default options are fine for quick testing, but others are available for advanced usage:
+
+                                    ul
+                                        li
+                                            span.inline-code
+                                                    | LIGHTNING_USERNAME
+                                            | , 
+                                            span.inline-code
+                                                    | LIGHTNING_PASSWORD
+
+                                        |   If these values are provided, lightning will run behind HTTP basic authentication with the provided username and password. Note that public links (for sessions, or individual visualizations) can be shared and are accessible without credentials.
+                                        li
+                                            br
+                                        li
+                                            span.inline-code
+                                                | S3_BUCKET
+                                            | , 
+                                            span.inline-code
+                                                | S3_KEY
+                                            | , 
+                                            span.inline-code
+                                                | S3_SECRET
+                                        |   If these values are provided lightning will use s3 to store user uploaded images. Note that because of Heroku restrictions if these are not provided, user uploaded images will periodically be deleted.
+
+                                p
+                                    | You may also want to upgrade to Heroku's paid-tier for improved performance.
+
+                                a(name="docker", href="#docker")
+                                    h4
+                                        | Docker
+
+                                    p
+                                        | [[FILL IN]] Describe running a server with Docker, where to get the official image, how to run and access on OS X or Linux, how to customize with docker compose
+
+
+                                a(name="local-server", href="#local-server")
+                                    h4
+                                        | Node
+
+                                p
+                                    | You can also run your own server just using 
+                                    span.inline-code
+                                        | node
+                                    |  and 
+                                    span.inline-code
+                                        | npm
+                                    | . First, download 
+                                    span.inline-code
+                                        | node
+                                    a(href='http://nodejs.org')
+                                        |  here
+                                    | , or use a version manager such as 
+                                    a(href="https://github.com/creationix/nvm")
+                                        | nvm
+                                    |  (recommended). Then, you can either install and run an executable
+
+                                pre
+                                    code
+                                        | $ npm install -g lightning-server
+                                        | $ lightning-server
+
+
+                                p
+                                    | or clone the lightning repository and install the server
+
+                                pre
+                                    code
+                                        | $ git clone git@github.com:lightning-viz/lightning.git
+                                        | $ cd lightning
+                                        | $ npm install
+
+                                p
+                                    | and start it with:
+
+                                pre
+                                    code
+                                        | $ npm start
+                                p
+
+                                    | Both options should start a server at 
+                                    
+                                    a(href="http://localhost:3000", target="_blank")
+                                        | http://localhost:3000
+                                    
+                                    |. 
+
+                                h5
+                                    | Using Postgres
+
+                                p
+
+                                p
+                                    | The default SQLite database should be suitable for development purposes, but in production you may want to use Postgres. To start using Postgres with lightning, do the following: 
+
+                                ul.styled
+                                    li
+                                        | Change your 
+                                        a(href="https://github.com/lightning-viz/lightning/blob/master/config/database.js#L16")
+                                            | database config 
+                                        | from `sqlite` to `postgres`.
+                                    li
+                                        | Make sure postgres is installed and a server is running. On OSX we recommend using 
+                                        a(href="http://postgresapp.com/")
+                                            | Postgres.app.
+
+                                p
+                                p
+                                    | Then run the following to initialize the database:
+
+                                pre
+                                    code
+                                        | $ npm run createdb
+                                        | $ npm run migrate
+
+                                p
+                                    | Start the lightning server as described above. Lightning will now be running using Postgres.
+
+
+
+    .bottom.bar.visible-mobile

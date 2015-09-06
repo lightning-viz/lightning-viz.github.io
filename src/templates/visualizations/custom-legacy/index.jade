@@ -1,0 +1,302 @@
+extends ../../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="custom", href="#custom")
+                                    h2    
+                                        | Developing Custom Plots
+
+                                p
+                                    | In addition to Lightning’s core visualization types, users can easily develop their own plots, either by modifying the existing ones, or designing visualizations from scratch. This section serves as a walkthrough to create a custom visualization.
+
+                                p
+                                    | A visualization consists of a folder containing several files:
+
+                                    ul.styled
+                                        li
+                                            | index.js (required) - the main javascript file, responsible for building and displaying the visualization
+                                        li
+                                            | sample-data.json / sample-images.json (required) - sample data to be used when previewing this visualization type
+
+                                        li
+                                            | style.scss (optional) - optional scss styles to be applied
+
+                                        li
+                                            | &lt;visualization-name&gt;.jade (optional) - a markup file for any html that is needed
+
+
+                                p
+                                    | each of these are discussed in detail below.
+
+
+                                a(name="custom-index", href="#custom-index")
+                                    h4
+                                        | index.js
+
+                                p
+                                    | The `index.js` file must export a javascript object that exposes a few basic functions. In general the template for the index.js file looks like this (using common.js syntax):
+
+                                pre
+                                    code.javascript.
+                                        /*
+                                         * Import any necessary libraries. All visualizations already have access to jQuery
+                                         * through $
+                                         */
+                                        var d3 = require(‘d3’);
+                                        var _ = require(‘lodash’);
+
+
+                                        /*
+                                         * Initialize a new visualization and call the internal _init function
+                                         */
+                                        var MyCustomViz = function(selector, data, images, opts) {
+                                            this.opts = opts || {};
+
+                                            this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+                                            this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+
+                                            this.data = this._formatData(data);
+                                            this.selector = selector;
+                                            this._init();
+                                        };
+
+                                        /*
+                                         * Initialize the visualization. This is kept separate by convention to make it easy
+                                         * to inherit from other visualization types.
+                                         */
+                                        MyCustomViz.prototype._init = function() {
+                                            // draw the actual visualization here
+                                            // e.g.
+                                            var svg = d3.select(this.selector)
+                                                    .append(‘svg:svg’)
+                                            
+                                            // etc.
+                                        }
+
+                                        /*
+                                         * Take the provided data and return it in whatever data format is needed
+                                         */
+                                        MyCustomViz.prototype._formatData = function(data) {
+                                           var transformedData = data;
+
+                                           // …
+                                           // transform the data into whatever form you need here
+                                           // …
+                                           
+                                            return transformedData;
+                                           
+                                        }
+
+                                        /*
+                                         * Optional function, use this if you want to users to send updated data to this plot
+                                         */
+                                        MyCustomViz.prototype.updateData = function(data) {
+                                            this.data = this._formatData(data);
+                                            // then update the visualization
+                                        }
+
+                                        /*
+                                         * Optional function, use this if you want to enable streaming updates to this plot
+                                         */
+                                        MyCustomViz.prototype.appendData = function(data) {
+                                            this.data = this.data.concat(this._formatData(data));
+                                            // then update the visualization
+                                        }
+
+
+                                        module.exports = MyCustomViz;
+
+
+                                a(name="custom-data", href="#custom-data")
+                                    h4
+                                        | sample-data.json
+
+                                p
+                                    | This is simply a json file that contains an array of example data in the required format, e.g.
+
+                                pre
+                                    code.
+                                        [{
+                                            “name”: “first example data set”,
+                                            “data”: {/* json representation of your data*/}
+                                        }, {
+                                           “name”: “second example data set”,
+                                            “data”: {/* json representation of your data*/}
+                                        }]
+
+
+                                a(name="custom-image", href="#custom-images")
+                                    h4
+                                        | sample-images.json
+
+                                p
+                                    | If your plot displays images, create this file, and fill it with an array of test image URLs, e.g.
+
+                                pre
+                                    code.
+                                        [
+                                            "http://i.gif.fm/janelia-images/stack/0000",
+                                            "http://i.gif.fm/janelia-images/stack/0001",
+                                            "http://i.gif.fm/janelia-images/stack/0002",
+                                            "http://i.gif.fm/janelia-images/stack/0003"
+                                        ]
+
+                                a(name="custom-style", href="#custom-style")
+                                    h4
+                                        | style.scss
+
+                                p
+                                    | An SCSS file for any styles that you wish to be applied to your visualization. The current version does not automatically scope this, so you should be careful to scope it to only your visualizations:
+
+                                pre
+                                    code.
+                                        .my-visualization-class {
+                                            path {
+                                                stroke: black;
+                                            }
+                                            // etc.
+                                        }
+
+                                
+                                a(name="custom-template", href="#custom-template")
+                                    h4
+                                        | &lt;visualization-name&gt;.jade
+
+                                p
+                                    | This is a jade file that can be required in index.js. Note: the name of the file must be the same as the name of the project. For example, the gallery visualization is named gallery.jade and has a markdown file that looks like
+
+                                pre
+                                    code.
+                                        .gallery-viz
+                                            .row
+                                                .gallery-container
+                                                    for image in images
+                                                        .gallery-thumbnail
+                                                            img(src="#{image}_small")
+
+                                            .row
+                                                .gallery-full
+                                                    .image-container
+
+                                p
+                                    | then in index.js 
+                                pre
+                                    code.
+                                        var markup = require(‘./gallery.jade’);
+                                        var templateVars = {};
+                                        var compiledHTML = markup();
+
+                                        // the compiledHTML can then be appended to the visualization
+
+                                
+                                a(name="custom-link", href="#custom-link")
+                                    h4
+                                        | Linking Plot Types
+
+                                p
+                                    | Lightning’s plots are designed so that several visualization types can be linked together relatively easily. For example, the following code shows how the relevant parts of how the “scatter-line” type to builds a visualization containing both a line plot and a scatter plot. The line plot updates with new data every time a user hovers on a point in the scatter plot.
+
+                                pre
+                                    code.
+
+                                        var ScatterLine = function(selector, data, images, options) {
+
+                                            var Scatter = require('../viz/scatter');
+                                            var scatter = new Scatter(selector + ' #scatter-plot', data, null, {width: $(selector).width(), height: Math.min(500, $(selector).width * 0.6)});
+                                            var Line = require('../viz/line');
+                                            var line = new Line(selector + ' #line-plot');
+
+                                            // ...
+
+
+                                            scatter.on('hover', function(d) {
+                                                // ...
+                                                // get newData
+                                                // ... 
+
+                                                line.updateData(newdata);   
+                                            });
+                                        };
+
+                                        module.exports = ScatterLine;
+
+                                p
+                                    | the lightning-client-utils module provides several utility functions, e.g. pulling new data down from the server. This is discussed more in a later section.
+
+
+                                a(name="custom-inherit", href="#custom-inherit")
+                                    h4
+                                        | Inheriting from other plot types
+
+                                p
+                                    | To inherit behavior from an existing plot, the following convention is used:
+
+                                pre
+                                    code.
+                                        var inherits = require('inherits');
+                                        var SomeExistingPlot = require(‘../viz/some-existing-plot’);
+
+                                        var MyInheritingPlot = funtion(selector, data, images, opts) {
+                                            this.opts = opts || {};
+
+                                            this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+                                            this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+
+                                            this.data = this._formatData(data);
+                                            this.selector = selector;
+                                            this._init();
+                                        }
+
+                                        inherits(MyInheritingPlot, SomeExistingPlot);
+
+                                        // now override any methods you wish to change
+                                        // e.g.
+
+                                        MyInheritingPlot.prototype.appendData = function(data) {
+                                            var newData = this._formatData(data);
+                                            // now do something different with the data
+                                        }
+
+                                a(name="prototype-locally", href="#prototype-locally")
+                                    h4
+                                        | Prototyping custom plots locally                                     
+
+                                p
+                                    | If you are running a local Lightning server, you can go to:
+
+                                pre
+                                    code. 
+                                        http://localhost:3000/visualization-types/preview/full/?path=/path/to/viz/my-vis
+
+                                p
+                                    | this will render whatever visualization is inside the folder  
+                                    span.inline-code 
+                                        | my-vis
+                                    |  assuming that the visualization conforms to the basic structure for a Lightning visualization type.
+
+                                p
+                                    | This approach can be useful designing and debugging visualizations locally. For live, light-weight editing the built-in Lightning visualization editor is your friend.
+                                
+                                //- a(name="custom-utils", href="#custom-utils")
+                                //-     h4
+                                //-         | lightning-client-utils
+                                //- p
+                                //-     | The lightning client utilities module exposes a few useful functions for interacting with the lightning server from the browser.
+
+
+    .bottom.bar.visible-mobile

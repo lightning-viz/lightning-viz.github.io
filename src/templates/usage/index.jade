@@ -1,0 +1,240 @@
+extends ../layout
+
+
+block content
+
+    .top.bar
+
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="creating", href="#creating")
+                                    h2
+                                        | Creating a visualization
+
+                                p
+                                    | Once you have a server, you can use it to create visualizations. Here we describe the three most common ways: directly from the server, from a client library, or from the REST API.
+
+                                a(name="direct", href="#direct")
+                                    h4
+                                        | From the server
+
+                                    p
+                                        | Navigate to your lightning host, and create a new session. Then, click “create visualization”
+
+                                    .screenshot
+                                        img(src="/images/screenshots/1.png")
+                                    p
+                                        | Select the “line” type, and enter  
+                                        span.inline-code 
+                                            | {"series": [1, 1, 2, 3, 5, 8]}
+                                        | .
+                                        | NOTE: the data must be a properly formed JSON object.
+
+                                    .screenshot
+                                        img(src="/images/screenshots/2.png")
+                                    p
+                                        | Submit the form and you should see a line plot of that data.
+
+                                    .screenshot
+                                        img(src="/images/screenshots/3.png")
+                                    p
+                                        | To create a choropleth map, select “map” type and enter  
+                                        span.inline-code 
+                                            | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
+                                        | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
+
+
+                                    .screenshot
+                                        img(src="/images/screenshots/4.png")
+
+                                a(name="client", href="#client")
+                                    h4
+                                        | From a client
+
+                                p
+                                    | The client libraries make it easy to generate visualizations straight your favorite data analysis environment, including from within interactive notebooks. This is the most common way to generate visualizations. 
+
+                                p 
+                                    | We'll walk through an example using the Python client, see below to read more about the other client libraries. [[UPDATE GRAPHIC?]]
+                            
+                                .screenshot
+                                    img(src="/images/screenshots/5.png")
+
+                                p
+                                    | [[UPDATE CODE EXAMPLES]] To install the Python client from PyPi, just call
+
+
+                                pre
+                                    code
+                                        | $ pip install lightning-python
+
+                                p
+                                    | Then, in Python, import the library and instantiate a lightning object:
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lightning()
+                                p
+                                    | By default the client assumes that the host is at 
+                                    a(href='http://localhost:3000')
+                                        | http://localhost:3000
+                                    | ; if you want to use a remote server pass it in during instantiation, as in
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lightning(host='https://public.lightning-viz.org')
+
+                                p
+                                    | or
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | lgn = Lightning(host='https://herokuappname.herokuapp.com')
+
+                                p
+                                    | Once you have instantiated the lightning object, try running:
+
+                                pre
+                                    code
+                                        | lgn.create_session(‘hello world’)
+
+                                p
+                                    | This line tells Lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
+
+                                    | You should see that this session has no data yet. To create a line plot call
+
+
+                                pre
+                                    code.python
+                                        | lgn.line([1, 1, 2, 3, 5, 8])
+
+                                .screenshot
+                                    img(src="/images/screenshots/6.png")
+                                p
+                                    | and a line plot should be displayed in your browser. 
+
+                                .screenshot
+                                    img(src="/images/screenshots/7.png")
+
+
+                                p
+                                    | To view all of the available commands see the 
+                                    a(href="http://lightning-viz.github.io/lightning-python/")
+                                        | lightning-python documentation page
+                                    | .
+
+
+                                a(name="rest", href="#rest")
+                                    h4
+                                        | Using the REST API
+
+                                p
+                                    | It's also possible to generate visualizations directly using Lightning's REST API.
+
+                                p
+                                    | [[FILL IN] Brief overview, methods, example 
+
+                section
+                    .row
+                        .column-12
+                                
+                                a(name="sharing", href="#sharing")
+                                    h2    
+                                        | Sharing visualizations
+
+                                p
+                                    | Lightning makes it easy to share your visualizations with others.
+
+                                a(name="links", href="#links")
+                                    h4    
+                                        | Links
+
+                                p
+                                    | [[FILL IN]] Explain where to get links to visualizations and how to add descriptions in markdown?
+
+                                a(name="iframes", href="#iframes")
+                                    h4    
+                                        | iFrames
+
+                                p
+                                    | Lightning provides permalinks for each visualization that can easily be embedded on other sites (particularly these are meant to be embedded using iframes).
+
+                                p
+                                    | To embed a visualization, use the url format
+
+
+                                pre
+                                    code
+                                        | http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/iframe/
+
+
+                                p
+                                    | To determine the ID of the visualization, navigate to the visualization’s permalink and inspect the URL, or if using python
+
+                                pre
+                                    code.python
+                                        | viz = lgn.line([1,1,2,3,5,8])
+                                        | print viz.id
+
+                                p
+                                    | Then embed the visualization in your own webpage with
+
+                                pre
+                                    code.html
+                                        | &lt;iframe src=”http://host/visualizations/vid/iframe” width="N PIXELS" height="N PIXELS" &gt;
+
+                                p
+                                    | making sure to replace host and vid with the proper values.
+
+                                p 
+                                    | For example:
+
+                                .iframe-block
+                                    iframe(src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/", width="300", height="180")
+
+                                p
+                                    | is produced by the following
+                                
+                                pre
+                                    code.html
+                                        | &lt;iframe src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/" width="300" height="300" &gt;
+
+                                a(name="pym", href="#pym")
+                                    h4    
+                                        | Pym.js
+
+                                p
+                                    | If you prefer to use 
+                                    a(href="http://blog.apps.npr.org/pym.js")
+                                        | pym.js
+                                    |  we offer an endpoint for that as well:
+
+                                pre
+                                    code
+                                        | http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/pym/
+
+
+                                p
+                                    | the child script is automatically initialized, so you only have to worry about setting up the parent.
+
+                                p
+                                    | For example [[THIS IS NOT WORKING?]]:
+
+                                #pym-example-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/5/pym")
+
+
+
+    .bottom.bar.visible-mobile
