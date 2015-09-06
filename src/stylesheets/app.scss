@@ -20,6 +20,7 @@ $header-height: 120px;
 $purple: #9175f0;
 $blue: #68a1e5;
 $lightGray: #626c7c;
+$darkGray: #424b58;
 
 a {
     color: $blue;
@@ -50,10 +51,10 @@ h5,
 h6 {
     font-family: 'AvenirNext-UltraLight', sans-serif;
     font-weight: bold;
-    color: #545E6B;
+    color: $darkGray;
 
     a {
-        color: #545E6B;        
+        color: $darkGray;        
     }
 }
 
@@ -119,7 +120,7 @@ ul, li {
     font-family: "AvenirNext-UltraLight";
     font-size: 18px;
     line-height: 1.2em;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     padding-top: 0;
 }
 
@@ -267,7 +268,7 @@ section {
 
 section.tagline {
     text-align: center;
-    color: #444;
+    color: $darkGray;
 
     h5 {
         // font-family: 'AvenirNext', sans-serif;
@@ -516,10 +517,10 @@ ul.styled {
                 display: block; 
                 padding: 0 10px; 
                 outline: none; 
-                color: #444;
+                color: $darkGray;
 
                 &:visited {
-                    color: #444;
+                    color: $darkGray;
                 }
             }
 
