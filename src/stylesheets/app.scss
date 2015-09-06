@@ -19,7 +19,7 @@ $header-height: 120px;
 
 $purple: #9175f0;
 $blue: #68a1e5;
-
+$lightGray: #626c7c;
 
 a {
     color: $blue;
@@ -146,9 +146,9 @@ ul, li {
     font-family: "AvenirNext" sans-serif;
     cursor: pointer;
     font-size: 15px;
-    border: solid 1px rgb(120,120,120);
+    border: solid 1px $lightGray;
     font-weight: 800;
-    color: rgb(120,120,120);
+    color: $lightGray;
     padding: 10px;
     border-radius: 6px;
     margin-right: 10px;
@@ -159,7 +159,7 @@ ul, li {
 }
 
 .method-item:hover {
-    background-color: rgb(120,120,120);
+    background-color: $lightGray;
     color: white;
 }
 
