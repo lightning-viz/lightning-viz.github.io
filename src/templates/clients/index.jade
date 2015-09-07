@@ -22,36 +22,72 @@ block content
                                     h2    
                                         | Client libraries
 
-                                p
-                                    | [[FILL IN]] This should probably just provide an overview of each client, where to find documentation, and for the Python client a description of the headless mode.
-
                                 a(name="python", href="https://github.com/lightning-viz/lightning-python").outside-link
                                     h4    
                                         | Python
 
                                 p
-                                    | The Python client...
+                                    | The Python client is installable via pip
 
+                                pre
+                                    code.bash.
+                                        $ [sudo] pip install lightning-python
+
+                                p
+                                    | and can be found on github 
+                                    a(href="https://github.com/lightning-viz/lightning-python")
+                                        | here.
+
+                                    |  The full documentation is available at 
+                                    a(href="http://lightning-viz.org/lightning-python/")
+                                        | http://lightning-viz.org/lightning-python/
+                                    | . 
+
+                                    b
+                                        | The python client is the only client that supports serverless usage.
+
+                                    |  To use the python client without a server running simply initialize it like
+                                pre
+                                    code.python.
+                                        from lightning import Lightning
+                                        lgn = Lightning(local=True)
                                 a(name="scala", href="https://github.com/lightning-viz/lightning-scala").outside-link
                                     h4    
                                         | Scala
 
                                 p
-                                    | The Scala client...
+                                    | More info about the scala client can be found on github: 
+                                    a(href="https://github.com/lightning-viz/lightning-scala")
+                                        | https://github.com/lightning-viz/lightning-scala
 
                                 a(name="js", href="https://github.com/lightning-viz/lightning.js").outside-link
                                     h4    
                                         | Javascript
 
                                 p
-                                    | The javascript client supports both node.js and the browser.
+                                    | The javascript client supports both node.js and the browser. Install it via npm:
 
-                                a(name="rstats", href="#rstats").outside-link
+                                pre
+                                    code.bash.
+                                        $ npm install lightning.jsp
+                                    
+                                p
+                                    | It can be found on github 
+                                    a(href="https://github.com/lightning-viz/lightning.js")
+                                        | here.
+
+                                a(name="rstats", href="https://github.com/Ermlab/lightning-rstat").outside-link
                                     h4    
                                         | R
 
                                 p
-                                    | The R client...
+                                    | The 
+                                    a(href="https://github.com/Ermlab/lightning-rstat")
+                                        | R client
+                                    |  was built by 
+                                    a(href="https://github.com/Ermlab")
+                                        | Ermlab
+                                    | . It is the first community contributed client.
 
 
     .bottom.bar.visible-mobile
