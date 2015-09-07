@@ -44,13 +44,18 @@ block content
                                     | . 
 
                                     b
-                                        | The python client is the only client that supports serverless usage.
+                                        | The python client is the only client that supports serverless usage (sometimes referred to as headless mode).
 
                                     |  To use the python client without a server running simply initialize it like
                                 pre
                                     code.python.
                                         from lightning import Lightning
                                         lgn = Lightning(local=True)
+                                p
+                                    | This is powerful when used in conjunction with the jupyter notebook. 
+                                    a(href="TODO")
+                                        | Click here to view a full example of using the headless mode in a notebook environment.
+
                                 a(name="scala", href="https://github.com/lightning-viz/lightning-scala").outside-link
                                     h4    
                                         | Scala
