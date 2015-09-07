@@ -19,7 +19,7 @@ block content
                                 
                                 a(name="creating", href="#creating")
                                     h2
-                                        | Creating a visualization
+                                        | Plotting Data
 
                                 p
                                     | Once you have a server, you can use it to create visualizations. Here we describe the three most common ways: directly from the server, from a client library, or from the REST API.
@@ -28,34 +28,34 @@ block content
                                     h4
                                         | From the server
 
-                                    p
-                                        | Navigate to your lightning host, and create a new session. Then, click “create visualization”
+                                p
+                                    | Navigate to your lightning host, and create a new session. Then, click “create visualization”
 
-                                    .screenshot
-                                        img(src="/images/screenshots/1.png")
-                                    p
-                                        | Select the “line” type, and enter  
-                                        span.inline-code 
-                                            | {"series": [1, 1, 2, 3, 5, 8]}
-                                        | .
-                                        | NOTE: the data must be a properly formed JSON object.
+                                .screenshot
+                                    img(src="/images/screenshots/1.png")
+                                p
+                                    | Select the “line” type, and enter  
+                                    span.inline-code 
+                                        | {"series": [1, 1, 2, 3, 5, 8]}
+                                    | .
+                                    | NOTE: the data must be a properly formed JSON object.
 
-                                    .screenshot
-                                        img(src="/images/screenshots/2.png")
-                                    p
-                                        | Submit the form and you should see a line plot of that data.
+                                .screenshot
+                                    img(src="/images/screenshots/2.png")
+                                p
+                                    | Submit the form and you should see a line plot of that data.
 
-                                    .screenshot
-                                        img(src="/images/screenshots/3.png")
-                                    p
-                                        | To create a choropleth map, select “map” type and enter  
-                                        span.inline-code 
-                                            | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
-                                        | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
+                                .screenshot
+                                    img(src="/images/screenshots/3.png")
+                                p
+                                    | To create a choropleth map, select “map” type and enter  
+                                    span.inline-code 
+                                        | {"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}
+                                    | . This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.
 
 
-                                    .screenshot
-                                        img(src="/images/screenshots/4.png")
+                                .screenshot
+                                    img(src="/images/screenshots/4.png")
 
                                 a(name="client", href="#client")
                                     h4
@@ -188,7 +188,32 @@ block content
                                 p
                                     | The easiest place to find all of these links is through the "Actions" menu in the web interface, 
                                     | however most of the API clients also expose convenience methods to quickly retrieve them.
-                                    | [[FILL IN]] Explain where to get links to visualizations and how to add descriptions in markdown?
+
+
+                                .screenshot
+                                    img(src="/images/screenshots/actions.gif")
+
+                                br
+                                p
+                                    | For example, the following shows how to access these links through the python client:
+
+                                .screenshot
+                                    img(src="/images/screenshots/links.png")
+
+                                p
+                                    | Each visualization can also display a custom markdown description field. This can be edited directly through the web interface or via an 
+                                    | api client. 
+                                    | Here is an example using the public server and the python client:
+
+                                .screenshot
+                                    img(src="/images/screenshots/python-description.png")
+
+                                p
+                                    | which produces 
+
+                                .screenshot
+                                    img(src="/images/screenshots/python-description-output.png")
+
 
                                 a(name="iframes", href="#iframes")
                                     h4    
@@ -228,14 +253,14 @@ block content
                                     | For example:
 
                                 .iframe-block
-                                    iframe(src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/", width="300", height="180")
+                                    iframe(src="http://public.lightning-viz.org/visualizations/caac0d28-2705-46ab-83a6-70f197eca1d7/iframe/", width="300", height="180")
 
                                 p
                                     | is produced by the following
                                 
                                 pre
                                     code.html
-                                        | &lt;iframe src="https://lightning-docs.herokuapp.com/visualizations/5/iframe/" width="300" height="300" &gt;
+                                        | &lt;iframe src="http://public.lightning-viz.org/visualizations/caac0d28-2705-46ab-83a6-70f197eca1d7/iframe/" width="300" height="300" &gt;
 
                                 a(name="pym", href="#pym")
                                     h4    
@@ -256,9 +281,9 @@ block content
                                     | the child script is automatically initialized, so you only have to worry about setting up the parent.
 
                                 p
-                                    | For example [[THIS IS NOT WORKING?]]:
+                                    | For example:
 
-                                #pym-example-iframe(data-pym, data-url="http://lightning-docs.herokuapp.com/visualizations/5/pym")
+                                #pym-example-iframe(data-pym, data-url="http://public.lightning-viz.org/visualizations/caac0d28-2705-46ab-83a6-70f197eca1d7/pym")
 
 
 
