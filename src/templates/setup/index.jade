@@ -36,7 +36,7 @@ block content
                                     | nobody will have access unless you explicity give them the link.
     
                                 p                                    
-                                    | The major caveat of using the public server is that you won't be able to manage and customize the visualization types.
+                                    | The major caveat of using the public server is that you won't be able to manage and customize the visualization types. Also, as this is a free, public service, we make no guarentees regarding the permanence of your visualizations.
 
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/lMeqnklbL2I" frameborder="0" allowfullscreen></iframe>
 
@@ -44,8 +44,37 @@ block content
                                     h4
                                         | Standalone app
                                 p
-                                    | TODO
-                                    | [[FILL IN]] Explain the apps, where to download, how to install, where to access once installed, local only, great for testing and prototyping new visualizations, but links can't be shared.
+                                    | The standalone app is the easiest way to use Lightning locally. Just download the appropriate application for your platform from the 
+                                    a(href="https://github.com/lightning-viz/lightning/releases")
+                                        | release page
+                                    | . To then install on Mac OS X, open the .dmg file and drag the Lightning application into your Applications folder.
+
+                                .screenshot
+                                        img(src='/images/screenshots/app-install-osx.png')
+
+                                p
+                                    | For Linux, just unzip the folder, which includes an executable.
+                                p
+                                    | When you open the app, the Lightning server will launch in the background at 
+                                    a(href="http://localhost:3000", target="_blank")
+                                        | http://localhost:3000
+                                    | , and you should see this icon
+                                    img(src='/images/screenshots/menubar-icon.png', style='height: 16px; padding-left: 5px; padding-right: 5px')
+                                    | in your menu bar.
+
+                                p
+                                    | Clicking this icon will open a tray with buttons to open the server, or shut it down.
+
+                                    .screenshot
+                                        img(src="/images/screenshots/menubar.png")
+
+                                    | Similar to running your own local server with node (see 
+                                    a(href='#local-server')
+                                        | below
+                                    |) the local app is a great way to get to know Lightning and use it for local data visualization. You have full control over the server, including installing custom visualizations (see 
+                                    a(href='#TODO')
+                                        | instructions
+                                    |). The only limitation is that you cannot send visualization links to anyone outside your local network.
 
                 section(name="deploy-server")
                     .row
