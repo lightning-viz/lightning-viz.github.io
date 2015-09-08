@@ -14,5 +14,4 @@ module.exports = {
         return val;
     }
 
-
 };

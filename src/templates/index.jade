@@ -25,7 +25,12 @@ block content
 
                             .row(style='margin-top:4%')
                                 .column-4.hidden-mobile
-                                    each val in ["adjacency", "circle", "force", "gallery", "graph", "graph-bundled", "histogram", "image", "image-poly", "line", "map", "matrix", "scatter", "scatter-3", "volume"]
+                                    -   var getThumbnails = function() {
+                                    -       var list = ["adjacency", "circle", "force", "graph", "graph-bundled", "histogram", "image", "image-poly", "line", "map", "matrix", "scatter", "scatter-3", "volume"]
+                                    -       return _.sample(list, 12)
+                                    -   }
+                                    -   var subset = getThumbnails()
+                                    each val in subset
                                         a(href="/visualizations/" + val)
                                             img(src="https://raw.githubusercontent.com/lightning-viz/lightning-default-index/master/thumbnails/" + val + ".png" class='viz-thumbnail' width="100px" )
 
@@ -73,7 +78,7 @@ block content
                                                 | OS X
                                         a(href="/setup/#local-server")
                                             span.method-item
-                                                | NPM
+                                                | node
                                         a(href="/clients/#python")
                                             span.method-item
                                                 | Jupyter
@@ -96,4 +101,3 @@ block content
                                         a(href="/clients/#rstats")
                                             span.method-item
                                                 | r
-
