@@ -132,10 +132,62 @@ block content
                                     h4
                                         | Docker
 
-                                    p
-                                        | TODO
-                                        | [[FILL IN]] Describe running a server with Docker, where to get the official image, how to run and access on OS X or Linux, how to customize with docker compose
+                                p
+                                    | Running Lightning via the official Docker image is an easy way to start a server if you don't want to install node.
 
+                                p
+                                    | We assume here you have already installed Docker for your system. If you are getting started on OS X, the 
+                                    a(href='https://docs.docker.com/installation/mac/')
+                                        | Docker toolbox
+                                    |  is the first thing to checkout.
+
+                                p
+                                    | Once docker is running, call
+
+                                pre
+                                    code.python.
+                                        docker run -i -t -p 3000:3000 lightningviz/lightning:latest
+
+                                p
+                                    | That will pull the latest version of the official Lightning server start it running on port 3000. If you instead want to run a particular tagged version, use
+
+                                pre
+                                    code.python.
+                                        docker run -i -t -p 3000:3000 lightningviz/lightning:tag
+
+                                p
+                                    | Once the server is running, navigate to either 
+                                    span.inline-code
+                                        | localhost:3000
+                                    |  (on Linux) or 
+                                    span.inline-code
+                                        | hostname:30000
+                                    |  (on Mac OS X), where 
+                                    span.inline-code
+                                        | hostname
+                                    |  is the IP addresses of your virtual machine, obtained using
+
+                                pre
+                                    code.bash.
+                                        docker-machine ip my-vm-name
+
+                                p
+                                    | To generate visualizations from a client, just use that address as the host.
+
+                                p
+                                    | You might also want to try 
+                                    a(href='https://kitematic.com/')
+                                        | Kitematic 
+                                    | on OS X which provides a GUI for running Docker images. Running Lightning through Kitematic is easy, just search for the 
+                                    span.inline-code
+                                        | lightningviz/lightning
+                                    |  image, start it, and you should see it running
+
+                                .screenshot
+                                        img(src='/images/screenshots/kitematic.png')
+
+                                p
+                                    | click the button under "Web Preview" to open the Lightning server in a web browser, and see the hostname. 
 
                                 a(name="local-server", href="#local-server")
                                     h4
@@ -169,15 +221,7 @@ block content
                                     a(href="http://localhost:3000", target="_blank")
                                         | http://localhost:3000
                                     
-                                    |. 
-
-                                h5
-                                    | Advanced
-
-                                p
-
-                                p
-                                    | For advanced usage options see  
+                                    |. For more advanced usage options see  
                                     a(href="/setup/advanced")
                                         | this page
                                     | .

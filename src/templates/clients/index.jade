@@ -34,18 +34,17 @@ block content
                                         $ [sudo] pip install lightning-python
 
                                 p
-                                    | and can be found on github 
+                                    | Checkout the project on 
                                     a(href="https://github.com/lightning-viz/lightning-python")
-                                        | here.
-
-                                    |  The full documentation is available at 
+                                        | github
+                                    |  and also read the full  
                                     a(href="http://lightning-viz.org/lightning-python/")
-                                        | http://lightning-viz.org/lightning-python/
+                                        | documentation
                                     | . 
 
                                     b
-                                        | The python client is the only client that supports serverless usage
-                                    |  (sometimes referred to as headless mode).
+                                        | The python client is currently the only client that supports using Lightning without a server
+                                    |  (sometimes referred to as headless or local mode).
 
                                     |  To use the python client without a server running simply initialize it like
                                 pre
@@ -53,18 +52,36 @@ block content
                                         from lightning import Lightning
                                         lgn = Lightning(local=True)
                                 p
-                                    | This is powerful when used in conjunction with the jupyter notebook. 
-                                    a(href="TODO")
-                                        | Click here to view a full example of using the headless mode in a notebook environment.
+                                    | This is powerful when used in conjunction with the jupyter notebook. Checkout an 
+                                    a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/misc/severless.ipynb")
+                                        | example notebook
+                                    |  generating various interactive Lightning plots without a server.
+
+                                p
+                                    | We have provided several Jupyter notebooks with examples of Lightning, including different visualization types, and various options and modes of interactivity. The notebooks are available on 
+                                    a(href="https://github.com/lightning-viz/lightning-example-notebooks")
+                                        | github
+                                    | , can be viewed on 
+                                    a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb")
+                                        | nbviewer
+                                    | , and can be run live courtesy of 
+                                    a(href="http://mybinder.org")
+                                        | Binder
+                                    |  by visiting this 
+                                    a(href="http://mybinder.org/repo/lightning-viz/lightning-example-notebooks")
+                                        | link
+                                    | .
+
 
                                 a(name="scala", href="https://github.com/lightning-viz/lightning-scala").outside-link
                                     h4    
                                         | Scala
 
                                 p
-                                    | More info about the scala client can be found on github: 
+                                    | Documentation for the scala client is avaialble on  
                                     a(href="https://github.com/lightning-viz/lightning-scala")
-                                        | https://github.com/lightning-viz/lightning-scala
+                                        | github
+                                    | .
 
                                 a(name="js", href="https://github.com/lightning-viz/lightning.js").outside-link
                                     h4    
@@ -78,9 +95,9 @@ block content
                                         $ npm install lightning.js
                                     
                                 p
-                                    | It can be found on github 
+                                    | More information can be found on
                                     a(href="https://github.com/lightning-viz/lightning.js")
-                                        | here.
+                                        | github.
 
                                 a(name="rstats", href="https://github.com/Ermlab/lightning-rstat").outside-link
                                     h4    
@@ -90,9 +107,9 @@ block content
                                     | The R client was built by 
                                     a(href="https://github.com/Ermlab")
                                         | Ermlab
-                                    | . It is the first community contributed client. The full documentation is 
+                                    | . It is the first community contributed client. Documentation can be found on  
                                     a(href="https://github.com/Ermlab/lightning-rstat")
-                                        | available on github
+                                        | github
                                     | .
 
 

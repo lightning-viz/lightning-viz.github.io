@@ -65,13 +65,16 @@ block content
                                     | The client libraries make it easy to generate visualizations straight your favorite data analysis environment, including from within interactive notebooks. This is the most common way to generate visualizations. 
 
                                 p 
-                                    | We'll walk through an example using the Python client, see below to read more about the other client libraries. [[UPDATE GRAPHIC?]]
+                                    | We'll walk through an example using the Python client, see the section on
+                                    a(href="/clients")
+                                        | clients
+                                    |  read about the other client libraries.
                             
                                 .screenshot
                                     img(src="/images/screenshots/5.png")
 
                                 p
-                                    | [[UPDATE CODE EXAMPLES]] To install the Python client from PyPi, just call
+                                    | To install the Python client from PyPi, just call
 
 
                                 pre
@@ -93,36 +96,23 @@ block content
 
                                 pre
                                     code.python
-                                        | from lightning import Lightning
-                                        | lgn = Lightning(host='https://public.lightning-viz.org')
+                                        | lgn = Lightning(host='http://public.lightning-viz.org')
 
                                 p
                                     | or
 
                                 pre
                                     code.python
-                                        | from lightning import Lightning
                                         | lgn = Lightning(host='https://herokuappname.herokuapp.com')
 
                                 p
-                                    | Once you have instantiated the lightning object, try running:
-
-                                pre
-                                    code
-                                        | lgn.create_session('hello world')
-
-                                p
-                                    | This line tells Lightning to create a new “session” named Hello World. Try navigating in your browser to the session you just created (open the sidebar, click “all sessions”, click the one named “hello world”)
-
-                                    | You should see that this session has no data yet. To create a line plot call
-
+                                    | Once you have instantiated the lightning object, try generating a line plot
 
                                 pre
                                     code.python
-                                        | lgn.line([1, 1, 2, 3, 5, 8])
+                                        | viz = lgn.line([1, 1, 2, 3, 5, 8])
+                                        | viz.open()
 
-                                .screenshot
-                                    img(src="/images/screenshots/6.png")
                                 p
                                     | and a line plot should be displayed in your browser. 
 
@@ -131,9 +121,12 @@ block content
 
 
                                 p
-                                    | To view all of the available commands see the 
-                                    a(href="http://lightning-viz.github.io/lightning-python/")
-                                        | lightning-python documentation page
+                                    | To read more about the Python client see the  
+                                    a(href="/clients")
+                                        | clients
+                                    |  page, or visit the client 
+                                    a(href="http://lightning-viz.org/lightning-python/")
+                                        | documentation
                                     | .
 
 
