@@ -19,7 +19,8 @@ $header-height: 120px;
 
 $purple: #9175f0;
 $blue: #68a1e5;
-
+$lightGray: #626c7c;
+$darkGray: #424b58;
 
 a {
     color: $blue;
@@ -34,11 +35,11 @@ b {
 }
 
 a {
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  transition:.25s;
+  -o-transition:.075s;
+  -ms-transition:.075s;
+  -moz-transition:.075s;
+  -webkit-transition:.075s;
+  transition:.075s;
 }
 
 
@@ -50,11 +51,24 @@ h5,
 h6 {
     font-family: 'AvenirNext-UltraLight', sans-serif;
     font-weight: bold;
-    color: #545E6B;
+    color: $darkGray;
 
     a {
-        color: #545E6B;        
+        color: $darkGray;        
     }
+}
+
+h2 {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+h4 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+h5 {
+    padding-top: 10px;
 }
 
 p {
@@ -73,6 +87,12 @@ a {
 
     &:active {
         color: #59A2E6;
+    }
+
+    &.outside-link {
+        h1,h2,h3,h4,h5,h6 {
+            color: $purple;
+        }
     }
 }
 
@@ -94,6 +114,72 @@ ul, li {
         margin-bottom: 0;
         margin-top: 15px;
     }
+}
+
+.caption {
+    font-family: "AvenirNext-UltraLight";
+    font-size: 18px;
+    line-height: 1.2em;
+    padding-bottom: 20px;
+    padding-top: 0;
+}
+
+.gh-btn {
+    background-color: red !important;
+    background-image: none;
+}
+
+.method-header {
+    font-size: 22px;
+    line-height: 1.2em;
+    font-family: "AvenirNext-UltraLight";
+    margin-bottom: 3px;
+    margin-top: 20px;
+}
+
+.method-divider {
+    border: solid 2px rgb(145, 117, 240);
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.method-item {
+    font-family: "AvenirNext" sans-serif;
+    cursor: pointer;
+    font-size: 15px;
+    border: solid 1px $lightGray;
+    font-weight: 800;
+    color: $lightGray;
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: 0.1s;
+    min-width: 30px;
+    text-align: center;
+}
+
+.method-item:hover {
+    background-color: $lightGray;
+    color: white;
+}
+
+.getting-started {
+    border: dotted 2px rgb(145, 117, 240);
+    color: rgb(145, 117, 240);
+    font-style: italic;
+}
+
+.getting-started:hover {
+    background-color: rgb(145, 117, 240);
+}
+
+.lang {
+    text-transform: none;
+    width: 25px;
+    text-align: center;
 }
 
 
@@ -184,7 +270,7 @@ section {
 
 section.tagline {
     text-align: center;
-    color: #444;
+    color: $darkGray;
 
     h5 {
         // font-family: 'AvenirNext', sans-serif;
@@ -359,16 +445,15 @@ pre {
 }
 
 .inline-code {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding: 0.2em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
     margin: 0;
     font-size: 85%;
     background-color: rgba(0,0,0,0.04);
     border-radius: 3px;
-    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: "Liberation Mono", Consolas, Menlo, Courier, monospace;
 }
-
 
 .slidesjs-pagination {
     margin: 6px 0 0;
@@ -407,11 +492,21 @@ ul.styled {
     }
 }
 
+.viz-thumbnail {
+    margin-right: 5px;
+    // opacity:0.8;
+    transition: all 0.2s;
+}
+
+.viz-thumbnail:hover {
+    opacity:0.4 !important;
+}
+
 .tab-container {
     margin-top: 15px;
     margin-bottom: 20px;
 
-    ul { 
+    nav ul { 
         margin: 0; padding: 0; 
         li { 
             display: inline-block; 
@@ -424,28 +519,28 @@ ul.styled {
                 display: block; 
                 padding: 0 10px; 
                 outline: none; 
-                color: #444;
+                color: $darkGray;
 
                 &:visited {
-                    color: #444;
-                }
-
-                &.active {
-                    font-weight: bold;
+                    color: $darkGray;
                 }
             }
 
-            &.active {
+            &.is-active {
                 background-color: #f6f7fa;; 
                 padding-top: 6px; 
                 position: relative; 
                 top: 1px; 
                 border-top: solid 2px $purple;
+
+                a {
+                    font-weight: bold;
+                }
             }
         }
     }
     
-    .content-container { 
+    .tab-panel { 
 
         background-color: #f6f7fa;
         padding: 10px;
@@ -526,5 +621,48 @@ ul.styled {
     }
 }
 
+.button,
+button,
+input[type=submit] {
+    border-radius: 2px;
+    border: 1px solid #719BEC;
+    background-color: white;
+
+    font-size: 15px;
+    color: $blue;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 0;
+
+    &:hover {
+        background-color: darken(white, 5%);
+        color: darken($blue, 15%);
+    }
+
+    &:focus {
+        outline:0;
+    }
+}
+
+input[type=submit],
+button {
+    padding: 5px 10px;
+}
+
+.data-button {
+    /*margin-top: 13px;*/
+
+    margin-right: 10px;
+    margin-top: 10px;
+    background: none;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &.active {
+        color: #fff;
+        background-color: $blue;
+    }
+}
 
 @import "views/documentation";

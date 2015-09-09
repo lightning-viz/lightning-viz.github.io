@@ -1,0 +1,160 @@
+a(href="/")
+    img(src="/images/logo3.png" width='25px' style='margin-left:20px; margin-top:20px')
+
+iframe(src="http://ghbtns.com/github-btn.html?user=lightning-viz&repo=lightning&type=watch&count=false", allowtransparency="true", frameborder="0", scrolling="0", width="60", height="20", style="margin-top:40px; margin-left:20px")
+
+a(href="https://twitter.com/lightningviz" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false")
+
+section
+
+    ul
+
+        li
+            a(href="/documentation/#introduction")
+                | Introduction
+
+        li
+            a(href="/documentation/#getting-started")
+                | Getting started
+
+
+section
+    a(href="/setup/")
+        | Setup
+
+    ul
+
+        li
+            a(href="/setup/#prebuilt-server")
+                | Prebuilt server
+
+        li
+            a(href="/setup/#deploy-server")
+                | Deploy a server
+
+
+section
+    a(href="/usage/")
+        | Usage
+
+    ul
+        li
+            a(href="/usage/#creating")
+                | Plotting Data
+
+        li
+            a(href="/usage/#client")
+                | Using an API client
+
+        li
+            a(href="/usage/#rest")
+                | REST API
+
+        li
+            a(href="/usage/#sharing")
+                | Sharing plots
+
+        li
+            a(href="/usage/#custom")
+                | Custom Visualizations
+
+section
+    a(href="/clients")
+        | Clients
+    ul
+
+        li
+            a(href="/clients/#python")
+                | Python
+        li
+            a(href="/clients/#scala")
+                | Scala
+        li
+            a(href="/clients/#js")
+                | Javascript
+        li
+            a(href="/clients/#rstats")
+                | R
+
+section
+    a(href="/visualizations")
+        | Visualizations
+    ul
+        li
+            a(href="/visualizations/adjacency")
+                | Adjacency
+        li
+            a(href="/visualizations/circle")
+                | Circle
+        li
+            a(href="/visualizations/force")
+                | Force
+        li
+            a(href="/visualizations/gallery")
+                | Gallery
+        li
+            a(href="/visualizations/graph-bundled")
+                | Graph Bundled
+        li
+            a(href="/visualizations/histogram")
+                | Histogram
+        li
+            a(href="/visualizations/image")
+                | Image
+        li
+            a(href="/visualizations/image-poly")
+                | Image Poly
+        li
+            a(href="/visualizations/line")
+                | Line
+        li
+            a(href="/visualizations/map")
+                | Map
+        li
+            a(href="/visualizations/matrix")
+                | Matrix
+        li
+            a(href="/visualizations/scatter")
+                | Scatter
+        li
+            a(href="/visualizations/scatter-3")
+                | Scatter3
+        li
+            a(href="/visualizations/volume")
+                | Volume
+
+section
+    a(href="#")
+        | Links
+
+    ul
+        li
+            a(href="https://github.com/lightning-viz/lightning")
+                | Github
+        li
+            a(href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb")
+                | Notebook Examples
+        li
+            a(href="http://public.lightning-viz.org")
+                | Public Server
+        li
+            a(href="https://gitter.im/lightning-viz/lightning")
+                | Chatroom
+
+script.
+    window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+        t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));
