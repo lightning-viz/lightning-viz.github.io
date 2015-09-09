@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning | Data Visualization Server</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/gallery.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><a href="/"><img src="/images/logo3.png" width="25px" style="margin-left:20px; margin-top:20px"></a><iframe src="http://ghbtns.com/github-btn.html?user=lightning-viz&amp;repo=lightning&amp;type=watch&amp;count=false" allowtransparency="true" frameborder="0" scrolling="0" width="60" height="20" style="margin-top:40px; margin-left:20px"></iframe><a href="https://twitter.com/lightningviz" data-show-count="false" data-show-screen-name="false" class="twitter-follow-button"></a><section><ul><li><a href="/documentation/#introduction">Introduction</a></li><li><a href="/documentation/#getting-started">Getting started</a></li></ul></section><section><a href="/setup/">Setup</a><ul><li><a href="/setup/#prebuilt-server">Prebuilt server</a></li><li><a href="/setup/#deploy-server">Deploy a server</a></li></ul></section><section><a href="/usage/">Usage</a><ul><li><a href="/usage/#creating">Plotting Data</a></li><li><a href="/usage/#client">Using an API client</a></li><li><a href="/usage/#rest">REST API</a></li><li><a href="/usage/#sharing">Sharing plots</a></li><li><a href="/usage/#custom">Custom Visualizations</a></li></ul></section><section><a href="/clients">Clients</a><ul><li><a href="/clients/#python">Python</a></li><li><a href="/clients/#scala">Scala</a></li><li><a href="/clients/#js">Javascript</a></li><li><a href="/clients/#rstats">R</a></li></ul></section><section><a href="/visualizations">Visualizations</a><ul><li><a href="/visualizations/adjacency">Adjacency</a></li><li><a href="/visualizations/circle">Circle</a></li><li><a href="/visualizations/force">Force</a></li><li><a href="/visualizations/gallery">Gallery</a></li><li><a href="/visualizations/graph-bundled">Graph Bundled</a></li><li><a href="/visualizations/histogram">Histogram</a></li><li><a href="/visualizations/image">Image</a></li><li><a href="/visualizations/image-poly">Image Poly</a></li><li><a href="/visualizations/line">Line</a></li><li><a href="/visualizations/map">Map</a></li><li><a href="/visualizations/matrix">Matrix</a></li><li><a href="/visualizations/scatter">Scatter</a></li><li><a href="/visualizations/scatter-3">Scatter3</a></li><li><a href="/visualizations/volume">Volume</a></li></ul></section><section><a href="#">Links</a><ul><li><a href="https://github.com/lightning-viz/lightning">Github</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">Notebook Examples</a></li><li><a href="http://public.lightning-viz.org">Public Server</a></li><li><a href="https://gitter.im/lightning-viz/lightning">Chatroom</a></li></ul></section><script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+    
+    return t;
+}(document, "script", "twitter-wjs"));</script></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><section><div class="row"><div class="column-12"><a name="creating" href="#creating"><h2>Plotting Data</h2></a><p>Once you have a server, you can use it to create visualizations. Here we describe the three most common ways: directly from the server, from a client library, or from the REST API.</p><a name="direct" href="#direct"><h4>From the server</h4></a><p>Navigate to your lightning host, and create a new session. Then, click “create visualization”</p><div class="screenshot"><img src="/images/screenshots/1.png"></div><p>Select the “line” type, and enter  <span class="inline-code">{"series": [1, 1, 2, 3, 5, 8]}</span>.
+NOTE: the data must be a properly formed JSON object.</p><div class="screenshot"><img src="/images/screenshots/2.png"></div><p>Submit the form and you should see a line plot of that data.</p><div class="screenshot"><img src="/images/screenshots/3.png"></div><p>To create a choropleth map, select “map” type and enter  <span class="inline-code">{"regions": ["MI", "NY", "NM"], "values": [0.6, 0.3, 0.2]}</span>. This should create a map of the United States showing Michigan, New York, and New Mexico filled in at different color scales.</p><div class="screenshot"><img src="/images/screenshots/4.png"></div><a name="client" href="#client"><h4>From a client</h4></a><p>The client libraries make it easy to generate visualizations straight your favorite data analysis environment, including from within interactive notebooks. This is the most common way to generate visualizations. </p><p>We'll walk through an example using the Python client, see the section on <a href="/clients">clients</a> read about the other client libraries.</p><div class="screenshot"><img src="/images/screenshots/5.png"></div><p>To install the Python client from PyPi, just call</p><pre><code>$ pip install lightning-python</code></pre><p>Then, in Python, import the library and instantiate a lightning object:</p><pre><code class="python">from lightning import Lightning
+lgn = Lightning()</code></pre><p>By default the client assumes that the host is at <a href="http://localhost:3000">http://localhost:3000</a>; if you want to use a remote server pass it in during instantiation, as in</p><pre><code class="python">lgn = Lightning(host='http://public.lightning-viz.org')</code></pre><p>or</p><pre><code class="python">lgn = Lightning(host='https://herokuappname.herokuapp.com')</code></pre><p>Once you have instantiated the lightning object, try generating a line plot</p><pre><code class="python">viz = lgn.line([1, 1, 2, 3, 5, 8])
+viz.open()</code></pre><p>and a line plot should be displayed in your browser. </p><div class="screenshot"><img src="/images/screenshots/7.png"></div><p>To read more about the Python client see the  <a href="/clients">clients</a> page, or visit the client <a href="http://lightning-viz.org/lightning-python/">documentation</a>.</p><a name="rest" href="#rest"><h4>Using the REST API</h4></a><p>It's also possible to generate visualizations directly using Lightning's REST API.</p><p>First create a session to post visualizations to:</p><pre><code class="bash">curl http://localhost:3000/sessions \
+  -d name="my session"</code></pre><p>This will return a response including a JSON representation of the session you've just created. e.g. </p><pre><code class="json">{
+    "id":"06a214f3-6de2-46d3-9a8a-ec5764c481ff",
+    "name":"my session",
+    "updatedAt":"2015-09-06T21:26:49.843Z",
+    "createdAt":"2015-09-06T21:26:49.843Z"
+}</code></pre><p>Then create a visualization using the returned id of the session:</p><pre><code class="bash">curl http://localhost:3000/sessions/06a214f3-6de2-46d3-9a8a-ec5764c481ff \
+  -d type="line" \
+  -d data='{"series": [1, 2, 3, 4, 5]}'</code></pre></div></div></section><section><div class="row"><div class="column-12"><a name="sharing" href="#sharing"><h2>   
+Sharing visualizations</h2></a><p>Lightning makes it easy to share your visualizations with others.</p><a name="links" href="#links"><h4>   
+Links</h4></a><p>The easiest place to find all of these links is through the "Actions" menu in the web interface, 
+however most of the API clients also expose convenience methods to quickly retrieve them.</p><div class="screenshot"><img src="/images/screenshots/actions.gif"></div><p>NOTE - the actions menu on the public server offers a limited set of options because of security implications.
+To access all options <a href="/setup">run your own server</a>.</p><br><p>For example, the following shows how to access these links through the python client:</p><div class="screenshot"><img src="/images/screenshots/links.png"></div><p>Each visualization can also display a custom markdown description field. This can be edited directly through the web interface or via an 
+api client. 
+Here is an example using the public server and the python client:</p><div class="screenshot"><img src="/images/screenshots/python-description.png"></div><p>which produces </p><div class="screenshot"><img src="/images/screenshots/python-description-output.png"></div><a name="iframes" href="#iframes"><h4>   
+iFrames</h4></a><p>Lightning provides permalinks for each visualization that can easily be embedded on other sites (particularly these are meant to be embedded using iframes).</p><p>To embed a visualization, use the url format</p><pre><code>http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/iframe/</code></pre><p>To determine the ID of the visualization, navigate to the visualization’s permalink and inspect the URL, or if using python</p><pre><code class="python">viz = lgn.line([1,1,2,3,5,8])
+print viz.id</code></pre><p>Then embed the visualization in your own webpage with</p><pre><code class="html">&lt;iframe src=”http://host/visualizations/vid/iframe” width="N PIXELS" height="N PIXELS" &gt;</code></pre><p>making sure to replace host and vid with the proper values.</p><p>For example:</p><div class="iframe-block"><iframe src="http://public.lightning-viz.org/visualizations/d03cf9d9-f410-4aea-a216-202ddc7b9752/iframe/" width="300" height="180"></iframe></div><p>is produced by the following</p><pre><code class="html">&lt;iframe src="http://public.lightning-viz.org/visualizations/d03cf9d9-f410-4aea-a216-202ddc7b9752/iframe/" width="300" height="300" &gt;</code></pre><a name="pym" href="#pym"><h4>   
+Pym.js</h4></a><p>If you prefer to use <a href="http://blog.apps.npr.org/pym.js">pym.js</a> we offer an endpoint for that as well:</p><pre><code>http://&lt;host&gt;/visualizations/&lt;visualization-id&gt;/pym/</code></pre><p>the child script is automatically initialized, so you only have to worry about setting up the parent.</p><p>For example:</p><div id="pym-example-iframe" data-pym data-url="http://public.lightning-viz.org/visualizations/d03cf9d9-f410-4aea-a216-202ddc7b9752/pym"></div></div></div><section><div class="row"><div class="column-12"><a name="custom" href="#custom"><h2>   
+Importing Custom Visualization Types</h2></a><p>Use the web interface to import custom visualizations. Custom visualizations are installed via npm, you simply need to know
+the name of the module that you want to import. To search for available modules use <a href="https://www.npmjs.com/search?q=lightning-visualization">this link </a> to find npm modules tagged with "lightning-visualization"</p><div class="screenshot"><img src="/images/screenshots/import.gif"></div><h4>Plotting a custom visualization from the API client</h4><p>Creating a visualization with this new custom type is similar to creating any other type of plot.</p><pre><code class="python">from lightning import Lightning
+from numpy import random
+lgn = Lightning()
+
+data = random.random(100)
+
+# typical plot
+lgn.line(data)
+
+# custom plot
+lgn.plot(data, type='my-custom-lightning-viz')
+</code></pre></div></div></section><section><div class="row"><div class="column-12"><a name="custom-dev" href="#custom-dev"><h2>   
+Developing Custom Visualization Types</h2></a><iframe width="560" height="315" src="https://www.youtube.com/embed/3kZxNGj15-s" frameborder="0" allowfullscreen></iframe><p>In addition to Lightning’s core visualization types, users can easily develop their own plots, either by modifying the existing ones, or designing visualizations from scratch. This section serves as a walkthrough to create a custom visualization.
+At their core custom visualizations are simply npm modules conforming to a certain specifications.</p><p>To facilitate the development of these modules, we provide a <a href="http://yeoman.io">yeoman</a> generator. The generator can be found on github <a href="https://github.com/lightning-viz/generator-lightning-viz">here</a>. To install the generator run the following commands (must have node installed):</p><pre><code class="bash">$ [sudo] npm install -g yo # install yeoman
+$ [sudo] npm install -g generator-lightning-viz</code></pre><p>After installing the generator you can use it to scaffold out a custom visualization:</p><pre><code class="bash">$ mkdir my-custom-lightning-viz
+$ cd my-custom-lightning-viz
+$ yo lightning-viz</code></pre><p>The <span class="inline-code">yo lightning-viz</span> command tells yeoman to build out the skeleton of a lightning visualization in the current directory. You should now have a folder with the following 
+structure:</p><div class="screenshot"><img src="/images/screenshots/custom-structure.png"></div><p>You'll notice the following components:</p><ul><li><b>README</b>- contains info about your visualization</li><li><b>data/</b>- a special folder for including sample datasets and a thumbnail image of the visualization</li><li><b>index.js</b>- the javascript entry point, you shouldn't need to touch this file</li><li><b>package.json</b>- the npm specification for your package. If the visualization has any external dependencies, e.g. d3.js 
+they should be listed here.</li><li><b>src/</b>- the folder with the source code. View the index.js file here to start editing the visualization.</li></ul><h4>src/index.js</h4><p>This is the main file for your visualization. (note: because this is simply an npm module you are free to structure the files however you like, just make sure that
+the module exports a LightningVisualization object):</p><pre><code class="javascript">var LightningVisualization = require('lightning-visualization');
+var _ = require('lodash');
+
+/* 
+ * Uncomment this code to require an optional stylesheet
+ */
+// var fs = require('fs');
+// var styles = fs.readFileSync(__dirname + '/styles/style.css');
+
+/*
+ * Extend the base visualization object
+ */
+var Visualization = LightningVisualization.extend({
+    getDefaultOptions: function() {
+        /*
+         * If the visualization takes options provide sensible
+         * defaults here.
+         */
+        return {
+        };
+    },
+    
+    init: function() {
+        /*
+         * FILL IN Add any logic for initializing the visualization
+         *
+         * the following are available:
+         *
+         * this.width - visualization container width
+         * this.height - visualization container height
+         * this.el - visualization container dom node
+         * this.data - visualization data (that has been passed through the formatData function)
+         * this.options - options that have been passed to the visualization
+         */
+         
+        this.render();
+    },
+    
+    /*
+     * optionally pass a string of CSS styles 
+     */
+    // styles: styles,
+    
+    render: function() {
+        /*
+         * FILL IN Render the visualization
+         */
+         
+        /*
+         * FILL IN Get data / selector from this.data and this.selector
+         */
+    },
+    
+    formatData: function(data) {
+        /*
+         * Format your data from a raw JSON blob
+         */
+        return data;
+    },
+    
+    updateData: function(formattedData) {
+        this.data = formattedData;
+        /*
+         * FILL IN Re-render your visualization
+         */
+    },
+    
+    appendData: function(formattedData) {    
+        /*
+         * FILL IN Update this.data to include the newly formatted data
+         */
+         
+        /*
+         * FILL IN Re-render the visualization
+         */    
+    }
+    
+});
+
+
+module.exports = Visualization;
+</code></pre><h4>Adding external dependencies</h4><p>To include a dependency on a third party library (e.g. d3.js, react, etc.) you can install them via npm.
+Note that the visualizations are compiled via browserify, so any 3rd party library must be browserify compatible.</p><p>To install and save a dependency simultaneously, use the following command inside the top level of your custom viz folder:</p><pre><code class="bash">$ npm install --save <library-name>
+</code></pre><p>This library can now be required in your javascript code. To learn more about browserify visit <a href="http://browserify.org/">http://browserify.org/</a></p><h4>Developing and testing locally</h4><p>To test a custom visualization locally, you must first notify npm that it is available on your filesystem. To do this run:</p><pre><code class="bash">$ npm link .
+</code></pre><p>from inside the root of your custom viz folder:</p><div class="screenshot"><img src="/images/screenshots/npm-link.png"></div><p>The visualization can imported or previewed in lightning. Use the "preview" option while developing to see changes:</p><div class="screenshot"><img src="/images/screenshots/preview-local.png"></div><p>Once you are happy with the visualization import it into lightning. You can then start plotting data with this visualization type.</p><h4>Sharing your code with others</h4><p>To allow others to use your visualization, publish it to npm. First make sure that you are logged in to your npm account (the same command can
+also be used to create an account):</p><pre><code class="bash">$ npm adduser</code></pre><p>Then create a tag with a new version number. NPM has a tool to do this automatically:</p><pre><code class="bash">$ npm version patch # options are major, minor, or patch</code></pre><p>The <span class="inline-code">major|minor|patch</span> options correspond to X.Y.Z in the semantic versioning system. Your package starts at 0.0.0 so 
+e.g. a major version bump would be 1.0.0 but a patch version bump would be 0.0.1. This version number
+is stored in the package.json file.</p><p>Then push the change to git and publish to npm</p><pre><code class="bash">$ git push origin master --tags # only do this if you are using git for version control 
+$ npm publish .
+</code></pre><p>That's it!</p></div></div></section></section></div></div></div><div class="bottom bar visible-mobile"></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="/js/app.js"></script></body>

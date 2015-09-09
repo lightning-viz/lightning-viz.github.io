@@ -52,7 +52,8 @@ table {
 ================================================== */
 body {
   background: #fff;
-  font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 15px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 140%;
   color: #444;
   -webkit-font-smoothing: antialiased;
   /* Fix for webkit rendering */
@@ -84,7 +85,7 @@ h3 {
   margin-bottom: 8px; }
 
 h4 {
-  font-size: 21px;
+  font-size: 22px;
   line-height: 30px;
   margin-bottom: 4px; }
 
@@ -683,18 +684,29 @@ b {
   font-weight: bold; }
 
 a {
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.25s; }
+  -o-transition: 0.075s;
+  -ms-transition: 0.075s;
+  -moz-transition: 0.075s;
+  -webkit-transition: 0.075s;
+  transition: 0.075s; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'AvenirNext-UltraLight', sans-serif;
   font-weight: bold;
-  color: #545E6B; }
+  color: #424b58; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: #545E6B; }
+    color: #424b58; }
+
+h2 {
+  padding-top: 40px;
+  padding-bottom: 20px; }
+
+h4 {
+  padding-top: 20px;
+  padding-bottom: 10px; }
+
+h5 {
+  padding-top: 10px; }
 
 p {
   color: #222; }
@@ -707,6 +719,8 @@ a {
     color: #A997EB; }
   a:active {
     color: #59A2E6; }
+  a.outside-link h1, a.outside-link h2, a.outside-link h3, a.outside-link h4, a.outside-link h5, a.outside-link h6 {
+    color: #9175f0; }
 
 li {
   list-style: none; }
@@ -724,6 +738,63 @@ ul, li {
   .header h1 {
     margin-bottom: 0;
     margin-top: 15px; }
+
+.caption {
+  font-family: "AvenirNext-UltraLight";
+  font-size: 18px;
+  line-height: 1.2em;
+  padding-bottom: 20px;
+  padding-top: 0; }
+
+.gh-btn {
+  background-color: red !important;
+  background-image: none; }
+
+.method-header {
+  font-size: 22px;
+  line-height: 1.2em;
+  font-family: "AvenirNext-UltraLight";
+  margin-bottom: 3px;
+  margin-top: 20px; }
+
+.method-divider {
+  border: solid 2px #9175f0;
+  width: 60px;
+  margin-bottom: 20px; }
+
+.method-item {
+  font-family: "AvenirNext" sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+  border: solid 1px #626c7c;
+  font-weight: 800;
+  color: #626c7c;
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: 0.1s;
+  min-width: 30px;
+  text-align: center; }
+
+.method-item:hover {
+  background-color: #626c7c;
+  color: white; }
+
+.getting-started {
+  border: dotted 2px #9175f0;
+  color: #9175f0;
+  font-style: italic; }
+
+.getting-started:hover {
+  background-color: #9175f0; }
+
+.lang {
+  text-transform: none;
+  width: 25px;
+  text-align: center; }
 
 .example {
   position: relative;
@@ -773,7 +844,7 @@ section:last-of-type {
 
 section.tagline {
   text-align: center;
-  color: #444; }
+  color: #424b58; }
   section.tagline h5 {
     color: #181818; }
 
@@ -865,14 +936,14 @@ section.getting-started {
   margin-bottom: 20px; }
 
 .inline-code {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  padding: 0.2em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
   margin: 0;
   font-size: 85%;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 3px;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+  font-family: "Liberation Mono", Consolas, Menlo, Courier, monospace; }
 
 .slidesjs-pagination {
   margin: 6px 0 0;
@@ -904,35 +975,42 @@ ul.styled {
   ul.styled li {
     list-style: inherit; }
 
+.viz-thumbnail {
+  margin-right: 5px;
+  transition: all 0.2s; }
+
+.viz-thumbnail:hover {
+  opacity: 0.4 !important; }
+
 .tab-container {
   margin-top: 15px;
   margin-bottom: 20px; }
-  .tab-container ul {
+  .tab-container nav ul {
     margin: 0;
     padding: 0; }
-    .tab-container ul li {
+    .tab-container nav ul li {
       display: inline-block;
       zoom: 1;
       *display: inline;
       cursor: pointer; }
-      .tab-container ul li a {
+      .tab-container nav ul li a {
         font-size: 14px;
         line-height: 2em;
         display: block;
         padding: 0 10px;
         outline: none;
-        color: #444; }
-        .tab-container ul li a:visited {
-          color: #444; }
-        .tab-container ul li a.active {
-          font-weight: bold; }
-      .tab-container ul li.active {
+        color: #424b58; }
+        .tab-container nav ul li a:visited {
+          color: #424b58; }
+      .tab-container nav ul li.is-active {
         background-color: #f6f7fa;
         padding-top: 6px;
         position: relative;
         top: 1px;
         border-top: solid 2px #9175f0; }
-  .tab-container .content-container {
+        .tab-container nav ul li.is-active a {
+          font-weight: bold; }
+  .tab-container .tab-panel {
     background-color: #f6f7fa;
     padding: 10px; }
   .tab-container .code, .tab-container pre {
@@ -981,10 +1059,42 @@ ul.styled {
   fill: #BEC9CE;
   font-family: monospace; }
 
+.button, button, input[type=submit] {
+  border-radius: 2px;
+  border: 1px solid #719BEC;
+  background-color: white;
+  font-size: 15px;
+  color: #68a1e5;
+  line-height: 20px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 0; }
+  .button:hover, button:hover, input[type=submit]:hover {
+    background-color: #f2f2f2;
+    color: #277ada; }
+  .button:focus, button:focus, input[type=submit]:focus {
+    outline: 0; }
+
+input[type=submit], button {
+  padding: 5px 10px; }
+
+.data-button {
+  /*margin-top: 13px;*/
+  margin-right: 10px;
+  margin-top: 10px;
+  background: none;
+  color: #68a1e5;
+  border: 1px solid #68a1e5; }
+  .data-button.active {
+    color: #fff;
+    background-color: #68a1e5; }
+
 .documentation-container a {
-  outline: none; }
+  outline: none;
+  font-size: 15px;
+  color: #7d5eee; }
 .documentation-container a:visited {
-  color: #9175f0; }
+  color: #7d5eee; }
 .documentation-container .row {
   max-width: none;
   padding-left: 0;
@@ -1001,7 +1111,10 @@ ul.styled {
     padding: 30px 10%;
     padding-bottom: 0; }
     .documentation-container .overview-container section > a {
-      font-size: 24px; }
+      font-family: 'AvenirNext', sans-serif;
+      font-size: 22px; }
+    .documentation-container .overview-container section > a:hover {
+      color: #b5a3f5; }
     .documentation-container .overview-container section ul {
       margin-top: 15px;
       list-style-type: disc;
@@ -1011,6 +1124,8 @@ ul.styled {
         list-style: inherit; }
       .documentation-container .overview-container section ul a, .documentation-container .overview-container section ul a:visited {
         color: #444; }
+      .documentation-container .overview-container section ul a:hover {
+        color: #777777; }
     .documentation-container .overview-container section:last-of-type {
       margin-bottom: 50px; }
 .documentation-container .details-container section {

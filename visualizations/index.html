@@ -1,129 +1,16 @@
-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning | Data Visualization Server</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/examples/particles.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><section><a href="/">Lightning</a><ul><li><a href="http://github.com/lightning-viz/lightning">Github</a></li><li><a href="/">Website</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/visualizations">Examples</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">IPython Examples</a></li></ul></section><section><a href="#plots">Plots</a><ul><li><a href="#scatter">Scatter</a></li><li><a href="#line">Line</a></li><li><a href="#line-stacked">Line Stacked</a></li><li><a href="#force">Force</a></li><li><a href="#graph">Graph</a></li><li><a href="#graph-bundled">Graph Bundled</a></li><li><a href="#matrix">Matrix</a></li><li><a href="#adjacency">Adjacency</a></li><li><a href="#map">Map                </a></li></ul></section><section><a href="/visualizations/images#images">Images</a><ul><li><a href="/visualizations/images#image">Image</a></li><li><a href="/visualizations/images#gallery">Gallery</a></li></ul></section><section><a href="/visualizations/3d#3d">3D</a><ul><li><a href="/visualizations/3d#scatter3">Scatter3</a></li><li><a href="/visualizations/3d#volume">Volume</a></li></ul></section><section><a href="/visualizations/streaming#streaming">Streaming</a><ul><li><a href="/visualizations/streaming#line">Line</a></li><li><a href="/visualizations/streaming#scatter">Scatter</a></li></ul></section><section><a href="/visualizations/linked#linked">Linked</a><ul><li><a href="/visualizations/linked#scatter-line">Scatter-Line</a></li></ul></section></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><header>           <div class="row"><div class="column-12"><div class="row header"><div class="column-1 mobile-column-1"><img src="/images/logo.png"></div><div class="column-10 mobile-column-3"><h1>Lightning</h1>DATA VISUALIZATION SERVER</div></div></div></div></header><section name="introduction"><div class="row"><div class="column-12"><a name="visualizations" href="#visualizations"><h2>Visualizations</h2></a></div></div></section><section name="plots"><div class="row"><div class="column-12"><a name="plots" href="#plots"><h2>Plots</h2></a><a name="scatter" href="#scatter"><h4>Scatter</h4></a><p>Scatter plots show collections of points. The primary data is an array of points, where each point is a two element-array with x and y coordinates. Optional specifications include color (or group label), alpha, and size. </p><div id="scatter-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/45/pym"></div><div class="tab-container"><ul><li><a href="#scatter-data-tab">Data Structure</a></li><li><a href="#scatter-python-tab">Python Example</a></li></ul><div class="content-container"><div id="scatter-data-tab"><pre><code>data = {
-    "points": [[x0,y0], [x1,y1], ... ]
-    "alpha": [0.2, 0.9, ...]
-    "color": [[r0,g0,b0], [10,20,0], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="scatter-python-tab"><pre><code>from numpy import random, ceil, array, clip
-
-x = random.randn(100) * 15
-y = random.randn(100) * 15
-l = ceil(random.rand(100) * 5)
-s = random.rand(100) * 20 + 5
-a = clip(random.rand(100) + 0.1, 0, 1)
-
-lgn.scatter(x, y, label=l, size=s, alpha=a)
-</code></pre></div></div></div><a name="line" href="#line"><h4>Line</h4></a><p>Line plots show one or more one-dimensional signals, and are commonly used to plot time series. The primary data is an array of series, where each series is a one-dimensional signal. Optional specifications include an axis (common to all lines), as well as line color (or group label), and size.</p><div id="line-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/46/pym"></div><div class="tab-container"><ul><li><a href="#line-data-tab">Data Structure</a></li><li><a href="#line-python-tab">Python Example</a></li></ul><div class="content-container"><div id="line-data-tab"><pre><code>data = {
-    "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
-    "axis": [0, 1, ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="line-python-tab"><pre><code>from numpy import random
-from scipy.ndimage.filters import gaussian_filter
-
-x = random.randn(500)
-x = gaussian_filter(x, 10)
-
-lgn.line(x)
-</code></pre></div></div></div><a name="line-stacked" href="#line-stacked"><h4>Line Stacked</h4></a><p>A stacked line plot shows one or more one-dimensional signals alongside a minimap that lets you select arbitrary subsets of lines to display simultaneously. The input data is the same as for the normal line plot.</p><div id="stacked-line-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/78/pym"></div><div class="tab-container"><ul><li><a href="#line-stacked-data-tab">Data Structure</a></li><li><a href="#line-stacked-python-tab">Python Example</a></li></ul><div class="content-container"><div id="line-stacked-data-tab"><pre><code>data = {
-    "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
-    "axis": [0, 1, ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="line-stacked-python-tab"><pre><code>from numpy import random
-from scipy.ndimage.filters import gaussian_filter
-
-y = gaussian_filter(random.rand(5,100), [0, 3])
-
-lgn.linestacked(y, size=6)
-</code></pre></div></div></div><a name="force" href="#force"><h4>Force</h4></a><p>A force-directed graph is a useful way to visualize the structure of a network in a dynamic rendering. Nodes can be dragged to reorganize the network, and can be double clicked to highlight only the links to the selected node. The weight of lines between nodes indicates connection strength. The primary data is an array of nodes (usually just a list of linear indices, one per node) and an array of links, where each link is a three-element array with the source node index, target node index, and value. Optional specifications include node color (or group label) and size.</p><div id="force-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/202/pym"></div><div class="tab-container"><ul><li><a href="#force-data-tab">Data Structure</a></li><li><a href="#force-python-tab">Python Example</a></li></ul><div class="content-container"><div id="force-data-tab"><pre><code>data = {
-    "nodes": [0, 1, 2, ...] 
-    "links": [[source0, target0, value0], [source1, target1, value1], ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="force-python-tab"><pre><code>import networkx as nx
-from numpy import random
-
-G = nx.random_regular_graph(3,100)
-mat = nx.adjacency_matrix(G).todense()
-l = (random.rand(100)*5).astype('int')
-
-lgn.force(mat, label=l)
-</code></pre></div></div></div><a name="graph" href="#graph"><h4>Graph</h4></a><p>A node-link graph is a static representation of a network where the spatial coordinates are specified along with the links are specified. Nodes can be clicked to highlight only the links to the selected node. The primary data is a list of nodes, and a list of links. Each node is a two-element array with an x and y coordinate, and each link is a three-element array with the source node index, target node index, and value (assuming nodes are indexed linearly). Optional specifications include node color (or group label) and size.</p><div id="graph-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/130/pym"></div><div class="tab-container"><ul><li><a href="#graph-data-tab">Data Structure</a></li><li><a href="#graph-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-data-tab"><pre><code>data = {
-    "nodes": [[x0,y0], [x1,y1], ... ]
-    "links": [[source0, target0, value0], [source1, target1, value1], ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="graph-python-tab"><pre><code>from numpy import asarray, argmin
-import networkx as nx
-
-G = nx.random_geometric_graph(100, 0.2)
-pos = asarray(nx.get_node_attributes(G, 'pos').values())
-dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
-center = argmin(dists)
-p = nx.single_source_shortest_path_length(G, center)
-
-xy = asarray([pos[i,:] for i in p.keys()])
-mat = nx.adjacency_matrix(G).todense()
-l = p.values()
-
-lgn.graph(xy[:,0], xy[:,1], mat, label=l)
-</code></pre></div></div></div><a name="graph-bundled" href="#graph-bundled"><h4>Graph Bundled</h4></a><p>The bundled graph is similar to the node-link graph, but links are bundled using the algorithm from (link) to emphasize regions of the graph where there is dense connectivity. Nodes can be clicked to highlight only the links to the selected node. The input data is the same as for the normal graph. </p><div id="graph-bundled-iframe" data-pym data-url="http://lightning-docs.herokuapp.com/visualizations/132/pym"></div><div class="tab-container"><ul><li><a href="#graph-bundled-data-tab">Data Structure</a></li><li><a href="#graph-bundled-python-tab">Python Example</a></li></ul><div class="content-container"><div id="graph-bundled-data-tab"><pre><code>data = {
-    "nodes": [[x0,y0], [x1,y1], ... ]
-    "links": [[source0, target0, value0], [source1, target1, value1], ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="graph-bundled-python-tab"><pre><code>import networkx as nx
-from numpy import asarray
-
-G = nx.random_geometric_graph(50, 0.5)
-pos = asarray(nx.get_node_attributes(G, 'pos').values())
-dists = [(x - 0.5)**2 + (y - 0.5)**2 for x, y in pos]
-mat = nx.adjacency_matrix(G).todense()
-
-lgn.graphbundled(pos[:,0], pos[:,1], mat)
-</code></pre></div></div></div><a name="matrix" href="#matrix"><h4>Matrix</h4></a><p>A matrix can be used to represent the values in any two-dimensional table of numbers. It renders the entries of the matrix as cells in a two-dimensional grid, with colors showing the relative values. The matrix can be panned and zoomed, and can be square or rectangle. The primary input data is a matrix which is a two-dimensional array containing the entries for each row and column. Optional specifications include the colormap used to display the values.</p><div id="matrix-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/171/pym" data-pym></div><div class="tab-container"><ul><li><a href="#matrix-data-tab">Data Structure</a></li><li><a href="#matrix-python-tab">Python Example</a></li></ul><div class="content-container"><div id="matrix-data-tab"><pre><code>data = {
-    "matrix": [[row0col0, row0col1, row0col2], [row1col0, row1col1, row1col2], ...]
-    "colormap": "colorbrewername"
-}
-</code></pre></div><div id="matrix-python-tab"><pre><code>from numpy import random, array
-
-mat = random.random((10, 10))
-
-lgn.matrix(mat, colormap="Purples")
-</code></pre></div></div></div><a name="adjacency" href="#adjacency"><h4>Adjacency</h4></a><p>An adjacency matrix is a special matrix meant to show the structure of a sparse network, especially one in which nodes in the network have been categorized into groups. It is a square matrix in which each row (and column) corresponds to a node, and the value in each cell (always positive) is the weight between a pair of nodes. If the matrix is binary the graph is unweighted; if the matrix is symmetric the graph is undirected. The primary input data is an array of nodes and an array of links. Similar to the force plot, the nodes are usually just a list of linear indices, and each link is a three-element array with the source node index, target node index, and value. Optional specifications include a group label for each node.</p><div id="adjacency-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/183/pym" data-pym></div><div class="tab-container"><ul><li><a href="#adjacency-data-tab">Data Structure</a></li><li><a href="#adjacency-python-tab">Python Example</a></li></ul><div class="content-container"><div id="adjacency-data-tab"><pre><code>data = {
-    "nodes": [0, 1, 2, ... ]
-    "links": [[source0, target0, value0], [source1, target1, value1], ...]
-    "label": [l0, l1, ...]
-}
-</code></pre></div><div id="adjacency-python-tab"><pre><code>from sklearn import datasets
-from numpy import corrcoef
-
-d, l = datasets.make_blobs(n_features=5, n_samples=20, centers=5, cluster_std=1.0)
-c = corrcoef(d)
-c[c<0.75] = 0
-
-lgn.adjacency(c, label=l)
-</code></pre></div></div></div><a name="map" href="#map"><h4>Map</h4></a><p>A map plot shows geographic regions filled with colors that reflect numerical values. You can produce maps of either the world (by specifying countries) or the united states (by specifying states). The primary input data is a list of regions and values. Each region is a string, either two letters (for US states) or three letters (for countries), and each value is a scalar. Optional specifications include a colormap used to display the values.</p><div id="map-iframe" data-url="http://lightning-docs.herokuapp.com/visualizations/38/pym" data-pym></div><div class="tab-container"><ul><li><a href="#map-data-tab">Data Structure</a></li><li><a href="#map-python-tab">Python Example</a></li></ul><div class="content-container"><div id="map-data-tab"><pre><code>data = {
-    "regions": [“NY”, “CA”, “MA”, ... ]
-    "values": [v0, v1, v2, ...]
-    "colormap": “colorbrewername”
-}
-</code></pre></div><div id="map-python-tab"><pre><code>from numpy import random
-
-states = ["NA", "AK", "AL", "AR", "AZ", "CA", "CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
-values = random.randn(len(states))
-
-lgn.map(states, values, colormap="Blues")
-</code></pre></div></div></div></div></div></section><section name="images"><div class="row"><div class="column-12"><a name="images" href="/visualizations/images"><h2>Images</h2></a><a href="/visualizations/images"><h4>Click to view image-based visualizations</h4></a></div></div></section><section name="3d"><div class="row"><div class="column-12"><a name="3d" href="/visualizations/3d"><h2>3D</h2></a><a href="/visualizations/3d"><h4>Click to view 3d visualizations</h4></a></div></div></section><section name="streaming"><div class="row"><div class="column-12"><a name="streaming" href="/visualizations/streaming"><h2>Streaming</h2></a><a href="/visualizations/streaming"><h4>Click to view streaming visualizations</h4></a></div></div></section><section name="linked"><div class="row"><div class="column-12"><a name="linked" href="/visualizations/linked"><h2>Linked</h2></a><a href="/visualizations/linked"><h4>Click to view linked visualizations</h4></a></div></div></section></div></div></div><div class="bottom bar visible-mobile"></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="/js/app.js"></script></body>
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning | Data Visualization Server</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/gallery.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><a href="/"><img src="/images/logo3.png" width="25px" style="margin-left:20px; margin-top:20px"></a><iframe src="http://ghbtns.com/github-btn.html?user=lightning-viz&amp;repo=lightning&amp;type=watch&amp;count=false" allowtransparency="true" frameborder="0" scrolling="0" width="60" height="20" style="margin-top:40px; margin-left:20px"></iframe><a href="https://twitter.com/lightningviz" data-show-count="false" data-show-screen-name="false" class="twitter-follow-button"></a><section><ul><li><a href="/documentation/#introduction">Introduction</a></li><li><a href="/documentation/#getting-started">Getting started</a></li></ul></section><section><a href="/setup/">Setup</a><ul><li><a href="/setup/#prebuilt-server">Prebuilt server</a></li><li><a href="/setup/#deploy-server">Deploy a server</a></li></ul></section><section><a href="/usage/">Usage</a><ul><li><a href="/usage/#creating">Plotting Data</a></li><li><a href="/usage/#client">Using an API client</a></li><li><a href="/usage/#rest">REST API</a></li><li><a href="/usage/#sharing">Sharing plots</a></li><li><a href="/usage/#custom">Custom Visualizations</a></li></ul></section><section><a href="/clients">Clients</a><ul><li><a href="/clients/#python">Python</a></li><li><a href="/clients/#scala">Scala</a></li><li><a href="/clients/#js">Javascript</a></li><li><a href="/clients/#rstats">R</a></li></ul></section><section><a href="/visualizations">Visualizations</a><ul><li><a href="/visualizations/adjacency">Adjacency</a></li><li><a href="/visualizations/circle">Circle</a></li><li><a href="/visualizations/force">Force</a></li><li><a href="/visualizations/gallery">Gallery</a></li><li><a href="/visualizations/graph-bundled">Graph Bundled</a></li><li><a href="/visualizations/histogram">Histogram</a></li><li><a href="/visualizations/image">Image</a></li><li><a href="/visualizations/image-poly">Image Poly</a></li><li><a href="/visualizations/line">Line</a></li><li><a href="/visualizations/map">Map</a></li><li><a href="/visualizations/matrix">Matrix</a></li><li><a href="/visualizations/scatter">Scatter</a></li><li><a href="/visualizations/scatter-3">Scatter3</a></li><li><a href="/visualizations/volume">Volume</a></li></ul></section><section><a href="#">Links</a><ul><li><a href="https://github.com/lightning-viz/lightning">Github</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">Notebook Examples</a></li><li><a href="http://public.lightning-viz.org">Public Server</a></li><li><a href="https://gitter.im/lightning-viz/lightning">Chatroom</a></li></ul></section><script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+    
+    return t;
+}(document, "script", "twitter-wjs"));</script></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><section name="introduction"><div class="row"><div class="column-12"><div id="editor-component"></div></div></div></section></div></div></div><div class="bottom bar visible-mobile"></div><script>window.location = './scatter';</script></body>

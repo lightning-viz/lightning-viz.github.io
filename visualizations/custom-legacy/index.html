@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning | Data Visualization Server</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/gallery.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><a href="/"><img src="/images/logo3.png" width="25px" style="margin-left:20px; margin-top:20px"></a><iframe src="http://ghbtns.com/github-btn.html?user=lightning-viz&amp;repo=lightning&amp;type=watch&amp;count=false" allowtransparency="true" frameborder="0" scrolling="0" width="60" height="20" style="margin-top:40px; margin-left:20px"></iframe><a href="https://twitter.com/lightningviz" data-show-count="false" data-show-screen-name="false" class="twitter-follow-button"></a><section><ul><li><a href="/documentation/#introduction">Introduction</a></li><li><a href="/documentation/#getting-started">Getting started</a></li></ul></section><section><a href="/setup/">Setup</a><ul><li><a href="/setup/#prebuilt-server">Prebuilt server</a></li><li><a href="/setup/#deploy-server">Deploy a server</a></li></ul></section><section><a href="/usage/">Usage</a><ul><li><a href="/usage/#creating">Plotting Data</a></li><li><a href="/usage/#client">Using an API client</a></li><li><a href="/usage/#rest">REST API</a></li><li><a href="/usage/#sharing">Sharing plots</a></li><li><a href="/usage/#custom">Custom Visualizations</a></li></ul></section><section><a href="/clients">Clients</a><ul><li><a href="/clients/#python">Python</a></li><li><a href="/clients/#scala">Scala</a></li><li><a href="/clients/#js">Javascript</a></li><li><a href="/clients/#rstats">R</a></li></ul></section><section><a href="/visualizations">Visualizations</a><ul><li><a href="/visualizations/adjacency">Adjacency</a></li><li><a href="/visualizations/circle">Circle</a></li><li><a href="/visualizations/force">Force</a></li><li><a href="/visualizations/gallery">Gallery</a></li><li><a href="/visualizations/graph-bundled">Graph Bundled</a></li><li><a href="/visualizations/histogram">Histogram</a></li><li><a href="/visualizations/image">Image</a></li><li><a href="/visualizations/image-poly">Image Poly</a></li><li><a href="/visualizations/line">Line</a></li><li><a href="/visualizations/map">Map</a></li><li><a href="/visualizations/matrix">Matrix</a></li><li><a href="/visualizations/scatter">Scatter</a></li><li><a href="/visualizations/scatter-3">Scatter3</a></li><li><a href="/visualizations/volume">Volume</a></li></ul></section><section><a href="#">Links</a><ul><li><a href="https://github.com/lightning-viz/lightning">Github</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">Notebook Examples</a></li><li><a href="http://public.lightning-viz.org">Public Server</a></li><li><a href="https://gitter.im/lightning-viz/lightning">Chatroom</a></li></ul></section><script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+    
+    return t;
+}(document, "script", "twitter-wjs"));</script></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><section><div class="row"><div class="column-12"><a name="custom" href="#custom"><h2>   
+Developing Custom Plots</h2></a><p>In addition to Lightning’s core visualization types, users can easily develop their own plots, either by modifying the existing ones, or designing visualizations from scratch. This section serves as a walkthrough to create a custom visualization.</p><p>A visualization consists of a folder containing several files:<ul class="styled"><li>index.js (required) - the main javascript file, responsible for building and displaying the visualization</li><li>sample-data.json / sample-images.json (required) - sample data to be used when previewing this visualization type</li><li>style.scss (optional) - optional scss styles to be applied</li><li>&lt;visualization-name&gt;.jade (optional) - a markup file for any html that is needed</li></ul></p><p>each of these are discussed in detail below.</p><a name="custom-index" href="#custom-index"><h4>index.js</h4></a><p>The `index.js` file must export a javascript object that exposes a few basic functions. In general the template for the index.js file looks like this (using common.js syntax):</p><pre><code class="javascript">/*
+ * Import any necessary libraries. All visualizations already have access to jQuery
+ * through $
+ */
+var d3 = require(‘d3’);
+var _ = require(‘lodash’);
+
+
+/*
+ * Initialize a new visualization and call the internal _init function
+ */
+var MyCustomViz = function(selector, data, images, opts) {
+    this.opts = opts || {};
+    
+    this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+    this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+    
+    this.data = this._formatData(data);
+    this.selector = selector;
+    this._init();
+};
+
+/*
+ * Initialize the visualization. This is kept separate by convention to make it easy
+ * to inherit from other visualization types.
+ */
+MyCustomViz.prototype._init = function() {
+    // draw the actual visualization here
+    // e.g.
+    var svg = d3.select(this.selector)
+            .append(‘svg:svg’)
+            
+    // etc.
+}
+
+/*
+ * Take the provided data and return it in whatever data format is needed
+ */
+MyCustomViz.prototype._formatData = function(data) {
+   var transformedData = data;
+   
+   // …
+   // transform the data into whatever form you need here
+   // …
+   
+    return transformedData;
+    
+}
+
+/*
+ * Optional function, use this if you want to users to send updated data to this plot
+ */
+MyCustomViz.prototype.updateData = function(data) {
+    this.data = this._formatData(data);
+    // then update the visualization
+}
+
+/*
+ * Optional function, use this if you want to enable streaming updates to this plot
+ */
+MyCustomViz.prototype.appendData = function(data) {
+    this.data = this.data.concat(this._formatData(data));
+    // then update the visualization
+}
+
+
+module.exports = MyCustomViz;
+
+</code></pre><a name="custom-data" href="#custom-data"><h4>sample-data.json</h4></a><p>This is simply a json file that contains an array of example data in the required format, e.g.</p><pre><code>[{
+    “name”: “first example data set”,
+    “data”: {/* json representation of your data*/}
+}, {
+   “name”: “second example data set”,
+    “data”: {/* json representation of your data*/}
+}]
+
+</code></pre><a name="custom-image" href="#custom-images"><h4>sample-images.json</h4></a><p>If your plot displays images, create this file, and fill it with an array of test image URLs, e.g.</p><pre><code>[
+    "http://i.gif.fm/janelia-images/stack/0000",
+    "http://i.gif.fm/janelia-images/stack/0001",
+    "http://i.gif.fm/janelia-images/stack/0002",
+    "http://i.gif.fm/janelia-images/stack/0003"
+]
+</code></pre><a name="custom-style" href="#custom-style"><h4>style.scss</h4></a><p>An SCSS file for any styles that you wish to be applied to your visualization. The current version does not automatically scope this, so you should be careful to scope it to only your visualizations:</p><pre><code>.my-visualization-class {
+    path {
+        stroke: black;
+    }
+    // etc.
+}
+
+</code></pre><a name="custom-template" href="#custom-template"><h4>&lt;visualization-name&gt;.jade</h4></a><p>This is a jade file that can be required in index.js. Note: the name of the file must be the same as the name of the project. For example, the gallery visualization is named gallery.jade and has a markdown file that looks like</p><pre><code>.gallery-viz
+    .row
+        .gallery-container
+            for image in images
+                .gallery-thumbnail
+                    img(src="_small")
+                    
+    .row
+        .gallery-full
+            .image-container
+            </code></pre><p>then in index.js </p><pre><code>var markup = require(‘./gallery.jade’);
+var templateVars = {};
+var compiledHTML = markup();
+
+// the compiledHTML can then be appended to the visualization
+
+</code></pre><a name="custom-link" href="#custom-link"><h4>Linking Plot Types</h4></a><p>Lightning’s plots are designed so that several visualization types can be linked together relatively easily. For example, the following code shows how the relevant parts of how the “scatter-line” type to builds a visualization containing both a line plot and a scatter plot. The line plot updates with new data every time a user hovers on a point in the scatter plot.</p><pre><code>var ScatterLine = function(selector, data, images, options) {
+
+    var Scatter = require('../viz/scatter');
+    var scatter = new Scatter(selector + ' #scatter-plot', data, null, {width: $(selector).width(), height: Math.min(500, $(selector).width * 0.6)});
+    var Line = require('../viz/line');
+    var line = new Line(selector + ' #line-plot');
+    
+    // ...
+    
+    
+    scatter.on('hover', function(d) {
+        // ...
+        // get newData
+        // ... 
+        
+        line.updateData(newdata);   
+    });
+};
+
+module.exports = ScatterLine;
+</code></pre><p>the lightning-client-utils module provides several utility functions, e.g. pulling new data down from the server. This is discussed more in a later section.</p><a name="custom-inherit" href="#custom-inherit"><h4>Inheriting from other plot types</h4></a><p>To inherit behavior from an existing plot, the following convention is used:</p><pre><code>var inherits = require('inherits');
+var SomeExistingPlot = require(‘../viz/some-existing-plot’);
+
+var MyInheritingPlot = funtion(selector, data, images, opts) {
+    this.opts = opts || {};
+    
+    this.width = (opts.width || $(selector).width()) - margin.left - margin.right;
+    this.height = (opts.height || (this.width * 0.6)) - margin.top - margin.bottom;
+    
+    this.data = this._formatData(data);
+    this.selector = selector;
+    this._init();
+}
+
+inherits(MyInheritingPlot, SomeExistingPlot);
+
+// now override any methods you wish to change
+// e.g.
+
+MyInheritingPlot.prototype.appendData = function(data) {
+    var newData = this._formatData(data);
+    // now do something different with the data
+}
+</code></pre><a name="prototype-locally" href="#prototype-locally"><h4>Prototyping custom plots locally                                     </h4></a><p>If you are running a local Lightning server, you can go to:</p><pre><code>http://localhost:3000/visualization-types/preview/full/?path=/path/to/viz/my-vis
+</code></pre><p>this will render whatever visualization is inside the folder  <span class="inline-code">my-vis</span> assuming that the visualization conforms to the basic structure for a Lightning visualization type.</p><p>This approach can be useful designing and debugging visualizations locally. For live, light-weight editing the built-in Lightning visualization editor is your friend.</p></div></div></section></div></div></div><div class="bottom bar visible-mobile"></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="/js/app.js"></script></body>
