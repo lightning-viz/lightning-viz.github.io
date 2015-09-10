@@ -1,33 +1,39 @@
-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning | Data Visualization Server</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/examples/particles.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><section><a href="/">Lightning</a><ul><li><a href="http://github.com/lightning-viz/lightning">Github</a></li><li><a href="/">Website</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/visualizations">Examples</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">IPython Examples</a></li></ul></section><section><a href="/visualizations#plots">Plots</a><ul><li><a href="/visualizations#scatter">Scatter</a></li><li><a href="/visualizations#line">Line</a></li><li><a href="/visualizations#line-stacked">Line Stacked</a></li><li><a href="/visualizations#force">Force</a></li><li><a href="/visualizations#graph">Graph</a></li><li><a href="/visualizations#graph-bundled">Graph Bundled</a></li><li><a href="/visualizations#matrix">Matrix</a></li><li><a href="/visualizations#adjacency">Adjacency</a></li><li><a href="/visualizations#map">Map                </a></li></ul></section><section><a href="/visualizations/images#images">Images</a><ul><li><a href="/visualizations/images#image">Image</a></li><li><a href="/visualizations/images#gallery">Gallery</a></li></ul></section><section><a href="/visualizations/3d#3d">3D</a><ul><li><a href="/visualizations/3d#scatter3">Scatter3</a></li><li><a href="/visualizations/3d#volume">Volume</a></li></ul></section><section><a href="#streaming">Streaming</a><ul><li><a href="#line">Line</a></li><li><a href="#scatter">Scatter</a></li></ul></section><section><a href="/visualizations/linked#linked">Linked</a><ul><li><a href="/visualizations/linked#scatter-line">Scatter-Line</a></li></ul></section></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><header>           <div class="row"><div class="column-12"><div class="row header"><div class="column-1 mobile-column-1"><img src="/images/logo.png"></div><div class="column-10 mobile-column-3"><h1>Lightning</h1>DATA VISUALIZATION SERVER</div></div></div></div></header><section name="introduction"><div class="row"><div class="column-12"><a name="visualizations" href="#visualizations"><h2>Visualizations</h2></a></div></div></section><section name="streaming"><div class="row"><div class="column-12"><a name="streaming" href="#streaming"><h2>Streaming</h2></a><a name="line" href="#line"><h4>Streaming Line</h4></a><div id="line-streaming" line-data-streaming></div><div class="tab-container"><ul><li><a href="#line-streaming-data-tab">Data Structure</a></li><li><a href="#line-streaming-python-tab">Python Example</a></li></ul><div class="content-container"><div id="line-streaming-data-tab"><pre><code>data = {
-    "series": [[0, 10, ...], [0, 20, ...], ...] or [0, 10, 20, …]
-    "axis": [0, 1, ...]
-    "color": [[r0,g0,b0], [r1,g1,b1], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="line-streaming-python-tab"><pre><code class="python">from numpy import random
-
-# initialize with zeros
-viz = lgn.linestreaming([0, 0, 0])
-
-while True:
-    # append a random entry
-    viz.append([random.rand() * 20 - 10])
-    sleep(1)
-    </code></pre></div></div></div><a name="scatter" href="#scatter"><h4>Streaming Scatter</h4></a><div id="scatter-streaming" scatter-data-streaming></div><div class="tab-container"><ul><li><a href="#scatter-streaming-data-tab">Data Structure</a></li><li><a href="#scatter-streaming-python-tab">Python Example</a></li></ul><div class="content-container"><div id="scatter-streaming-data-tab"><pre><code>data = {
-    "points": [[x0,y0], [x1,y1], ... ]
-    "color": [[r0,g0,b0], [10,20,0], ...]
-    "label": [l0, l1, ...]
-    "size": [s0, s1, ...]
-}
-</code></pre></div><div id="scatter-streaming-python-tab"><pre><code class="python">from numpy import random
-
-# initialize with random points
-viz = lgn.scatterstreaming(random.rand(10),random.rand(10), label=0)
-
-while True:
-    # append random points with random labels
-    l = (random.rand(10)*5).astype('int')
-    viz.append(random.rand(10), random.rand(10), label=l)
-    sleep(1)
-    </code></pre></div></div></div></div></div></section><section name="plots"><div class="row"><div class="column-12"><a name="plots" href="/visualizations"><h2>Plots</h2></a><a href="/visualizations"><h4>Click to view plot-based visualizations</h4></a></div></div></section><section name="images"><div class="row"><div class="column-12"><a name="images" href="/visualizations/images"><h2>Images</h2></a><a href="/visualizations/images"><h4>Click to view image-based visualizations</h4></a></div></div></section><section name="3d"><div class="row"><div class="column-12"><a name="3d" href="/visualizations/3d"><h2>3D</h2></a><a href="/visualizations/3d"><h4>Click to view 3d visualizations</h4></a></div></div></section></div></div></div><div class="bottom bar visible-mobile"></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="/js/app.js"></script></body>
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"><meta charset="UTF-8"><link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"><title>Lightning</title><meta property="og:title" content="Lightning: Data Visualization Server"><meta property="og:url" content="http://lightning-viz.org"><meta property="og:image" content="http://lightning-viz.org/images/gallery.png"><meta property="og:description" content="Lightning is a data-visualization server providing API-based access to reproducible, web-based, interactive visualizations. It includes a core set of visualization types, but is built for extendability and customization."><link rel="stylesheet" href="/css/app.css"></head></html><body><div class="top bar"></div><div class="documentation-container"><div class="row"><div class="column-3 hidden-mobile overview-container"><a href="/"><img src="/images/logo3.png" width="25px" style="margin-left:20px; margin-top:20px"></a><iframe src="http://ghbtns.com/github-btn.html?user=lightning-viz&amp;repo=lightning&amp;type=watch&amp;count=false" allowtransparency="true" frameborder="0" scrolling="0" width="60" height="20" style="margin-top:40px; margin-left:20px"></iframe><a href="https://twitter.com/lightningviz" data-show-count="false" data-show-screen-name="false" class="twitter-follow-button"></a><section><ul><li><a href="/documentation/#introduction">Introduction</a></li><li><a href="/documentation/#getting-started">Getting started</a></li></ul></section><section><a href="/setup/">Setup</a><ul><li><a href="/setup/#prebuilt-server">Prebuilt server</a></li><li><a href="/setup/#deploy-server">Deploy a server</a></li></ul></section><section><a href="/usage/">Usage</a><ul><li><a href="/usage/#creating">Plotting Data</a></li><li><a href="/usage/#client">Using an API client</a></li><li><a href="/usage/#rest">REST API</a></li><li><a href="/usage/#sharing">Sharing plots</a></li><li><a href="/usage/#custom">Custom Visualizations</a></li></ul></section><section><a href="/clients">Clients</a><ul><li><a href="/clients/#python">Python</a></li><li><a href="/clients/#scala">Scala</a></li><li><a href="/clients/#js">Javascript</a></li><li><a href="/clients/#rstats">R</a></li></ul></section><section><a href="/visualizations">Visualizations</a><ul><li><a href="/visualizations/adjacency">Adjacency</a></li><li><a href="/visualizations/circle">Circle</a></li><li><a href="/visualizations/force">Force</a></li><li><a href="/visualizations/gallery">Gallery</a></li><li><a href="/visualizations/graph-bundled">Graph Bundled</a></li><li><a href="/visualizations/histogram">Histogram</a></li><li><a href="/visualizations/image">Image</a></li><li><a href="/visualizations/image-poly">Image Poly</a></li><li><a href="/visualizations/line">Line</a></li><li><a href="/visualizations/map">Map</a></li><li><a href="/visualizations/matrix">Matrix</a></li><li><a href="/visualizations/scatter">Scatter</a></li><li><a href="/visualizations/scatter-3">Scatter3</a></li><li><a href="/visualizations/volume">Volume</a></li><li><a href="/visualizations/streaming">Streaming</a></li></ul></section><section><a href="#">Links</a><ul><li><a href="https://github.com/lightning-viz/lightning">Github</a></li><li><a href="http://nbviewer.ipython.org/github/lightning-viz/lightning-example-notebooks/blob/master/index.ipynb">Notebook Examples</a></li><li><a href="http://public.lightning-viz.org">Public Server</a></li><li><a href="https://gitter.im/lightning-viz/lightning">Chatroom</a></li></ul></section><script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+    
+    return t;
+}(document, "script", "twitter-wjs"));</script></div><div class="column-3 hidden-mobile empty-container"></div><div class="column-7 mobile-column-3 details-container"><section name="streaming"><div class="row"><div class="column-12"><a name="streaming" href="#streaming"><h2>Streaming visualizations</h2></a><p>All Lightning visualizations support updating or appending data to the visualization after it has been created, and some of our visualizations have been designed with append logic well-suited to streaming applications.</p><a name="streaming-line" href="#streaming-line"></a><h4>Streaming Line</h4><div class="screenshot"><img src="/images/streaming/line-streaming.gif"></div><br><p>Python client example</p><pre><code class="python">from lightning import Lightning
+from numpy import random
+ 
+lgn = Lightning()
+ 
+series = random.randn(5,10)
+ 
+viz = lgn.linestreaming(series)
+ 
+for _ in range(100):
+    viz.append(random.randn(5, 1))</code></pre><a name="streaming-scatter" href="#streaming-scatter"></a><h4>Streaming Scatter</h4><div class="screenshot"><img src="/images/streaming/scatter-streaming.gif"></div><br><p>Python client example</p><pre><code class="python">from lightning import Lightning
+from numpy import random,
+ 
+lgn = Lightning()
+ 
+x = random.randn(100)
+y = random.randn(100)
+ 
+viz = lgn.scatterstreaming(x, y)
+ 
+for _ in range(100):
+    x = random.randn(100)
+    y = random.randn(100)
+    viz.append(x, y)</code></pre></div></div></section></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="/js/editor.js"></script></body>
