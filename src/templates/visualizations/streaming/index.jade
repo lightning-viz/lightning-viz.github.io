@@ -1,0 +1,74 @@
+extends ../layout
+
+block content
+
+    .top.bar
+
+    .documentation-container
+        .row
+            .column-3.hidden-mobile.overview-container
+                include ../../includes/sidebar
+
+            .column-3.hidden-mobile.empty-container
+            .column-7.mobile-column-3.details-container
+
+                section(name="streaming")
+                    .row
+                        .column-12
+                                a(name="streaming", href="#streaming")
+                                    h2
+                                        | Streaming visualizations
+
+                                p
+                                    | All Lightning visualizations support updating or appending data to the visualization after it has been created, and some of our visualizations have been designed with append logic well-suited to streaming applications.
+
+                                a(name="streaming-line", href="#streaming-line")
+                                h4
+                                    | Streaming Line
+
+                                .screenshot
+                                    img(src="/images/streaming/line-streaming.gif")
+                                br
+                                p
+                                    | Python client example
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | from numpy import random
+                                        | 
+                                        | lgn = Lightning()
+                                        | 
+                                        | series = random.randn(5,10)
+                                        | 
+                                        | viz = lgn.linestreaming(series)
+                                        | 
+                                        | for _ in range(100):
+                                        |     viz.append(random.randn(5, 1))
+
+                                a(name="streaming-scatter", href="#streaming-scatter")
+                                h4
+                                    | Streaming Scatter
+
+                                .screenshot
+                                    img(src="/images/streaming/scatter-streaming.gif")
+                                br
+                                p
+                                    | Python client example
+
+                                pre
+                                    code.python
+                                        | from lightning import Lightning
+                                        | from numpy import random,
+                                        | 
+                                        | lgn = Lightning()
+                                        | 
+                                        | x = random.randn(100)
+                                        | y = random.randn(100)
+                                        | 
+                                        | viz = lgn.scatterstreaming(x, y)
+                                        | 
+                                        | for _ in range(100):
+                                        |     x = random.randn(100)
+                                        |     y = random.randn(100)
+                                        |     viz.append(x, y)
